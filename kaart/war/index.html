@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<script type="text/javascript" language="javascript" src="kaart/mingitegevus.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" language="javascript" src="kaart/map_canvas_initialize().js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title>Spordikaart</title>
+  </head>
+
+  <body>
+    <h1>LahedadKutidTiim</h1>
+	
+	<noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+    
+    <table>
+      <tr>
+        <p id="test">Vinge programm</p>        
+      </tr>
+      <tr>
+        <form><input type='button' value="Touch me" onclick="touch()";></form>
+      </tr>
+    </table>
+    <div id="map_canvas" class="map_canvas"></div>
+  </body>
+</html>

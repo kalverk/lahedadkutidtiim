@@ -1,0 +1,7 @@
+/* Add css rules here for your application. */
+
+#map_canvas{
+	widht: 500px;
+	height: 400px;
+	background-color: #CCC;
+}
