@@ -1,0 +1,39 @@
+/* Add css rules here for your application. */
+
+body{
+	background: #8594A3;
+}
+
+.content{
+	background-color: #8594A3;
+	width: 100%;
+	height: 25px;
+	border: 1px solid black;
+}
+
+.noscript{
+	width: auto; 
+	position: absolute;
+	top: 10px; 
+	left: 10px; 
+	color: red; 
+	border: 1px solid red;
+	padding: 4px; 
+}
+
+.toolbarButton{
+  height: 65px;
+  width: 50px
+  border: 1px solid black;
+}
+
+.map_canvas{
+	position: absolute;
+	top:555px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	overflow:auto;
+	background-color: #CCC;
+	border-top: 3px solid black;
+}
