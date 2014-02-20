@@ -1,0 +1,161 @@
+/* Add css rules here for your application. */
+
+body{
+	background: #FDF3E7;
+}
+
+.container{
+	position:relative;
+	width:100%
+}
+
+.noscript{
+	width: auto; 
+	position: absolute;
+	top: 10px; 
+	left: 10px; 
+	color: red; 
+	border: 1px solid red;
+	padding: 4px; 
+}
+
+.toolbar{
+	width:85%;
+	height:75px;
+	float:left
+}
+
+.loginbar{
+	width:15%;
+	height:65px;
+	float:right;
+}
+
+.toolbarButton{
+  	height: 65px;
+  	width: 50px;
+  	margin-left: 2px;
+  	margin-right: 2px;
+}
+
+.toolbarButton:hover{
+	transform:scale(1.2);
+    -ms-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -webkit-transform:scale(1.2);
+    -o-transform:scale(1.2);
+}
+
+.login_button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #7d1935;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7d1935;
+	box-shadow:inset 0px 1px 0px 0px #7d1935;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7d1935), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #7d1935 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d1935', endColorstr='#c62d1f');
+	background-color:#7d1935;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:1px solid #d02718;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:75px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #810e05;
+}
+.login_button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #7d1935) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #7d1935 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#7d1935');
+	background-color:#c62d1f;
+}.login_button:active {
+	position:relative;
+	top:1px;
+}
+
+.loggedin_button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #7d1935;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7d1935;
+	box-shadow:inset 0px 1px 0px 0px #7d1935;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7d1935), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #7d1935 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d1935', endColorstr='#c62d1f');
+	background-color:#7d1935;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:1px solid #d02718;
+	/*peaks kutsuma välja javascript funktsiooni
+	siis kui logging in on succsessful ja muutma 
+	display:inline-block;*/
+	display:none;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:100px;
+	float:left;
+	margin-right:2px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #810e05;
+}
+.loggedin_button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #7d1935) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #7d1935 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#7d1935');
+	background-color:#c62d1f;
+}.loggedin_button:active {
+	position:relative;
+	top:1px;
+}
+
+.map_canvas{
+	position: absolute;
+	top:75px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	overflow:auto;
+	background-color: #CCC;
+	border-top: 3px solid black;
+}
+
+/*LOGIN PROMPT CSS*/
+
+.centerpoint{
+	top: 50%;
+	left: 50%;
+	position: absolute;
+}
