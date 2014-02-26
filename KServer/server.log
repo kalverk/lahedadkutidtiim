@@ -1,0 +1,81 @@
+14:49:20,569  INFO Server:12 - Server starting
+14:49:20,854  INFO Server:27 - Server töötab!
+15:20:53,545  INFO Server:12 - Server starting
+15:20:53,804  INFO Server:27 - Server töötab!
+15:22:02,592  INFO Server:12 - Server starting
+15:22:02,856  INFO Server:27 - Server töötab!
+15:23:59,342  INFO Server:12 - Server starting
+15:23:59,601  INFO Server:27 - Server töötab!
+15:24:34,659  INFO Server:12 - Server starting
+15:24:34,938 ERROR Server:23 - Ei saa pordiga ühendust 9002.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at Server.main(Server.java:21)
+15:24:45,021  INFO Server:12 - Server starting
+15:24:45,296  INFO Server:27 - Server töötab!
+15:25:21,411  INFO Server:12 - Server starting
+15:25:21,685 ERROR Server:23 - Ei saa pordiga ühendust 9002.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at Server.main(Server.java:21)
+15:25:27,332  INFO Server:12 - Server starting
+15:25:27,616  INFO Server:27 - Server töötab!
+15:25:47,288  INFO Server:12 - Server starting
+15:25:47,556 ERROR Server:23 - Ei saa pordiga ühendust 9002.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at Server.main(Server.java:21)
+15:25:51,942  INFO Server:12 - Server starting
+15:25:52,214  INFO Server:27 - Server töötab!
+15:27:37,074  INFO Server:12 - Server starting
+15:27:37,374 ERROR Server:23 - Ei saa pordiga ühendust 9002.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at Server.main(Server.java:21)
+15:27:44,526  INFO Server:12 - Server starting
+15:27:44,794  INFO Server:27 - Server töötab!
+15:28:01,183  INFO Server:12 - Server starting
+15:28:01,527  INFO Server:27 - Server töötab!
+15:30:36,538  INFO Server:14 - Server starting
+15:30:36,792 ERROR Server:25 - Ei saa pordiga ühendust 9002.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at Server.main(Server.java:23)
+15:30:43,260  INFO Server:14 - Server starting
+15:30:43,525  INFO Server:29 - Server töötab!
+15:30:43,654 ERROR Server:42 - ID 1 NAME Rahinge Ekstreempark LOCATION 58.379202,26.609053 DESCRIPTION Parim paik veelauaga sõitmiseks Eestis. Lisaks võimalik kasutada hüppemäge, palliplatse ja palju muid võimalusi. LINK http://www.rahinge.ee/
+15:30:43,655 ERROR Server:42 - ID 2 NAME Tähtvere spordipark LOCATION 58.390667,26.705402 DESCRIPTION Spordipargis asuvad rullirada, jooksurada, BMX rada ja väline jõusaal. Talvel võimalus suusatada ja on olemas ka laste kelgumägi. LINK http://arena.ee/puhkepark/spordipark/
+15:35:53,993  INFO Server:14 - Server starting
+15:35:54,318  INFO Server:29 - Server töötab!
+15:35:54,439  INFO Server:42 - ID 1 NAME Rahinge Ekstreempark LOCATION 58.379202,26.609053 DESCRIPTION Parim paik veelauaga sõitmiseks Eestis. Lisaks võimalik kasutada hüppemäge, palliplatse ja palju muid võimalusi. LINK http://www.rahinge.ee/
+15:35:54,440  INFO Server:42 - ID 2 NAME Tähtvere spordipark LOCATION 58.390667,26.705402 DESCRIPTION Spordipargis asuvad rullirada, jooksurada, BMX rada ja väline jõusaal. Talvel võimalus suusatada ja on olemas ka laste kelgumägi. LINK http://arena.ee/puhkepark/spordipark/
