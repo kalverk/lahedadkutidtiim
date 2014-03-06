@@ -1,0 +1,6 @@
+Pallimängud: football, basketball, volleyball, tennis, tabletennis, pool, bowling, golf, hockey, baseball
+Talisport: crosscountry, skiing, hockey, ice-skating
+Ekstreemsport: skatepark, parachuting, bungee jumping
+Muu: archery, bicycle, camping, diving, gym, pool, rowing, skating, running, swimming, 
+
+sise/välis; tasuta; 
