@@ -1,0 +1,402 @@
+body {
+	font: 14px Georgia, serif;
+	background: #FDF3E7;
+}
+
+#page-wrap {
+	color: white;
+}
+
+#page-wrap>div {
+	margin-bottom: 5px;
+	color: black;
+}
+
+#header {
+	background: #FDF3E7;
+}
+
+#main-content {
+	left: 0;
+	background: #eee;
+	overflow: auto;
+	border: 1px solid #999;
+}
+
+#secondary-two {
+	background: #eee;
+	border: 1px solid #999;
+}
+
+ul#navigation {
+	position: relative;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    height: 85px;
+    list-style: none;
+    display: table;
+}
+
+ul#navigation li{
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+	display: table-cell;
+}
+
+ul#navigation li:hover{
+	transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-o-transform: scale(1.2);
+}
+
+.archery {
+	width: 50px;
+	height: 65px;
+}
+
+.baseball {
+	width: 50px;
+	height: 65px;
+}
+
+
+.football {
+	width: 50px;
+	height: 65px;
+}
+
+.basketball {
+	width: 50px;
+	height: 65px;
+}
+
+.bicycle {
+	width: 50px;
+	height: 65px;
+}
+
+.bowling {
+	width: 50px;
+	height: 65px;
+}
+
+.camping {
+	width: 50px;
+	height: 65px;
+}
+
+.crosscountry {
+	width: 50px;
+	height: 65px;
+}
+
+.diving {
+	width: 50px;
+	height: 65px;
+}
+
+.golf {
+	width: 50px;
+	height: 65px;
+}
+
+.gym {
+	width: 50px;
+	height: 65px;
+}
+
+.hockey {
+	width: 50px;
+	height: 65px;
+}
+
+.iceskating {
+	width: 50px;
+	height: 65px;
+}
+
+.pool {
+	width: 50px;
+	height: 65px;
+}
+
+.rowing {
+	width: 50px;
+	height: 65px;
+}
+
+.running {
+	width: 50px;
+	height: 65px;
+}
+
+.skatepark {
+	width: 50px;
+	height: 65px;
+}
+
+.skating {
+	width: 50px;
+	height: 65px;
+}
+
+.snowboard {
+	width: 50px;
+	height: 65px;
+}
+
+.swimming {
+	width: 50px;
+	height: 65px;
+}
+
+.tabletennis {
+	width: 50px;
+	height: 65px;
+}
+
+.tennis {
+	width: 50px;
+	height: 65px;
+}
+
+.volleyball {
+	width: 50px;
+	height: 65px;
+}
+
+.login-window {
+	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	box-shadow: inset 0px 1px 0px 0px #7d1935;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
+		), color-stop(1, #c62d1f));
+	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
+	background-color: #7d1935;
+	-webkit-border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-left-radius: 0px;
+	-webkit-border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-top-right-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	text-indent: 0px;
+	border: 1px solid #d02718;
+	display: inline-block;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	height: 55px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	width: 75px;
+	line-height: 50px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #810e05;
+}
+
+.login-window:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
+		), color-stop(1, #7d1935));
+	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
+	background-color: #c62d1f;
+}
+
+.login-window:active {
+	position: relative;
+	top: 1px;
+}
+
+.loggedin_button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	box-shadow: inset 0px 1px 0px 0px #7d1935;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
+		), color-stop(1, #c62d1f));
+	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
+	background-color: #7d1935;
+	-webkit-border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-left-radius: 0px;
+	-webkit-border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-top-right-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	text-indent: 0px;
+	border: 1px solid #d02718;
+	display: inline-block;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	height: 55px;
+	width: 100px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	line-height: 50px;
+	width: 100px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #810e05;
+}
+
+.loggedin_button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
+		), color-stop(1, #7d1935));
+	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
+	background-color: #c62d1f;
+}
+
+.loggedin_button:active {
+	position: relative;
+	top: 1px;
+}
+
+/*LOGIN PROMPT CSS*/
+#mask {
+	display: none;
+	background: #000;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+.login-popup {
+	display: none;
+	background: #FDF3E7;
+	padding: 10px;
+	float: left;
+	position: fixed;
+	width: 500px;
+	top: 50%;
+	left: 50%;
+	z-index: 99999;
+}
+
+.fb_login_button {
+	display: block;
+	width: 202px;
+	padding: 6px 6px 4px;
+}
+
+.google_login_button {
+	display: block;
+	width: 202px;
+	padding: 6px 6px 4px;
+}
+
+img.btn_close {
+	float: right;
+	margin: -30px -30px 0 0;
+}
+
+fieldset {
+	border: none;
+}
+
+.signin {
+	float: right;
+	border-left: thick solid black;
+}
+
+form.signin .textbox label {
+	display: block;
+	padding-bottom: 7px;
+}
+
+form.signin .textbox span {
+	display: block;
+}
+
+form.signin p,form.signin span {
+	color: #000;
+	line-height: 18px;
+}
+
+form.signin .textbox input {
+	background: #000;
+	border-bottom: 1px solid #333;
+	border-left: 1px solid #000;
+	border-right: 1px solid #333;
+	border-top: 1px solid #000;
+	color: #000;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 6px 6px 4px;
+	width: 200px;
+}
+
+.button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
+	box-shadow: inset 0px 1px 0px 0px #7d1935;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
+		), color-stop(1, #c62d1f));
+	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
+	background-color: #7d1935;
+	-webkit-border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-left-radius: 0px;
+	-webkit-border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-top-right-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	text-indent: 0px;
+	border: 1px solid #d02718;
+	display: inline-block;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	cursor: pointer;
+	display: inline-block;
+	padding: 6px 6px 4px;
+	margin-top: 10px;
+	width: 214px;
+	margin-right: 2px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #810e05;
+}
+
+.button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
+		), color-stop(1, #7d1935));
+	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
+	background-color: #c62d1f;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}

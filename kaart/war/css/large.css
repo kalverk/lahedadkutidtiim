@@ -1,0 +1,23 @@
+body {
+	background: #FDF3E7;
+}
+
+#page-wrap {
+	width: 100%;
+	position: relative;
+}
+
+#main-content {
+	float: left;
+	margin-right: 5px;
+}
+
+#header{
+	height: 80px;
+}
+
+#secondary-two {
+	overflow: hidden;
+	height: 600px;
+	display: none;
+}

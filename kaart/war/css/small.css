@@ -1,0 +1,36 @@
+body {
+	background: #FDF3E7;
+}
+
+#page-wrap {
+	width: 100%;
+}
+
+#header {
+	height: 80px;
+}
+
+#main-content {
+	margin-right: 5px;
+}
+
+#secondary-two {
+	height: 250px;
+	display: none;
+}
+
+.login-popup {
+	display: none;
+	background: #FDF3E7;
+	padding: 10px;
+	position: fixed;
+	width: 250px;
+	top: 50%;
+	left: 50%;
+	z-index: 99999;
+}
+
+.signin{
+	border-left: none;
+	border-bottom: thick solid black;
+}

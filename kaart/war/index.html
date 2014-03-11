@@ -1,87 +1,95 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+<title>Spordikaart</title>
+
+<link rel='stylesheet' type='text/css' href='css/style.css' />
+<link id="size-stylesheet" rel='stylesheet' type='text/css'
+	href='css/small.css' />
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
+<script type='text/javascript' src='js/resolution-change.js'></script>
 <script type="text/javascript" src="js/mingitegevus.js"></script>
 <script type="text/javascript" src="js/loginbutton.js"></script>
 <script type="text/javascript" src="js/facebook.js"></script>
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://connect.facebook.net/en_US/all.js"></script>
-<title>Spordikaart</title>
+
 </head>
+
 <body>
 	<div id="fb-root"></div>
-	<div class="container">
-		<noscript>
-			<div class="noscript">Your web browser must have JavaScript
-				enabled in order for this application to display correctly.</div>
-		</noscript>
-		<div class="toolbar">
-			<a href="" onclick="touch('football')"><img alt="Football"
-				src="images/iconsB/football.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('basketball')"><img alt="Basketball"
-				src="images/iconsB/basketball.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('volleyball')"><img alt="Volleyball"
-				src="images/iconsB/volleyball.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('tennis')"><img alt="Tennis"
-				src="images/iconsB/tennis.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('tabletennis')"><img alt="Tabletennis"
-				src="images/iconsB/tabletennis.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('pool')"><img alt="Pool"
-				src="images/iconsB/pool.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('bowling')"><img alt="Bowling"
-				src="images/iconsB/bowling.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('golf')"><img alt="Golf"
-				src="images/iconsB/golf.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('hockey')"><img alt="Hockey"
-				src="images/iconsB/hockey.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('baseball')"><img alt="Baseball"
-				src="images/iconsB/baseball.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('crosscountry')"><img alt="Crosscountry"
-				src="images/iconsB/crosscountry.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('ice-skating')"><img alt="Ice-skating"
-				src="images/iconsB/ice-skating.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('snowboard')"><img alt="Snowboard"
-				src="images/iconsB/snowboard.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('skatepark')"><img alt="Skatepak"
-				src="images/iconsB/skatepark.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('archery')"><img alt="Archery"
-				src="images/iconsB/archery.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('bicycle')"><img alt="Bicycle"
-				src="images/iconsB/bicycle.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('camping')"><img alt="Camping"
-				src="images/iconsB/camping.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('diving')"><img alt="Diving"
-				src="images/iconsB/diving.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('rowing')"><img alt="Canoeing"
-				src="images/iconsB/rowing.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('skating')"><img alt="Rollerskating"
-				src="images/iconsB/skating.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('swimming')"><img alt="Swimming"
-				src="images/iconsB/swimming.png" class="toolbarButton" /></a> <a
-				href="" onclick="touch('gym')"><img alt="Gym"
-				src="images/iconsB/gym.png" class="toolbarButton" /></a> <a href=""
-				onclick="touch('running')"><img alt="Jogging"
-				src="images/iconsB/running.png" class="toolbarButton" /></a>
+	<div id="page-wrap">
+
+		<div id="header">
+			<ul id="navigation">
+				<li><a href="" onclick="touch('football')"><img
+						alt="Football" src="images/iconsB/football.png" class="football" /></a></li>
+				<li><a href="" onclick="touch('basketball')"><img
+						alt="Basketball" src="images/iconsB/basketball.png"
+						class="basketball" /></a></li>
+				<li><a href="" onclick="touch('volleyball')"><img
+						alt="Volleyball" src="images/iconsB/volleyball.png"
+						class="volleyball" /></a></li>
+				<li><a href="" onclick="touch('tennis')"><img alt="Tennis"
+						src="images/iconsB/tennis.png" class="tennis" /></a></li>
+				<li><a href="" onclick="touch('tabletennis')"><img
+						alt="Tabletennis" src="images/iconsB/tabletennis.png"
+						class="tabletennis" /></a></li>
+				<li><a href="" onclick="touch('pool')"><img alt="Pool"
+						src="images/iconsB/pool.png" class="pool" /></a></li>
+				<li><a href="" onclick="touch('bowling')"><img
+						alt="Bowling" src="images/iconsB/bowling.png" class="bowling" /></a></li>
+				<li><a href="" onclick="touch('golf')"><img alt="Golf"
+						src="images/iconsB/golf.png" class="golf" /></a></li>
+				<li><a href="" onclick="touch('hockey')"><img alt="Hockey"
+						src="images/iconsB/hockey.png" class="hockey" /></a></li>
+				<li><a href="" onclick="touch('baseball')"><img
+						alt="Baseball" src="images/iconsB/baseball.png" class="baseball" /></a></li>
+				<li><a href="" onclick="touch('crosscountry')"><img
+						alt="Crosscountry" src="images/iconsB/crosscountry.png"
+						class="crosscountry" /></a></li>
+				<li><a href="" onclick="touch('ice-skating')"><img
+						alt="Ice-skating" src="images/iconsB/ice-skating.png"
+						class="iceskating" /></a></li>
+				<li><a href="" onclick="touch('snowboard')"><img
+						alt="Snowboard" src="images/iconsB/snowboard.png"
+						class="snowboard" /></a></li>
+				<li><a href="" onclick="touch('skatepark')"><img
+						alt="Skatepark" src="images/iconsB/skatepark.png"
+						class="skatepark" /></a></li>
+				<li><a href="" onclick="touch('archery')"><img
+						alt="Archery" src="images/iconsB/archery.png" class="archery" /></a></li>
+				<li><a href="" onclick="touch('bicycle')"><img
+						alt="Bicycle" src="images/iconsB/bicycle.png" class="bicycle" /></a></li>
+				<li><a href="" onclick="touch('camping')"><img
+						alt="Camping" src="images/iconsB/camping.png" class="camping" /></a></li>
+				<li><a href="" onclick="touch('diving')"><img alt="Diving"
+						src="images/iconsB/diving.png" class="diving" /></a></li>
+				<li><a href="" onclick="touch('rowing')"><img
+						alt="Canoeing" src="images/iconsB/rowing.png" class="rowing" /></a></li>
+				<li><a href="" onclick="touch('skating')"><img
+						alt="Rollerskating" src="images/iconsB/skating.png"
+						class="skating" /></a></li>
+				<li><a href="" onclick="touch('swimming')"><img
+						alt="Swimming" src="images/iconsB/swimming.png" class="swimming" /></a></li>
+				<li><a href="" onclick="touch('gym')"><img alt="Gym"
+						src="images/iconsB/gym.png" class="gym" /></a></li>
+				<li><a href="" onclick="touch('running')"><img
+						alt="Jogging" src="images/iconsB/running.png" class="running" /></a></li>
+				<li><a href="#logged-in-box" class="loggedin_button"
+					onclick="touch('adding places')">Add places</a></li>
+				<li><a href="#login-box" class="login-window"
+					onclick="showLoginForm('a.login-window')">Log in</a></li>
+			</ul>
 		</div>
-		<div class="loginbar">
-			<div>
-				<a href="#logged-in-box" class="loggedin_button"
-					onclick="touch('addingplaces')">Add places</a>
-			</div>
-			<div id="loggedinbutton">
-				<a href="#login-box" class="login-window"
-					onclick="showLoginForm('a.login-window')">Log in</a>
-			</div>
-		</div>
+		<div id="main-content">Map</div>
+
+		<div id="secondary-two">Comment</div>
 
 		<div id="login-box" class="login-popup">
 			<a href="#" class="close" onclick="closeLoginForm()"><img
@@ -104,14 +112,15 @@
 			<div class="loginother">
 				<label class="loginotherway"> <span>Login in with</span> <a
 					href="#" onclick="touch('login_with_google')"><img
-						src="images/google_login.png" class="loginotherbutton"
+						src="images/google_login.png" class="google_login_button"
 						alt="GoogleLogin" /></a> <a href="#" onclick="login()"><img
-						src="images/facebook_login.png" class="loginotherbutton"
+						src="images/facebook_login.png" class="fb_login_button"
 						alt="FacebookLogin" /></a></label>
 			</div>
 		</div>
+
 	</div>
-	<div id="map_canvas" class="map_canvas"></div>
 
 </body>
+
 </html>

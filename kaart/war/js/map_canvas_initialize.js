@@ -3,7 +3,7 @@ var browserSupportFlag = new Boolean();
 var liivi = new google.maps.LatLng(58.37824850000001, 26.71467329999996);
 
 function initialize() {
-	var map_canvas = document.getElementById('map_canvas');
+	var map_canvas = document.getElementById('main-content');
 	var mapOptions = {
 		zoom : 18,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
