@@ -7,7 +7,17 @@ body {
 }
 
 #header{
-	height: 160px;	
+	height: 90px;	
+}
+
+#login {
+	width:35%;
+	float: right;
+}
+
+#toolbar {
+	height: 90px;
+	width: 65%;
 }
 
 #main-content {

@@ -12,8 +12,9 @@ body {
 	margin-right: 5px;
 }
 
-#header{
-	height: 80px;
+#header {
+	height: 90px;
+	width: 100%;
 }
 
 #secondary-two {
@@ -21,3 +22,5 @@ body {
 	height: 600px;
 	display: none;
 }
+
+

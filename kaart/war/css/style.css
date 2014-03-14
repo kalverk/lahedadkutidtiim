@@ -28,24 +28,47 @@ body {
 	border: 1px solid #999;
 }
 
-ul#navigation {
-	position: relative;
-    margin: 0px;
-    padding: 0px;
-    left: 0px;
-    height: 85px;
-    list-style: none;
-    display: table;
+#login {
+	height:90px;
+	float: right;
+	width:15%;
 }
 
-ul#navigation li{
+#toolbar {
+	height: 90px;
+	width: 85%;
 	float: left;
+}
+
+ul#navigation {
+	width: 100%;
+	margin: 0px;
+	left: 0px;
+	height: 85px;
+	display: block;
+	list-style: none outside none;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+ul#navigation li {
 	margin-left: 5px;
 	margin-top: 10px;
-	display: table-cell;
+	display: inline;
+	overflow: auto;
+	overflow-y: hidden;
 }
 
-ul#navigation li:hover{
+ul#navigation2 li {
+	margin-left: 5px;
+	margin-top: 10px;
+	display: inline;
+	overflow: auto;
+	overflow-y: hidden;
+	float:right;
+}
+
+ul#navigation li:hover {
 	transform: scale(1.2);
 	-ms-transform: scale(1.2);
 	-moz-transform: scale(1.2);
@@ -62,7 +85,6 @@ ul#navigation li:hover{
 	width: 50px;
 	height: 65px;
 }
-
 
 .football {
 	width: 50px;
