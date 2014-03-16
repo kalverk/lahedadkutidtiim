@@ -2,6 +2,7 @@ package kaart.dao;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -26,7 +27,7 @@ public class PointDAO extends GenericDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
-	
+
 	public void persistCategory(Category category) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
@@ -46,12 +47,13 @@ public class PointDAO extends GenericDAO {
 		closeEntityManager();
 		return allPoints;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Category> getAllPointsByCategory(String category) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
-		Query allPointsQuery = em.createQuery("Select c from Category c WHERE CATEGORY = :category");
+		Query allPointsQuery = em
+				.createQuery("Select c from Category c WHERE CATEGORY = :category");
 		allPointsQuery.setParameter("category", category.trim());
 		List<Category> allPoints = allPointsQuery.getResultList();
 		em.getTransaction().commit();
@@ -59,12 +61,13 @@ public class PointDAO extends GenericDAO {
 		closeEntityManager();
 		return allPoints;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Point> getDetailedPointDescription(String location){
+	public List<Point> getDetailedPointDescription(String location) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
-		Query allPointsQuery = em.createQuery("Select p from Point p WHERE LOCATION = :location");
+		Query allPointsQuery = em
+				.createQuery("Select p from Point p WHERE LOCATION = :location");
 		allPointsQuery.setParameter("location", location.trim());
 		List<Point> allPoints = allPointsQuery.getResultList();
 		em.getTransaction().commit();
@@ -72,12 +75,12 @@ public class PointDAO extends GenericDAO {
 		closeEntityManager();
 		return allPoints;
 	}
-	
+
 	public String convertCategoryListToString(List<Category> category) {
 		String result = "";
 		for (Category c : category) {
 			String location = c.getPoint().getLocation();
-			result += location+"!";
+			result += location + "!";
 		}
 		return result;
 	}

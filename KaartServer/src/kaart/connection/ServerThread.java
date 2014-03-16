@@ -1,6 +1,7 @@
 package kaart.connection;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -84,14 +85,7 @@ public class ServerThread extends Thread {
 		String b = Translation.getB();
 
 		if (t == 120) {
-			if (a.equalsIgnoreCase("all") && b.equalsIgnoreCase("na")) {
-				try {
-					List<Category> allPoints = pointDao.getAllPoints();
-					result = pointDao.convertCategoryListToString(allPoints);
-				} catch (Exception e) {
-					logger.error("Could not get points.", e);
-				}
-			}else if(a.equalsIgnoreCase("na")){
+			if(a.equalsIgnoreCase("na")&&!b.equalsIgnoreCase("na")){
 				try{
 					List<Point> point = pointDao.getDetailedPointDescription(b);
 					result = pointDao.convertListToString(point);

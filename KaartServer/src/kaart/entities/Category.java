@@ -29,8 +29,8 @@ public class Category implements Serializable {
 	public Category() {
 		super();
 	}
-	
-	public Category(String category, Point point){
+
+	public Category(String category, Point point) {
 		this.Category = category;
 		this.point = point;
 	}
@@ -50,15 +50,16 @@ public class Category implements Serializable {
 	public void setId(Long id) {
 		this.category_id = id;
 	}
-	
-	public Point getPoint(){
+
+	public Point getPoint() {
 		return point;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [category_id=" + category_id + ", Category="
-				+ Category + ", point=" + point.toString() + "]";
+		return new StringBuffer(" category_id : ").append(category_id)
+				.append(" category : ").append(Category).append(" point : ")
+				.append(point.toString()).toString();
 	}
-	
+
 }
