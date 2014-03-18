@@ -241,55 +241,54 @@ ul#navigation li:hover {
 	top: 1px;
 }
 
-.loggedin_button {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	box-shadow: inset 0px 1px 0px 0px #7d1935;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
-		), color-stop(1, #c62d1f));
-	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
-	background-color: #7d1935;
-	-webkit-border-top-left-radius: 0px;
-	-moz-border-radius-topleft: 0px;
-	border-top-left-radius: 0px;
-	-webkit-border-top-right-radius: 0px;
-	-moz-border-radius-topright: 0px;
-	border-top-right-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
-	-moz-border-radius-bottomright: 0px;
-	border-bottom-right-radius: 0px;
-	-webkit-border-bottom-left-radius: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	border-bottom-left-radius: 0px;
-	text-indent: 0px;
-	border: 1px solid #d02718;
-	display: inline-block;
-	color: #ffffff;
-	font-family: Arial;
-	font-size: 16px;
-	font-weight: bold;
-	font-style: normal;
-	height: 55px;
-	width: 100px;
+#legend{
+	padding: 5px;
+	margin: 5px;
+}
+
+.marker{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.marker-info-win{
+	max-width: 300px;
+    max-height: 300px;
+	margin-right: -20px;
+    overflow: auto;
+}
+
+.marker-info-win p{
+	margin: 10px;
+}
+
+.marker-inner-win{
+	padding: 5px;
+}
+
+.marker-edit label{
+	display:block;
 	margin-bottom: 5px;
-	margin-top: 5px;
-	line-height: 50px;
+}
+
+.marker-edit label span{
 	width: 100px;
-	text-decoration: none;
-	text-align: center;
-	text-shadow: 1px 1px 0px #810e05;
+	float: left;
 }
 
-.loggedin_button:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
-		), color-stop(1, #7d1935));
-	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
-	background-color: #c62d1f;
+.marker-edit label input{
+	height: 25px;
 }
 
-.loggedin_button:active {
-	position: relative;
-	top: 1px;
+.marker-edit label textarea{
+	height:60px;
+    max-width:153px;
+}
+
+.marker-edit label ul li{
+	float: left;
+	width: 25%;
 }
 
 /*LOGIN PROMPT CSS*/

@@ -60,8 +60,6 @@
 			</div>
 			<div id="login">
 				<ul id="navigation2">
-					<li><a href="#logged-in-box" class="loggedin_button"
-						onclick="touch('adding places')">Add places</a></li>
 					<li><a href="#login-box" class="login-window"
 						onclick="showLoginForm('a.login-window')">Log in</a></li>
 				</ul>
@@ -99,8 +97,8 @@
 						alt="FacebookLogin" /></a></label>
 			</div>
 		</div>
-
 	</div>
+	<div id="legend"><h3>Add locations</h3></div>
 
 </body>
 
