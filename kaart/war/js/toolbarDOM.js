@@ -16,7 +16,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -27,7 +27,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -38,7 +38,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -49,7 +49,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -60,7 +60,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -93,7 +93,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -104,7 +104,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -115,7 +115,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -126,7 +126,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -137,7 +137,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -148,7 +148,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -159,7 +159,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -170,7 +170,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -181,7 +181,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -192,7 +192,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -203,7 +203,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -214,7 +214,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -225,7 +225,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -236,7 +236,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });
@@ -247,7 +247,7 @@ $(document).ready(function() {
 		$.get('KaartServlet', {
 			category : categoryName
 		}, function(responseText) {
-			alert(responseText);
+			toMap(responseText);
 		});
 	});
 });

@@ -47,10 +47,6 @@ public class Client {
 		this.loc_name = category;
 	}
 
-	public Client() {
-		this.loc_name = "all";
-	}
-
 	public void startRunning() {
 		try {
 			connectToServer();
