@@ -31,12 +31,12 @@ body {
 #login {
 	height:90px;
 	float: right;
-	width:15%;
+	width:12%;
 }
 
 #toolbar {
 	height: 90px;
-	width: 85%;
+	width: 88%;
 	float: left;
 }
 
@@ -263,7 +263,7 @@ ul#navigation li:hover {
 	border-bottom-left-radius: 0px;
 	text-indent: 0px;
 	border: 1px solid #d02718;
-	display: inline-block;
+	display: none;
 	color: #ffffff;
 	font-family: Arial;
 	font-size: 16px;
