@@ -30,6 +30,9 @@ body {
 	z-index: 99999;
 }
 
+.login-window {
+	display:none;	
+}
 
 .signin{
 	border-left: none;

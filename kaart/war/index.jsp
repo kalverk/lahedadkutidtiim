@@ -78,7 +78,7 @@
 				<fieldset class="textbox">
 					<label class="username"> <span>Username or email</span> <input
 						id="username" name="username" value="" type="text"
-						autocomplete="on" placeholder="Username" /></label> <label
+						placeholder="Username" /></label> <label
 						class="password"> <span>Password</span> <input
 						id="password" name="password" value="" type="password"
 						placeholder="Password" /></label>

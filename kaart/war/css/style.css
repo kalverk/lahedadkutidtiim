@@ -52,7 +52,8 @@ ul#navigation {
 }
 
 ul#navigation li {
-	margin-left: 5px;
+	margin-left: 1px;
+	margin-right:1px;
 	margin-top: 10px;
 	display: inline;
 	overflow: auto;
@@ -241,7 +242,6 @@ ul#navigation li:hover {
 	top: 1px;
 }
 
-<<<<<<< HEAD
 .loggedin_button {
 	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
@@ -272,7 +272,8 @@ ul#navigation li:hover {
 	font-style: normal;
 	height: 55px;
 	width: 100px;
-=======
+	}
+
 #legend{
 	padding: 5px;
 	margin: 5px;
@@ -301,7 +302,6 @@ ul#navigation li:hover {
 
 .marker-edit label{
 	display:block;
->>>>>>> d98948617dec780b464c58a534951d04c8932a36
 	margin-bottom: 5px;
 }
 
@@ -391,7 +391,7 @@ form.signin p,form.signin span {
 }
 
 form.signin .textbox input {
-	background: #000;
+	background: #FFF;
 	border-bottom: 1px solid #333;
 	border-left: 1px solid #000;
 	border-right: 1px solid #333;
