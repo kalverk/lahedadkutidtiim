@@ -98,6 +98,8 @@
 			</div>
 		</div>
 	</div>
+	<div id="legend"></div>
+
 </body>
 
 </html>
