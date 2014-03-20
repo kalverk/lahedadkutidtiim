@@ -78,10 +78,10 @@
 				<fieldset class="textbox">
 					<label class="username"> <span>Username or email</span> <input
 						id="username" name="username" value="" type="text"
-						placeholder="Username" /></label> <label
+						/></label> <label
 						class="password"> <span>Password</span> <input
 						id="password" name="password" value="" type="password"
-						placeholder="Password" /></label>
+						/></label>
 					<button class="submit button" type="button">Sign in</button>
 					<p>
 						<a class="forgot" href="#">Forgot your password?</a>
