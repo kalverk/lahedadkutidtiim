@@ -35,7 +35,10 @@ function initialize() {
 		}
 		map.setCenter(initialLocation);
 	}
+}
 
+function enableLegend() {
+	alert("legend enabled");
 	var legend = document.getElementById('legend');
 	var div = document.createElement('div');
 	div.innerHTML = '<input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="addPlaces(map.getCenter(), true, true, true)"></input>';
@@ -154,12 +157,12 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 	infowindow.setContent(content[0]);
 	var removebtn = content.find('button.remove-marker')[0];
 	var savebtn = content.find('button.save-marker')[0];
-	
-	google.maps.event.addDomListener(removebtn, "click", function(event){
+
+	google.maps.event.addDomListener(removebtn, "click", function(event) {
 		removeMarker(marker);
 	});
-	
-	google.maps.event.addDomListener(savebtn, "click", function(event){
+
+	google.maps.event.addDomListener(savebtn, "click", function(event) {
 		alert("saving TODO");
 	});
 
@@ -170,11 +173,11 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 	infowindow.open(map, marker);
 }
 
-function removeMarker(marker){
-	if(marker.getDraggable()){
+function removeMarker(marker) {
+	if (marker.getDraggable()) {
 		marker.setMap(null);
 	}
-	//else remove from DB?
+	// else remove from DB?
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

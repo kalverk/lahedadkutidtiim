@@ -98,8 +98,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="legend"><h3>Add locations</h3></div>
-
 </body>
 
 </html>

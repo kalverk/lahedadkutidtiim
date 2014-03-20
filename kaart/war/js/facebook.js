@@ -16,7 +16,10 @@ function login(callBack) {
 	FB.login(function(response) {
 		if (response.authResponse) {
 			FB.api('/me', function(response) {
+				closeLoginForm();
 				alert('Good to see you, ' + response.name);
+				enableLegend();
+				
 			});
 		}
 	}, {
