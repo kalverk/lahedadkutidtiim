@@ -1,0 +1,5 @@
+var theButton = document.getElementById('loggedinbutton');
+
+function touch(activity){
+	alert("Loading data for " + activity);
+}

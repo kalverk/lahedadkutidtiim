@@ -1,0 +1,3 @@
+function touch(){
+	alert("Should load data now according to icon");
+}

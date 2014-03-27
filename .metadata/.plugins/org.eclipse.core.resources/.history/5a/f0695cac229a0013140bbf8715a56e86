@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" language="javascript"
+	src="js/mingitegevus.js"></script>
+<script type="text/javascript" language="javascript"
+	src="js/loginbutton.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" language="javascript"
+	src="js/map_canvas_initialize.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">				   
+$(document).ready(function() {
+$('a.login-window').click(showLoginButton('a.login-window');
+
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .login-popup').fadeOut(300 , function() {
+    $('#mask').remove();  
+}); 
+return false;
+});
+});
+            </script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>Spordikaart</title>
+</head>
+
+<body>
+	<div class="container">
+		<noscript>
+			<div class="noscript">Your web browser must have JavaScript
+				enabled in order for this application to display correctly.</div>
+		</noscript>
+		<div class="toolbar">
+			<a href="" onclick="touch('football')"><img
+				src="images/footballb.png" class="toolbarButton"></a> <a href=""
+				onclick="touch('gym')"><img src="images/gymb.png"
+				class="toolbarButton"></a> <a href="" onclick="touch('camping')"><img
+				src="images/campingb.png" class="toolbarButton"></a> <a href=""
+				onclick="touch('running')"><img src="images/runningb.png"
+				class="toolbarButton"></a> <a href="" onclick="touch('snowboard')"><img
+				src="images/snowboardb.png" class="toolbarButton"></a> <a href=""
+				onclick="touch('crosscountry')"><img
+				src="images/crosscountryb.png" class="toolbarButton"></a>
+		</div>
+		<div class="loginbar">
+			<div>
+				<a href="#logged-in-box" class="loggedin_button"
+					onclick="touch('addingplaces')">Add places</a>
+			</div>
+			<div id="loggedinbutton">
+				<a href="#login-box" class="login-window">Log
+					in</a>
+				
+			</div>
+		</div>
+
+		<div id="login-box" class="login-popup">
+			<a href="#" class="close"><img src="images/close_pop.png"
+				class="btn_close" title="Close Window" alt="Close" /></a>
+			<form method="post" class="signin" action="#">
+				<fieldset class="textbox">
+					<label class="username"> <span>Username or email</span> <input
+						id="username" name="username" value="" type="text"
+						autocomplete="on" placeholder="Username">
+					</label> <label class="password"> <span>Password</span> <input
+						id="password" name="password" value="" type="password"
+						placeholder="Password">
+					</label>
+					<button class="submit button" type="button">Sign in</button>
+					<p>
+						<a class="forgot" href="#">Forgot your password?</a>
+					</p>
+				</fieldset>
+			</form>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+	<div id="map_canvas" class="map_canvas"></div>
+</body>
+</html>

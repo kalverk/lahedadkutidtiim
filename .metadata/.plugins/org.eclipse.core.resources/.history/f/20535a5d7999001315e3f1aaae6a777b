@@ -1,0 +1,4 @@
+function touch(activity){
+	alert("Loading data for " + activity);
+	document.getElementById("loggedin_button").CSS2Properties.display="inline-block";
+}

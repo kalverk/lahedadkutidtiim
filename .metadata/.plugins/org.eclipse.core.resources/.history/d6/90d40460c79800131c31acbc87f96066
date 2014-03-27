@@ -1,0 +1,3 @@
+$( "snowboardButton" ).click(function() {
+  document.write("pla");
+});
