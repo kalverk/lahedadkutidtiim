@@ -5,6 +5,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -18,8 +19,8 @@ import com.google.gson.Gson;
 public class Client {
 //	private static org.apache.log4j.Logger info = Logger
 //			.getLogger(Client.class);
-	private final static int PORT = 2200;
-	private static String ip = "localhost";
+	private final static int PORT = 27910;
+	private static String ip = "90.191.164.96";
 
 	private String loc_name = "NA";
 	private String loc_location = "NA";
@@ -77,7 +78,7 @@ public class Client {
 				if ((message = input.readLine()) != null) {
 					if(message.equalsIgnoreCase("ok")){
 						//display dialog telling that SQL insertion has been completed.
-						System.out.println("Display dialog that insertion was successful.");
+//						System.out.println("Display dialog that insertion was successful.");
 						result = "OK";
 					}else{
 						//result to json ja javascriptis peaks parsima
@@ -98,7 +99,7 @@ public class Client {
 
 	private void connectToServer() throws IOException {
 //		info.info("Attempting to connect to server");
-		socket = new Socket(ip, PORT);
+		socket = new Socket(InetAddress.getByName(ip), PORT);
 //		info.info("Connected");
 		try {
 			Thread.sleep(3000);
@@ -146,7 +147,7 @@ public class Client {
 	}
 	
 	public String getResult(){
-		System.out.println(result);
+//		System.out.println(result);
 		return result;
 	}
 }

@@ -17,9 +17,8 @@ function login(callBack) {
 		if (response.authResponse) {
 			FB.api('/me', function(response) {
 				closeLoginForm();
-				alert('Good to see you, ' + response.name);
-				enableLegend();
-				
+//				alert('Good to see you, ' + response.name);
+				enableLegend();	
 			});
 		}
 	}, {

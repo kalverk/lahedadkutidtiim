@@ -7,7 +7,7 @@ var markersArray = [];
 function initialize() {
 	var map_canvas = document.getElementById('main-content');
 	var mapOptions = {
-		zoom : 18,
+		zoom : 14,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(map_canvas, mapOptions);
@@ -221,6 +221,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 		}, function(responseText) {
 			//close infowindow ja reload point to map hetkel j‰‰b see aktiivseks ja
 			//kui uuesti klikkida avaneb vorm mitte infowindow
+			infowindow.close();
 			alert("point inserterd");
 		});
 	});
