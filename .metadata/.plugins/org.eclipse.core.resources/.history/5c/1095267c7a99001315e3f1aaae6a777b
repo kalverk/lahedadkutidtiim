@@ -1,6 +1,0 @@
-var theButton = document.getElementById('loggedinbutton');
-
-function touch(activity){
-	theButton.style.display = "inline-block";
-	alert("Loading data for " + activity);
-}

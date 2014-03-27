@@ -1,5 +1,0 @@
-$("#snowboard").click(touch);
-
-function touch(){
-	document.getElementById("test").innerHTML=("Tuleb varsti!");
-}

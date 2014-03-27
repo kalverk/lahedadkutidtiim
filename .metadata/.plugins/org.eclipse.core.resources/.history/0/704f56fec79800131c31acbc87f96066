@@ -1,5 +1,0 @@
-$("snowboardButton").click(touch);
-
-function touch(){
-	alert("test");
-}
