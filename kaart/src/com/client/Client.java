@@ -25,6 +25,7 @@ public class Client {
 	private String loc_location = "NA";
 	private String loc_description = "NA";
 	private String loc_link = "NA";
+	private long id = -1;
 	private List<String> categoryTags;
 	private boolean insert = false;
 	private String result;
@@ -42,9 +43,8 @@ public class Client {
 		this.categoryTags = categoryTags;
 	}
 
-	public Client(String category, String position) {
-		this.loc_name = category;
-		this.loc_location = position;
+	public Client(Long id) {
+		this.id = id;
 	}
 
 	public Client(String category) {
@@ -61,7 +61,9 @@ public class Client {
 		} catch (IOException e) {
 //			info.info(e);
 		} finally {
+			try{
 			close();
+			}catch(Exception e){}
 		}
 	}
 
@@ -122,19 +124,15 @@ public class Client {
 	private String getOutputLine() {
 		String result = "";
 		if (insert) {
-			result = loc_name.toLowerCase().trim() + ";" + loc_location.trim() + ";" + loc_description.trim() + ";" + loc_link.toLowerCase().trim() + ";";
+			result = loc_name.trim() + ";" + loc_location.trim() + ";" + loc_description.trim() + ";" + loc_link.toLowerCase().trim() + ";";
 			for(int i=0; i<categoryTags.size();i++){
 				result +=categoryTags.get(i).toLowerCase().trim() + ";";
 			}
 		} else {
-			result = String.format("%s;%s", loc_name.toLowerCase().trim(), loc_location.trim());
+			result = String.format("%s;%s", loc_name.toLowerCase().trim(), String.valueOf(id));
 		}
 		insert = false;
 		return result;
-	}
-	
-	private void getDetailedPointInformation(){
-		
 	}
 
 	private void close() {

@@ -62,6 +62,7 @@ public class ServerThread extends Thread {
 				int t = Translation.translate(inputString);
 				outputString = getResult(t);
 				output.println(outputString);
+//				System.out.println("Outputstring " + outputString);
 			}
 			output.close();
 			input.close();
@@ -85,7 +86,7 @@ public class ServerThread extends Thread {
 		String b = Translation.getB();
 
 		if (t == 120) {
-			if(a.equalsIgnoreCase("na")&&!b.equalsIgnoreCase("na")){
+			if(a.equalsIgnoreCase("na")&&isNumeric(b)){
 				try{
 					List<Point> point = pointDao.getDetailedPointDescription(b);
 					result = pointDao.convertListToString(point);
@@ -107,10 +108,12 @@ public class ServerThread extends Thread {
 				String c = Translation.getC();
 				String d = Translation.getD();
 				Point p = new Point(a, b, c, d);
+				System.out.println("name" + a + "loca" + b + "desc" + c + "link" + d);
 				pointDao.persistPoint(p);
 				List<String> categoryTags = Translation.getCategoryTagList();
 				for(int i=0;i<categoryTags.size();i++){
 					Category category = new Category(categoryTags.get(i),p);
+					System.out.println(categoryTags.get(i));
 					pointDao.persistCategory(category);
 				}
 				result = "OK";
@@ -121,5 +124,14 @@ public class ServerThread extends Thread {
 			logger.info("Invalid request");
 		}
 		return result;
+	}
+	
+	private boolean isNumeric(String num){
+		try{
+			Long.parseLong(num.trim());
+		}catch(Exception e){
+			return false;
+		}
+		return true;
 	}
 }

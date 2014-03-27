@@ -6,12 +6,22 @@ public class Point {
 	private String location;
 	private String description;
 	private String link;
+	private Long id;
 
-	public Point(String name, String location, String description, String link) {
+	public Point(Long id, String name, String location, String description, String link) {
+		this.id = id;
 		this.name = name;
 		this.location = location;
 		this.description = description;
 		this.link = link;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

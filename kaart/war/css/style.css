@@ -324,6 +324,31 @@ ul#navigation li:hover {
 	width: 25%;
 }
 
+.marker-desc{
+	max-width: 300px;
+    max-height: 300px;
+	margin-right: -20px;
+    overflow: auto;
+}
+
+.marker-desc-win p{
+	margin: 10px;
+}
+
+.marker-desc-win{
+	padding: 5px;
+}
+
+.marker-desc label{
+	display:block;
+	margin-bottom: 5px;
+}
+
+.marker-desc label span{
+	width: 100px;
+	float: left;
+}
+
 /*LOGIN PROMPT CSS*/
 #mask {
 	display: none;

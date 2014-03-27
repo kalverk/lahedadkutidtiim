@@ -11,7 +11,7 @@ public class Translation {
 			.getLogger(Translation.class);
 
 	private static String a; // name or category
-	private static String b; // location or position
+	private static String b; // location or id
 	private static String c; // description
 	private static String d; // link
 	private static List<String> categories = new ArrayList<String>(); //category tags

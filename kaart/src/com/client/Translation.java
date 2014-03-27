@@ -16,23 +16,26 @@ public class Translation {
 		String location;
 		String description;
 		String link;
+		Long id;
 		
 		try {
 			String[] allRows = input.split("!");
 			for(String row : allRows){
 				String[] objectParts = row.split(";");
-				if(objectParts.length<=1){
+				if(objectParts.length<=2){
+					id = Long.parseLong(objectParts[0].trim());
 					name = "";
-					location = objectParts[0].trim();
+					location = objectParts[1].trim();
 					description = "";
 					link = "";
 				}else{
-					name = objectParts[0].trim();
-					location = objectParts[1].trim();
-					description = objectParts[2].trim();
-					link = objectParts[3].trim();
+					id = Long.parseLong(objectParts[0].trim());
+					name = objectParts[1].trim();
+					location = objectParts[2].trim();
+					description = objectParts[3].trim();
+					link = objectParts[4].trim();
 				}
-				Point p = new Point(name, location, description, link);
+				Point p = new Point(id, name, location, description, link);
 				allPoints.add(p);
 			}
 		}catch(Exception e){

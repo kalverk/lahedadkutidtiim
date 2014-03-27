@@ -2,7 +2,6 @@ package kaart.dao;
 
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -63,12 +62,12 @@ public class PointDAO extends GenericDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Point> getDetailedPointDescription(String location) {
+	public List<Point> getDetailedPointDescription(String id) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
 		Query allPointsQuery = em
-				.createQuery("Select p from Point p WHERE LOCATION = :location");
-		allPointsQuery.setParameter("location", location.trim());
+				.createQuery("Select p from Point p WHERE id = :id");
+		allPointsQuery.setParameter("id", Long.parseLong(id.trim()));
 		List<Point> allPoints = allPointsQuery.getResultList();
 		em.getTransaction().commit();
 		em.close();
@@ -80,7 +79,8 @@ public class PointDAO extends GenericDAO {
 		String result = "";
 		for (Category c : category) {
 			String location = c.getPoint().getLocation();
-			result += location + "!";
+			Long id = c.getPoint().getId();
+			result += String.valueOf(id) + ";" + location + "!";
 		}
 		return result;
 	}
@@ -88,11 +88,13 @@ public class PointDAO extends GenericDAO {
 	public String convertListToString(List<Point> points) {
 		String result = "";
 		for (Point p : points) {
+			String id = String.valueOf(p.getId());
 			String name = p.getName();
 			String location = p.getLocation();
 			String desc = p.getDescription();
 			String link = p.getLink();
-			result += name + ";" + location + ";" + desc + ";" + link + "!";
+			result += id + ";" + name + ";" + location + ";" + desc + ";"
+					+ link + "!";
 		}
 		return result;
 	}

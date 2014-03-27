@@ -35,10 +35,11 @@ function initialize() {
 		}
 		map.setCenter(initialLocation);
 	}
+	// for testing
+	enableLegend();
 }
 
 function enableLegend() {
-	alert("legend enabled");
 	var legend = document.getElementById('legend');
 	var div = document.createElement('div');
 	div.innerHTML = '<input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="addPlaces(map.getCenter(), true, true, true)"></input>';
@@ -53,13 +54,11 @@ function enableLegend() {
 }
 
 function toMap(responseText) {
-	// kuidagi peaks clearima mapi ilmselt
 	if (markersArray) {
 		for (var i = 0; i < markersArray.length; i++) {
 			markersArray[i].setMap(null);
 		}
 		markersArray = [];
-		alert("tuhi");
 	}
 	var array = responseText.split("|");
 	for (var i = 0; i < array.length; i++) {
@@ -69,17 +68,63 @@ function toMap(responseText) {
 		var parts = location.split(",");
 		var lat = parseFloat(parts[0].trim());
 		var lng = parseFloat(parts[1].trim());
-		markerToMap(lat, lng);
+		var id = point.id;
+		markerToMap(id, lat, lng);
 	}
 }
 
-function markerToMap(lat, lng) {
+function markerToMap(id, lat, lng) {
 	var point = new google.maps.LatLng(lat, lng);
 	marker = new google.maps.Marker({
 		position : point,
 		map : map
 	});
+	marker.set("id", id);
 	markersArray.push(marker);
+	google.maps.event.addListener(marker, "click", function(event) {
+		$.get('KaartServlet', {
+			method : "getPointDescription",
+			id : this.get("id")
+		}, function(responseText) {
+			var array = responseText.split("|");
+			var point = JSON.parse(array[0]);
+			var id = point.id;
+			var name = point.name;
+			var location = point.location;
+			var description = point.description;
+			var link = point.link;
+			var content = $('<div class="marker-desc">'
+					+ '<div class="marker-desc-win"><span>'
+					+ '<h1 id="pointName">'
+					+ name
+					+ '</h1><p>'
+					+ '<div class="marker-desc-edit">'
+					+ '<label><span>Description :</span>'
+					+ '<label id="pointDescription">'
+					+ description
+					+ '</label>'
+					+ '</label>'
+					+ '<label><span>Address :</span>'
+					+ '<label id="pointLocation">'
+					+ location
+					+ '</label>'
+					+ '</label>'
+					+ ' <label><span>Link :</span>'
+					+ ' <label id="pointLink">'
+					+ link
+					+ '</label>'
+					+ '</label>'
+					+ '</div>'
+					+ ' </p>'
+					+ ' </span>'
+					+ '</div>'
+					+ '</div>');
+			// var content = $().load("html/desc.html");
+			var infowindow = new google.maps.InfoWindow();
+			infowindow.setContent(content[0]);
+			infowindow.open(map, marker);
+		});
+	});
 }
 
 function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
@@ -100,39 +145,39 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 			+ '<td><input type="checkbox" name="category" value="tennis">Tennis</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Bowling</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Golf</td>'
+			+ '<td><input type="checkbox" name="category" value="bowling">Bowling</td>'
+			+ '<td><input type="checkbox" name="category" value="golf">Golf</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Hockey</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Baseball</td>'
+			+ '<td><input type="checkbox" name="category" value="hockey">Hockey</td>'
+			+ '<td><input type="checkbox" name="category" value="baseball">Baseball</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Crosscountry</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Iceskating</td>'
+			+ '<td><input type="checkbox" name="category" value="crosscountry">Crosscountry</td>'
+			+ '<td><input type="checkbox" name="category" value="iceskating">Iceskating</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Snowboard</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Skateboard</td>'
+			+ '<td><input type="checkbox" name="category" value="snowboard">Snowboard</td>'
+			+ '<td><input type="checkbox" name="category" value="skateboard">Skateboard</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Archery</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Bicycle</td>'
+			+ '<td><input type="checkbox" name="category" value="archery">Archery</td>'
+			+ '<td><input type="checkbox" name="category" value="bicycle">Bicycle</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Camping</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Diving</td>'
+			+ '<td><input type="checkbox" name="category" value="camping">Camping</td>'
+			+ '<td><input type="checkbox" name="category" value="diving">Diving</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Rowing</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Rollerskating</td>'
+			+ '<td><input type="checkbox" name="category" value="rowing">Rowing</td>'
+			+ '<td><input type="checkbox" name="category" value="rollerskating">Rollerskating</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Swimming</td>'
-			+ '<td><input type="checkbox" name="category" value="pool">Gym</td>'
+			+ '<td><input type="checkbox" name="category" value="swimming">Swimming</td>'
+			+ '<td><input type="checkbox" name="category" value="gym">Gym</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="tabletennis">Running</td>'
+			+ '<td><input type="checkbox" name="category" value="running">Running</td>'
 			+ '</tr>'
 			+ '</table>'
 			+ '</form>'
@@ -163,7 +208,21 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 	});
 
 	google.maps.event.addDomListener(savebtn, "click", function(event) {
-		alert("saving TODO");
+		var allCheckedValues = $('input:checked').map(function() {
+									return this.value;
+								}).get().join();
+		$.get('KaartServlet', {
+			method : "insertNewPoint",
+			name : $('input[name="pName"]').val(),
+			desc : $('textarea[name="pDesc"]').val(),
+			link : $('input[name="pLink"]').val(),
+			categories : allCheckedValues,
+			location : marker.getPosition().toString()
+		}, function(responseText) {
+			//close infowindow ja reload point to map hetkel j‰‰b see aktiivseks ja
+			//kui uuesti klikkida avaneb vorm mitte infowindow
+			alert("point inserterd");
+		});
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
