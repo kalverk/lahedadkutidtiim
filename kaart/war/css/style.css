@@ -40,6 +40,11 @@ body {
 	float: left;
 }
 
+.no-js #toolbar{
+	height: 150px;
+	width: 10%;
+	float: right;
+}
 ul#navigation {
 	width: 100%;
 	margin: 0px;
