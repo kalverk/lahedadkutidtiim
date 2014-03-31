@@ -3,6 +3,7 @@ var browserSupportFlag = new Boolean();
 var liivi = new google.maps.LatLng(58.37824850000001, 26.71467329999996);
 var map;
 var markersArray = [];
+var forceToAddLocation;
 
 function initialize() {
 	var map_canvas = document.getElementById('main-content');
@@ -35,19 +36,41 @@ function initialize() {
 		}
 		map.setCenter(initialLocation);
 	}
+	forceToAddLocation = false;
+	showLegend();
 	// for testing
-	enableLegend();
+//	enableLegend();
+}
+
+function showLegend(){
+	var legend = document.getElementById('legend');
+	var div = document.createElement('div');
+	div.innerHTML = '<label class="legend-label">Add locations</label><input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="checkLoginStatus()"></input>';
+	legend.appendChild(div);
+	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document
+			.getElementById('legend'));
+}
+
+function checkLoginStatus(){
+	//teiste logimistega tuleb midagi sarnast teha
+	FB.getLoginStatus(function(response){
+		//kui ta lehele tulles on juba sisselogitud ja klikib legendil
+		if(response.status=='connected'){
+			addPlaces(map.getCenter(), true, true, true);
+		//kui ta lehele tulles ei ole sisselogitud ja klikib legendil
+		}else{
+			showLoginForm("a.login-window");
+			//getter oleks mıistlikum aga osad brauserid vist ei toeta seda
+			forceToAddLocation = true;
+		}
+	});
 }
 
 function enableLegend() {
-	var legend = document.getElementById('legend');
-	var div = document.createElement('div');
-	div.innerHTML = '<input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="addPlaces(map.getCenter(), true, true, true)"></input>';
-	legend.appendChild(div);
-
-	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document
-			.getElementById('legend'));
-
+	if(forceToAddLocation){
+		addPlaces(map.getCenter(), true, true, true);
+	}
+    document.getElementById("marker").setAttribute( "onClick", "javascript: addPlaces(map.getCenter(), true, true, true);" );
 	google.maps.event.addListener(map, 'rightclick', function(event) {
 		addPlaces(event.latLng, true, true, true);
 	});
@@ -189,6 +212,8 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 		animation : google.maps.Animation.DROP,
 		title : MapTitle
 	});
+	
+	markersArray.push(marker);
 
 	var content = $('<div class="marker-info-win">'
 			+ '<div class="marker-inner-win"><span class="info-content">'
@@ -211,18 +236,45 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 		var allCheckedValues = $('input:checked').map(function() {
 									return this.value;
 								}).get().join();
+		var name = $('input[name="pName"]').val();
+		var desc = $('textarea[name="pDesc"]').val();
+		var link = $('input[name="pLink"]').val();
+		var location = marker.getPosition().toString();
+		var content = $('<div class="marker-desc">'
+				+ '<div class="marker-desc-win"><span>'
+				+ '<h1 id="pointName">'
+				+ name
+				+ '</h1><p>'
+				+ '<div class="marker-desc-edit">'
+				+ '<label><span>Description :</span>'
+				+ '<label id="pointDescription">'
+				+ desc
+				+ '</label>'
+				+ '</label>'
+				+ '<label><span>Address :</span>'
+				+ '<label id="pointLocation">'
+				+ location
+				+ '</label>'
+				+ '</label>'
+				+ ' <label><span>Link :</span>'
+				+ ' <label id="pointLink">'
+				+ link
+				+ '</label>'
+				+ '</label>'
+				+ '</div>'
+				+ ' </p>'
+				+ ' </span>'
+				+ '</div>'
+				+ '</div>');
 		$.get('KaartServlet', {
 			method : "insertNewPoint",
-			name : $('input[name="pName"]').val(),
-			desc : $('textarea[name="pDesc"]').val(),
-			link : $('input[name="pLink"]').val(),
+			name : name,
+			desc : desc,
+			link : link,
 			categories : allCheckedValues,
-			location : marker.getPosition().toString()
+			location : location
 		}, function(responseText) {
-			//close infowindow ja reload point to map hetkel j‰‰b see aktiivseks ja
-			//kui uuesti klikkida avaneb vorm mitte infowindow
-			infowindow.close();
-			alert("point inserterd");
+			infowindow.setContent(content[0]);
 		});
 	});
 
