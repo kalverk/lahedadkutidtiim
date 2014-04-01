@@ -14,6 +14,8 @@ function showLoginForm(what) {
 
 	$('body').append('<div id="mask"></div>');
 	$('#mask').fadeIn(300);
+	
+	//document.getElementById(what).href="#login-box";
 
 	return false;
 }

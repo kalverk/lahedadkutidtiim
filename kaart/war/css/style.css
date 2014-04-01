@@ -23,6 +23,10 @@ body {
 	border: 1px solid #999;
 }
 
+.no-js #main-content {
+	display:none;
+}
+
 #secondary-two {
 	background: #eee;
 	border: 1px solid #999;
@@ -40,12 +44,14 @@ body {
 	float: left;
 }
 
-.no-js #toolbar{
-	height: 150px;
-	width: 10%;
-	float: right;
+.js #nojs{
+	display:none;	
 }
-ul#navigation {
+
+#nojs{
+	color:#7d1935;
+}
+.js ul#navigation {
 	width: 100%;
 	margin: 0px;
 	left: 0px;
@@ -56,7 +62,30 @@ ul#navigation {
 	overflow: auto;
 }
 
-ul#navigation li {
+.no-js ul#navigation {
+	display: none;
+}
+
+.no-js ul#navigation2 {
+	display: none;
+}
+
+table {
+	margin-top:15px;	
+}
+
+table, td, th
+{
+border:1px solid #7d1935;
+border-collapse:collapse;
+}
+th
+{
+background-color:#7d1935;
+color:white;
+}
+
+.js ul#navigation li {
 	margin-left: 1px;
 	margin-right:1px;
 	margin-top: 10px;
@@ -65,7 +94,7 @@ ul#navigation li {
 	overflow-y: hidden;
 }
 
-ul#navigation2 li {
+.js ul#navigation2 li {
 	margin-left: 5px;
 	margin-top: 10px;
 	display: inline;
@@ -74,7 +103,7 @@ ul#navigation2 li {
 	float:right;
 }
 
-ul#navigation li:hover {
+.js ul#navigation li:hover {
 	transform: scale(1.2);
 	-ms-transform: scale(1.2);
 	-moz-transform: scale(1.2);
@@ -82,119 +111,13 @@ ul#navigation li:hover {
 	-o-transform: scale(1.2);
 }
 
-.archery {
+.js .ImgButton {
 	width: 50px;
 	height: 65px;
 }
 
-.baseball {
-	width: 50px;
-	height: 65px;
-}
-
-.football {
-	width: 50px;
-	height: 65px;
-}
-
-.basketball {
-	width: 50px;
-	height: 65px;
-}
-
-.bicycle {
-	width: 50px;
-	height: 65px;
-}
-
-.bowling {
-	width: 50px;
-	height: 65px;
-}
-
-.camping {
-	width: 50px;
-	height: 65px;
-}
-
-.crosscountry {
-	width: 50px;
-	height: 65px;
-}
-
-.diving {
-	width: 50px;
-	height: 65px;
-}
-
-.golf {
-	width: 50px;
-	height: 65px;
-}
-
-.gym {
-	width: 50px;
-	height: 65px;
-}
-
-.hockey {
-	width: 50px;
-	height: 65px;
-}
-
-.iceskating {
-	width: 50px;
-	height: 65px;
-}
-
-.pool {
-	width: 50px;
-	height: 65px;
-}
-
-.rowing {
-	width: 50px;
-	height: 65px;
-}
-
-.running {
-	width: 50px;
-	height: 65px;
-}
-
-.skatepark {
-	width: 50px;
-	height: 65px;
-}
-
-.skating {
-	width: 50px;
-	height: 65px;
-}
-
-.snowboard {
-	width: 50px;
-	height: 65px;
-}
-
-.swimming {
-	width: 50px;
-	height: 65px;
-}
-
-.tabletennis {
-	width: 50px;
-	height: 65px;
-}
-
-.tennis {
-	width: 50px;
-	height: 65px;
-}
-
-.volleyball {
-	width: 50px;
-	height: 65px;
+.no-js .ImgButton {
+	display: none;
 }
 
 .login-window {
@@ -279,7 +202,7 @@ ul#navigation li:hover {
 	width: 100px;
 	}
 
-#legend{
+.js #legend{
 	margin-right: 5px;
 	background-color: rgb(255, 255, 255);
 	border-top-left-radius: 2px;

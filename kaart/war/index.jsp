@@ -1,3 +1,4 @@
+<%@page import="com.google.appengine.api.search.GetResponse"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,59 +30,62 @@
 </head>
 
 <body class="no-js">
-	<script> document.body.className = document.body.className.replace("no-js","js");
+	<script type="text/javascript"> document.body.className = document.body.className.replace("no-js","js");
 	</script>
 	<div id="fb-root"></div>
 	<div id="page-wrap">
 		<div id="header">
 			<div id="toolbar">
+			
+				<h1 id="nojs">Spordikaart</h1>
 				<ul id="navigation">
+				
 					<li><input type="image" id="football"
-						src="images/iconsB/football.png" class="football"></input></li>
+						src="images/iconsB/football.png" class="ImgButton"></input></li>
 					<li><input type="image" id="basketball"
-						src="images/iconsB/basketball.png" class="basketball"></input></li>
+						src="images/iconsB/basketball.png" class="ImgButton"></input></li>
 					<li><input type="image" id="volleyball"
-						src="images/iconsB/volleyball.png" class="volleyball"></input></li>
+						src="images/iconsB/volleyball.png" class="ImgButton"></input></li>
 					<li><input type="image" id="tennis"
-						src="images/iconsB/tennis.png" class="tennis"></input></li>
+						src="images/iconsB/tennis.png" class="ImgButton"></input></li>
 					<li><input type="image" id="tabletennis"
-						src="images/iconsB/tabletennis.png" class="tabletennis"></input></li>
+						src="images/iconsB/tabletennis.png" class="ImgButton"></input></li>
 					<li><input type="image" id="pool" src="images/iconsB/pool.png"
-						class="pool"></input></li>
+						class="ImgButton"></input></li>
 					<li><input type="image" id="bowling"
-						src="images/iconsB/bowling.png" class="bowling"></input></li>
+						src="images/iconsB/bowling.png" class="ImgButton"></input></li>
 					<li><input type="image" id="golf" src="images/iconsB/golf.png"
-						class="golf"></input></li>
+						class="ImgButton"></input></li>
 					<li><input type="image" id="hockey"
-						src="images/iconsB/hockey.png" class="hockey"></input></li>
+						src="images/iconsB/hockey.png" class="ImgButton"></input></li>
 					<li><input type="image" id="baseball"
-						src="images/iconsB/baseball.png" class="baseball"></input></li>
+						src="images/iconsB/baseball.png" class="ImgButton"></input></li>
 					<li><input type="image" id="crosscountry"
-						src="images/iconsB/crosscountry.png" class="crosscountry"></input></li>
+						src="images/iconsB/crosscountry.png" class="ImgButton"></input></li>
 					<li><input type="image" id="iceskating"
-						src="images/iconsB/ice-skating.png" class="iceskating"></input></li>
+						src="images/iconsB/ice-skating.png" class="ImgButton"></input></li>
 					<li><input type="image" id="snowboard"
-						src="images/iconsB/snowboard.png" class="snowboard"></input></li>
+						src="images/iconsB/snowboard.png" class="ImgButton"></input></li>
 					<li><input type="image" id="skatepark"
-						src="images/iconsB/skatepark.png" class="skatepark"></input></li>
+						src="images/iconsB/skatepark.png" class="ImgButton"></input></li>
 					<li><input type="image" id="archery"
-						src="images/iconsB/archery.png" class="archery"></input></li>
+						src="images/iconsB/archery.png" class="ImgButton"></input></li>
 					<li><input type="image" id="bicycle"
-						src="images/iconsB/bicycle.png" class="bicycle"></input></li>
+						src="images/iconsB/bicycle.png" class="ImgButton"></input></li>
 					<li><input type="image" id="camping"
-						src="images/iconsB/camping.png" class="camping"></input></li>
+						src="images/iconsB/camping.png" class="ImgButton"></input></li>
 					<li><input type="image" id="diving"
-						src="images/iconsB/diving.png" class="diving"></input></li>
+						src="images/iconsB/diving.png" class="ImgButton"></input></li>
 					<li><input type="image" id="rowing"
-						src="images/iconsB/rowing.png" class="rowing"></input></li>
+						src="images/iconsB/rowing.png" class="ImgButton"></input></li>
 					<li><input type="image" id="skating"
-						src="images/iconsB/skating.png" class="skating"></input></li>
+						src="images/iconsB/skating.png" class="ImgButton"></input></li>
 					<li><input type="image" id="swimming"
-						src="images/iconsB/swimming.png" class="swimming"></input></li>
+						src="images/iconsB/swimming.png" class="ImgButton"></input></li>
 					<li><input type="image" id="running"
-						src="images/iconsB/running.png" class="running"></input></li>
+						src="images/iconsB/running.png" class="ImgButton"></input></li>
 					<li><input type="image" id="gym" src="images/iconsB/gym.png"
-						class="gym"></input></li>
+						class="ImgButton"></input></li>
 					<!-- kõige viimast pole miskipärast võimalik vajutada prob scrollbari viga -->
 				</ul>
 			</div>
@@ -91,6 +95,19 @@
 						onclick="showLoginForm('a.login-window')">Log in</a></li>
 				</ul>
 			</div>
+		</div>
+		
+		<div id="nojs">
+			<form action="KaartServletNoJS" method="get">
+				<select name="category">
+				  <option value="football">Football</option>
+				  <option value="basketball">Basketball</option>
+				  <option value="volleyball">Volleyball</option>
+				  <option value="tennis">Tennis</option>
+				</select>
+       			<input type="submit" value="Get info." />        			
+    		</form>
+			<%= (request.getAttribute("id"))%>
 		</div>
 
 		<div id="main-content">Map</div>

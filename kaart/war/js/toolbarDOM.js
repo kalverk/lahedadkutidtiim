@@ -7,7 +7,7 @@ $(document).ready(function() {
 			category : categoryName
 		}, function(responseText) {
 			toMap(responseText);	
-//			$('#welcometext').text(responseText);
+			//$('#welcometext').text(responseText);
 		});
 	});
 });
