@@ -23,7 +23,7 @@ public class Server {
 	private static org.apache.log4j.Logger info = Logger.getLogger(Server.class);
 	public static void main(String[] args) throws IOException {
 		info.info("Server starting");
-		final int PORT = 2200;
+		final int PORT = 27910;
 		DatabaseConnection dbconnection = new DatabaseConnection();
 		Connection connection = dbconnection.getConnection();
 		try{

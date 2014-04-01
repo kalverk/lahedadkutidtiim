@@ -18,25 +18,25 @@ import com.client.Client;
 
 public class KaartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Client client;
 
 	public KaartServlet() {
 		// TODO Auto-generated constructor stub
+		client = new Client();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String method = request.getParameter("method");
-		Client client;
 		if(method.equalsIgnoreCase("findbycategory")){
 			//küsib vastavalt kategooriale
-			String category = null;
-			category = request.getParameter("category").trim().toLowerCase();
-			client = new Client(category);
+			String category = request.getParameter("category").trim().toLowerCase();
+			client.setLoc_name(category);
 			client.startRunning();
 		}
 		else if(method.equalsIgnoreCase("getpointdescription")){
 			String id = request.getParameter("id").trim().toLowerCase();
-			client = new Client(Long.parseLong(id));
+			client.setId(Long.parseLong(id));
 			client.startRunning();
 		}
 		else if(method.equalsIgnoreCase("insertnewpoint")){
@@ -46,12 +46,18 @@ public class KaartServlet extends HttpServlet {
 			String location = request.getParameter("location");
 			String cat = request.getParameter("categories").trim();
 //			System.out.println("name " + name +" location "+toPoint(location)+ " desc " + desc + " link " + link  + " cat " + toCategory(cat));
-			client = new Client(name, toPoint(location), desc, link, toCategory(cat));
+			client.setLoc_name(name);
+			client.setLoc_location(toPoint(location));
+			client.setLoc_description(desc);
+			client.setLoc_link(link);
+			client.setCategoryTags(toCategory(cat));
+			client.setInsert(true);
 			client.startRunning();
 		}
 		else{
 			throw new IllegalStateException("Serveril puudub selline meetod.");
 		}
+		client.clean();
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(client.getResult());

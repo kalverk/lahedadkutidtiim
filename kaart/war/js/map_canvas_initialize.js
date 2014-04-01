@@ -103,7 +103,11 @@ function markerToMap(id, lat, lng) {
 		map : map
 	});
 	marker.set("id", id);
+	listenMarker(marker);
 	markersArray.push(marker);
+}
+
+function listenMarker(marker){
 	google.maps.event.addListener(marker, "click", function(event) {
 		$.get('KaartServlet', {
 			method : "getPointDescription",
