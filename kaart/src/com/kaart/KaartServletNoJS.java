@@ -23,47 +23,51 @@ import com.google.gson.reflect.TypeToken;
 
 public class KaartServletNoJS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Client client;
 
 	public KaartServletNoJS() {
 		// TODO Auto-generated constructor stub
+		client = new Client();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Client client = null;
 		String category = null;
 		category = request.getParameter("category").trim().toLowerCase();
-		client = new Client(category);
+		client.setLoc_name(category);
 		client.startRunning();
 
 		String result = client.getResult();
-		System.out.println(result);
 		String[] array = result.split("\\|");
-		System.out.println("array info: " + array[0] + " " + array[1] + " "
-				+ array.length);
 
-		String table = "<table><tr><th>ID</th><th>Description</th><th>Category</th><th>Link</th><th>Location</th></tr>";
+
+		String table = "<table><tr><th>Name</th><th>Description</th><th>Link</th><th>Location</th></tr>";
 
 		for (int i = 0; i < array.length; i++) {
+			client.clean();
 			String[] info = array[i].split("[\\W]");
 			String id = info[info.length - 1];
-			client = new Client(Long.parseLong(id));
-			client.startRunning();
-			result = client.getResult();
-			array = result.split("\\|");
-			Type mapType = new TypeToken<Map<String, String>>() {
-			}.getType();
-			Map<String, String> son = new Gson().fromJson(array[0], mapType);
-			table += "<tr><td>" + son.get("id") + "</td><td>"
-					+ son.get("description") + "</td><td>"
-					+ son.get("categoryTags") + "</td><td>" + son.get("link")
-					+ "</td><td>" + son.get("location") + "</td></tr>";
+			try {
+				client.setId(Long.parseLong(id));
+				client.startRunning();
+				result = client.getResult();
+				String[] array2 = result.split("\\|");
+				Type mapType = new TypeToken<Map<String, String>>() {
+				}.getType();
+				Map<String, String> son = new Gson().fromJson(array2[0], mapType);
+				table += "<tr><td>" + son.get("name") + "</td><td>"
+						+ son.get("description")  + "</td><td>" + son.get("link")
+						+ "</td><td>" + son.get("location") + "</td></tr>";
 
+
+			} catch (NumberFormatException e) {
+				
+			}
+			
 		}
 		table += "</table>";
 
-		System.out.println(table);
-
+		client.clean();
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		// request.setAttribute("id", arg1);

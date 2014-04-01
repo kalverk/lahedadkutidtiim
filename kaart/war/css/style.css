@@ -70,16 +70,16 @@ body {
 	display: none;
 }
 
-table {
+.no-js table {
 	margin-top:15px;	
 }
 
-table, td, th
+.no-js table, td, th
 {
 border:1px solid #7d1935;
 border-collapse:collapse;
 }
-th
+.no-js th
 {
 background-color:#7d1935;
 color:white;
