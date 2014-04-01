@@ -53,6 +53,12 @@ public class KaartServlet extends HttpServlet {
 			client.setCategoryTags(toCategory(cat));
 			client.setInsert(true);
 			client.startRunning();
+		}else if(method.equalsIgnoreCase("findupdates")){
+			String category = request.getParameter("category").trim();
+			String last_id = request.getParameter("lastid").trim();
+			client.setId(Long.parseLong(last_id));
+			client.setLoc_name(category);
+			client.startRunning();
 		}
 		else{
 			throw new IllegalStateException("Serveril puudub selline meetod.");

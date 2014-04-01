@@ -4,6 +4,7 @@ var liivi = new google.maps.LatLng(58.37824850000001, 26.71467329999996);
 var map;
 var markersArray = [];
 var forceToAddLocation;
+var interval;
 
 function initialize() {
 	var map_canvas = document.getElementById('main-content');
@@ -39,7 +40,7 @@ function initialize() {
 	forceToAddLocation = false;
 	showLegend();
 	// for testing
-//	enableLegend();
+	enableLegend();
 }
 
 function showLegend(){
@@ -76,24 +77,55 @@ function enableLegend() {
 	});
 }
 
-function toMap(responseText) {
+function toMap(responseText, categoryName) {
 	if (markersArray) {
 		for (var i = 0; i < markersArray.length; i++) {
 			markersArray[i].setMap(null);
 		}
 		markersArray = [];
 	}
+	addToMap(responseText);
+	doPoll(categoryName);
+}
+
+function addToMap(responseText){
 	var array = responseText.split("|");
 	for (var i = 0; i < array.length; i++) {
-		var point = JSON.parse(array[i]);
-		// parsing coords
-		var location = point.location;
-		var parts = location.split(",");
-		var lat = parseFloat(parts[0].trim());
-		var lng = parseFloat(parts[1].trim());
-		var id = point.id;
-		markerToMap(id, lat, lng);
+		//muidu viskab viimane element JSON.parse errori ja ei saa pollingut teha
+		if(!array[i]||array[i]==""){
+			break;
+		}
+		else{
+			var point = JSON.parse(array[i]);
+			// parsing coords
+			var location = point.location;
+			var parts = location.split(",");
+			var lat = parseFloat(parts[0].trim());
+			var lng = parseFloat(parts[1].trim());
+			var id = point.id;
+			markerToMap(id, lat, lng);
+		}
 	}
+}
+
+function doPoll(category){
+	if(markersArray){
+		var lastMarker = markersArray[markersArray.length-1];
+		var id = marker.get("id");
+	}
+	interval = setInterval(function(){
+		$.get('KaartServlet', {
+			method : "findUpdates",
+			category : category,
+			lastid : id
+		}, function(responseText) {
+			addToMap(responseText);	
+		});
+	}, 60000);
+}
+
+function breakInterval(){
+	clearInterval(interval);
 }
 
 function markerToMap(id, lat, lng) {

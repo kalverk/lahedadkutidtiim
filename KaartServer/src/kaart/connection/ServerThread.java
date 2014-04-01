@@ -87,11 +87,20 @@ public class ServerThread extends Thread {
 
 		if (t == 120) {
 			if(a.equalsIgnoreCase("na")&&isNumeric(b)){
+				//küsitakse punkti kirjeldust
 				try{
 					List<Point> point = pointDao.getDetailedPointDescription(b);
 					result = pointDao.convertListToString(point);
 				}catch(Exception e){
 					logger.error("Could not get detailed point description", e);
+				}
+			}else if(!a.equalsIgnoreCase("na")&&isNumeric(b)){
+				//küsitakse uuendusi
+				try{
+					List<Category> newPoints = pointDao.getNewPoints(a, b);
+					result = pointDao.convertCategoryListToString(newPoints);
+				}catch(Exception e){
+					logger.error("Could not get upgraded info", e);
 				}
 			}else {
 				// list points by category Kuidas seda teha, et võtab minu

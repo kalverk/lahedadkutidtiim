@@ -78,6 +78,7 @@ public class Client {
 						result = "OK";
 					}else{
 						//result to json ja javascriptis peaks parsima
+//						System.out.println("Inpustring " + message);
 						ArrayList<Point> allPoints = Translation.translate(message);
 						Gson gson = new Gson();
 						for (Point p : allPoints) {

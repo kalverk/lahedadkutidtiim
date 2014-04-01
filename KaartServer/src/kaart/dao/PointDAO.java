@@ -60,6 +60,21 @@ public class PointDAO extends GenericDAO {
 		closeEntityManager();
 		return allPoints;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Category> getNewPoints(String category, String id) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		Query allPointsQuery = em
+				.createQuery("Select c from Category c WHERE CATEGORY = :category AND POINT_ID > :id");
+		allPointsQuery.setParameter("category", category.trim());
+		allPointsQuery.setParameter("id", Long.parseLong(id.trim()));
+		List<Category> allPoints = allPointsQuery.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return allPoints;
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Point> getDetailedPointDescription(String id) {
