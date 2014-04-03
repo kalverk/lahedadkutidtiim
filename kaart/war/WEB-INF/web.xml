@@ -12,16 +12,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>KaartServlet</servlet-name>
 		<url-pattern>/KaartServlet/*</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>KaartServletNoJS</servlet-name>
-		<servlet-class>com.kaart.KaartServletNoJS</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>KaartServletNoJS</servlet-name>
-		<url-pattern>/KaartServletNoJS/*</url-pattern>
-	</servlet-mapping>
-	
+		
 	<!-- <servlet-mapping>
 		<servlet-name>Kaart</servlet-name>
 		<url-pattern>*.js</url-pattern>
