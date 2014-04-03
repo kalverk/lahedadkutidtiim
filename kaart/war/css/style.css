@@ -48,6 +48,10 @@ body {
 	display:none;	
 }
 
+.js #nojs2{
+	display:none;	
+}
+
 #nojs{
 	color:#7d1935;
 }

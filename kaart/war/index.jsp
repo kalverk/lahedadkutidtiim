@@ -97,15 +97,16 @@
 			</div>
 		</div>
 		
-		<div id="nojs">
-			<form action="KaartServletNoJS" method="get">
+		<div id="nojs2">
+			<form action="KaartServlet" method="get">
 				<select name="category">
 				  <option value="football">Football</option>
 				  <option value="basketball">Basketball</option>
 				  <option value="volleyball">Volleyball</option>
 				  <option value="tennis">Tennis</option>
 				</select>
-       			<input type="submit" value="Get info." />        			
+				<input type="hidden" name="method" value="infoNOJS" />
+       			<input type="submit" value="Get locations" />        			
     		</form>
 			<%= (request.getAttribute("id"))%>
 		</div>

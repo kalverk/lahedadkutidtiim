@@ -40,7 +40,7 @@ function initialize() {
 	forceToAddLocation = false;
 	showLegend();
 	// for testing
-	enableLegend();
+	//enableLegend();
 }
 
 function showLegend(){
