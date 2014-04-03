@@ -11,7 +11,7 @@ function initialize() {
 	var mapOptions = {
 		zoom : 14,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
-	}
+	};
 	map = new google.maps.Map(map_canvas, mapOptions);
 	if (navigator.geolocation) {
 		browserSupportFlag = true;
@@ -28,7 +28,7 @@ function initialize() {
 	}
 
 	function handleNoGeolocation(errorFlag) {
-		if (errorFlag == true) {
+		if (errorFlag === true) {
 			alert("Geolocation service failed");
 			initialLocation = liivi;
 		} else {
@@ -92,7 +92,7 @@ function addToMap(responseText){
 	var array = responseText.split("|");
 	for (var i = 0; i < array.length; i++) {
 		//muidu viskab viimane element JSON.parse errori ja ei saa pollingut teha
-		if(!array[i]||array[i]==""){
+		if(!array[i]||array[i]===""){
 			break;
 		}
 		else{

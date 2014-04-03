@@ -2,7 +2,10 @@
 $(document).ready(function() {
 	$('#navigation input').click(function(event) {
 		var categoryName = $(this).attr("id");
-		getInfo(categoryName);
+		var hash = "#" + $(this).attr("id");
+		window.history.pushState(categoryName, "Spordikaart", hash);
+
+//		getInfo(categoryName);
 	});
 });
 

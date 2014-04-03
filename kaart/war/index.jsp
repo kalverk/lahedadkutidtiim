@@ -14,19 +14,6 @@
 	href='css/small.css' />
 
 
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-<script type='text/javascript'
-	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-<script type="text/javascript"
-	src="http://connect.facebook.net/en_US/all.js"></script>
-<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
-<script type='text/javascript' src='js/resolution-change.js'></script>
-<script type="text/javascript" src="js/loginbutton.js"></script>
-<script type="text/javascript" src="js/facebook.js"></script>
-<script type="text/javascript" src="js/toolbarDOM.js"></script>
-<script type="text/javascript" src="js/swfaddress.js"></script>
-<script type="text/javascript" src="js/ajaxlinking.js"></script>
 </head>
 
 <body class="no-js">
@@ -103,7 +90,23 @@
 				  <option value="football">Football</option>
 				  <option value="basketball">Basketball</option>
 				  <option value="volleyball">Volleyball</option>
-				  <option value="tennis">Tennis</option>
+				  <option value="tabletennis">Tabletennis</option>
+				  <option value="pool">Pool</option>
+				  <option value="bowling">Bowling</option>
+				  <option value="golf">Golf</option>
+				  <option value="hockey">Hockey</option>
+				  <option value="baseball">Baseball</option>
+				  <option value="crosscountry">Crosscountry</option>
+				  <option value="iceskating">Iceskating</option>
+				  <option value="snowboard">Snowboard</option>
+				  <option value="skatepark">Skatepark</option>
+				  <option value="archery">Archery</option>
+				  <option value="bicycle">Bicycle</option>
+				  <option value="diving">Diving</option>
+				  <option value="rowing">Rowing</option>
+				  <option value="skating">Skating</option>
+				  <option value="running">Running</option>
+				  <option value="gym">Gym</option>
 				</select>
 				<input type="hidden" name="method" value="infoNOJS" />
        			<input type="submit" value="Get locations" />        			
@@ -142,7 +145,17 @@
 		</div>
 	</div>
 	<div id="legend"></div>
+	
 
+
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type='text/javascript'
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+<script type="text/javascript"
+	src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="js/f.js"></script>
 </body>
+	
 
 </html>

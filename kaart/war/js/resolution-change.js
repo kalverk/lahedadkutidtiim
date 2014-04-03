@@ -25,8 +25,8 @@ $(document).ready(function() {
 
 $(window).resize(
 		function() {
-			var height = $(this).height() - $("#header").height()-30
-			var width = $(this).width()-20
+			var height = $(this).height() - $("#header").height()-30;
+			var width = $(this).width()-20;
 			$('#main-content').height(height);
 			$('#main-content').width(width);
-		})
+		});
