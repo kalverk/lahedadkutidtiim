@@ -90,6 +90,7 @@
 				  <option value="football">Football</option>
 				  <option value="basketball">Basketball</option>
 				  <option value="volleyball">Volleyball</option>
+				  <option value="tennis">Tennis</option>
 				  <option value="tabletennis">Tabletennis</option>
 				  <option value="pool">Pool</option>
 				  <option value="bowling">Bowling</option>
