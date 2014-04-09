@@ -13,13 +13,6 @@
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
   </system-properties>
   <sessions-enabled>true</sessions-enabled>
-  
-<static-files>
-    <include path="/images/**.png" expiration="7d" />
-    <include path="/images/**.jpg" expiration="7d" />
-    <include path="/css/**.css" expiration="7d"/>
-    <include path="/js/**.js" expiration="7d"/> 
-</static-files> 
 
   <!--
     HTTP Sessions are disabled by default. To enable HTTP sessions specify:
