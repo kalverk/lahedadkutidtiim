@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.client.Client;
-import com.google.apphosting.utils.remoteapi.RemoteApiPb.Request;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 
 /**
  * Servlet implementation class ActionServlet
@@ -128,4 +126,5 @@ public class KaartServlet extends HttpServlet {
 	private String toPoint(String expression) {
 		return expression.substring(1, expression.length() - 1);
 	}
+
 }
