@@ -9,7 +9,7 @@
 
 <title>Spordikaart</title>
 
-<link rel='stylesheet' type='text/css' href='css/style.css' />
+<link rel='stylesheet' type='text/css' href='css/styleR.css' />
 <link id="size-stylesheet" rel='stylesheet' type='text/css'
 	href='css/small.css' />
 
@@ -78,8 +78,8 @@
 			</div>
 			<div id="login">
 				<ul id="navigation2">
-					<li><a href="#login-box" class="login-window"
-						onclick="showLoginForm('a.login-window')">Log in</a></li>
+					<li><a href="#login-box" id="login-window" class="login-window"
+      					onclick="showLoginForm('a.login-window')">Log in</a></li>
 				</ul>
 			</div>
 		</div>
@@ -169,6 +169,12 @@
 <script type="text/javascript"
 	src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript" src="js/f.js"></script>
+<!--  <script type="text/javascript" src="js/map_canvas_initialize.js"></script>
+<script type='text/javascript' src='js/resolution-change.js'></script>
+<script type="text/javascript" src="js/loginbutton.js"></script>
+<script type="text/javascript" src="js/facebook.js"></script>
+<script type="text/javascript" src="js/toolbarDOM.js"></script>
+<script type="text/javascript" src="js/swfaddress.js"></script>
 <script type="text/javascript" src="js/ajaxlinking.js"></script>
 </body>
 	
