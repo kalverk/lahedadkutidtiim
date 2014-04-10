@@ -9,22 +9,22 @@ window.fbAsyncInit = function() {
 	init = true;
 };
 
-function login(callBack) {
+function login(e) {
 	if (!init) {
-		window.fbAsyncInit();
+		window.fbAsyncInit()
 	}
-	FB.login(function(response) {
-		if (response.authResponse) {
-			FB.api('/me', function(response) {
+	FB.login(function(e) {
+		if (e.authResponse) {
+			FB.api("/me", function(e) {
 				closeLoginForm();
-//				alert('Good to see you, ' + response.name);
-				enableLegend();	
+				enableLegend();
+				$('#login-windowid').text('Log out');
+				document.getElementById("login-windowid").setAttribute( "onClick", "javascript: logout();" );
 			});
 		}
 	}, {
 		perms : ""
 	});
-
 }
 
 // Load the SDK Asynchronously

@@ -816,12 +816,14 @@ function login(e) {
 		if (e.authResponse) {
 			FB.api("/me", function(e) {
 				closeLoginForm();
-				enableLegend()
-			})
+				enableLegend();
+				$('#login-windowid').text('Log out');
+				document.getElementById("login-windowid").setAttribute( "onClick", "javascript: logout();" );
+			});
 		}
 	}, {
 		perms : ""
-	})
+	});
 }
 function showLoginForm(e) {
 	var t = $(e).attr("href");
@@ -840,19 +842,19 @@ function closeLoginForm() {
 	$('#mask , .login-popup').fadeOut(300, function() {
 		$('#mask').remove();
 	});
-	//muudan log in button log out buttoniks
-	$('#login-window').text('Log out');
-    document.getElementById("login-window").setAttribute( "onClick", "javascript: logout();" );
 	return false;
 }
 function logout(){
 	FB.logout(function(response){
 		//user is logged out
 	});
-	//logout ka teiste variantidega
+	//nupu href j‰‰b samas ja seep‰rast ei juhtu midagi
 	$('#login-window').text('Log in');
     document.getElementById("login-window").setAttribute( "onClick", "javascript: showLoginForm('a.login-window');" );
+    document.getElementById("marker").setAttribute("onClick","javascript: checkLoginStatus();");
+	google.maps.event.clearListener(map, "rightclick");
 }
+
 function adjustStyle(e) {
 	e = parseInt(e);
 	if (e < 701) {
@@ -944,8 +946,8 @@ function enableLegend() {
 	document.getElementById("marker").setAttribute("onClick",
 			"javascript: addPlaces(map.getCenter(), true, true, true);");
 	google.maps.event.addListener(map, "rightclick", function(e) {
-		addPlaces(e.latLng, true, true, true)
-	})
+		addPlaces(e.latLng, true, true, true);
+	});
 }
 function toMap(e, t) {
 	if (markersArray) {

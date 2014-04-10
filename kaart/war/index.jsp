@@ -78,7 +78,7 @@
 			</div>
 			<div id="login">
 				<ul id="navigation2">
-					<li><a href="#login-box" id="login-window" class="login-window"
+					<li><a href="#login-box" id="login-windowid" class="login-window"
       					onclick="showLoginForm('a.login-window')">Log in</a></li>
 				</ul>
 			</div>
