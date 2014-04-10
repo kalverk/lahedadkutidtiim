@@ -1,1 +1,6 @@
 .metadata/.plugins/
+*.class
+kaart\src\com\
+kaart\.settings\
+KaartServer\db
+.classpath
