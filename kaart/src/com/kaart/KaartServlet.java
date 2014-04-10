@@ -72,7 +72,7 @@ public class KaartServlet extends HttpServlet {
 			client.startRunning();
 			String result = client.getResult();
 			String[] array = result.split("\\|");
-			String table = "<table><tr><th>Name</th><th>Description</th><th>Link</th><th>Location</th></tr>";
+			String table = "";
 
 			for (int i = 0; i < array.length; i++) {
 				client.clean();
@@ -95,7 +95,6 @@ public class KaartServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 				}
 			}
-			table += "</table>";
 			client.clean();
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
