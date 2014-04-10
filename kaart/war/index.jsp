@@ -13,7 +13,6 @@
 <link id="size-stylesheet" rel='stylesheet' type='text/css'
 	href='css/small.css' />
 
-
 </head>
 
 <body class="no-js">
@@ -147,9 +146,7 @@
 	</div>
 	<div id="legend"></div>
 	
-
-
-<script type="text/javascript"
+	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 <script type='text/javascript'
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
@@ -158,5 +155,9 @@
 <script type="text/javascript" src="js/f.js"></script>
 </body>
 	
+
+
+
+
 
 </html>
