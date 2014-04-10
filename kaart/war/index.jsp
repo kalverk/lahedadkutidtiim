@@ -174,7 +174,7 @@
 <script type="text/javascript" src="js/loginbutton.js"></script>
 <script type="text/javascript" src="js/facebook.js"></script>
 <script type="text/javascript" src="js/toolbarDOM.js"></script>
-<script type="text/javascript" src="js/swfaddress.js"></script>
+<script type="text/javascript" src="js/swfaddress.js"></script> -->
 <script type="text/javascript" src="js/ajaxlinking.js"></script>
 </body>
 	
