@@ -13,6 +13,7 @@
 <link id="size-stylesheet" rel='stylesheet' type='text/css'
 	href='css/small.css' />
 
+
 </head>
 
 <body class="no-js">
@@ -111,7 +112,20 @@
 				<input type="hidden" name="method" value="infoNOJS" />
        			<input type="submit" value="Get locations" />        			
     		</form>
-			<%= (request.getAttribute("id"))%>
+    		<table>
+	    		<tr>
+	    			<th>Name</th>
+	    			<th>Description</th>
+	    			<th>Link</th>
+	    			<th>Location</th>
+    			</tr>
+    			<% if(request.getAttribute("id") != null){ %>
+    			<%= (String)request.getAttribute("id") %>
+    			<% }else{%>
+    			<%=""%>
+    			<%} %>
+    		</table>
+			
 		</div>
 
 		<div id="main-content">Map</div>
@@ -146,7 +160,9 @@
 	</div>
 	<div id="legend"></div>
 	
-	<script type="text/javascript"
+
+
+<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 <script type='text/javascript'
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
@@ -155,9 +171,5 @@
 <script type="text/javascript" src="js/f.js"></script>
 </body>
 	
-
-
-
-
 
 </html>
