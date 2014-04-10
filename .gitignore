@@ -1,8 +1,6 @@
 .metadata/.plugins/
 *.class
-kaart/.settings/
 KaartServer/db/
-.classpath
 kaart/war/WEB-INF/classes/
 kaart/src/com/kaart/.idea/
 kaart/src/com/client/.idea/

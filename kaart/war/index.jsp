@@ -169,6 +169,7 @@
 <script type="text/javascript"
 	src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript" src="js/f.js"></script>
+<script type="text/javascript" src="js/ajaxlinking.js"></script>
 </body>
 	
 
