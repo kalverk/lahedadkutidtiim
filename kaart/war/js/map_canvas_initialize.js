@@ -40,7 +40,7 @@ function initialize() {
 	forceToAddLocation = false;
 	showLegend();
 	// for testing
-	//enableLegend();
+	// enableLegend();
 }
 
 function showLegend(){
@@ -53,15 +53,15 @@ function showLegend(){
 }
 
 function checkLoginStatus(){
-	//teiste logimistega tuleb midagi sarnast teha
+	// teiste logimistega tuleb midagi sarnast teha
 	FB.getLoginStatus(function(response){
-		//kui ta lehele tulles on juba sisselogitud ja klikib legendil
+		// kui ta lehele tulles on juba sisselogitud ja klikib legendil
 		if(response.status=='connected'){
 			addPlaces(map.getCenter(), true, true, true);
-		//kui ta lehele tulles ei ole sisselogitud ja klikib legendil
+		// kui ta lehele tulles ei ole sisselogitud ja klikib legendil
 		}else{
 			showLoginForm("a.login-window");
-			//getter oleks mõistlikum aga osad brauserid vist ei toeta seda
+			// getter oleks mõistlikum aga osad brauserid vist ei toeta seda
 			forceToAddLocation = true;
 		}
 	});
@@ -91,7 +91,8 @@ function toMap(responseText, categoryName) {
 function addToMap(responseText){
 	var array = responseText.split("|");
 	for (var i = 0; i < array.length; i++) {
-		//muidu viskab viimane element JSON.parse errori ja ei saa pollingut teha
+		// muidu viskab viimane element JSON.parse errori ja ei saa pollingut
+		// teha
 		if(!array[i]||array[i]===""){
 			break;
 		}
@@ -150,42 +151,44 @@ function listenMarker(marker){
 			var id = point.id;
 			var name = point.name;
 			var description = point.description;
-			var link = point.link;
-			
-			///Latlng to address
-			var latlngstr = point.location.split(",",2);
-			var lat = parseFloat(latlngstr[0]);
-		    var lng = parseFloat(latlngstr[1]);
-		    var latlng = new google.maps.LatLng(lat, lng);
-		    
-			var geocoder = new google.maps.Geocoder();
-			geocoder.geocode({'latLng': latlng}, function(results, status) {
-				var inf = '<div class="marker-desc"><div class="marker-desc-win"><span><h1 id="pointName">'
-					+ name+'</h1><p><div class="marker-desc-edit"><label><span>Description :</span><label id="pointDescription">'
-					+ description+'</label></label>';
-				if (status == google.maps.GeocoderStatus.OK) {
-					if (results[1]) {
-			        	var location = results[1].formatted_address;
-			        }else{
-			        	var location = point.location;
-			        }
-					inf+='<label><span>Address :</span><label id="pointLocation">'+location+'</label></label>';
-				}
-				var urlRegEx = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-				if(urlRegEx.test(link)){
-					var url = link;
-					var link_name = name;
-					inf+='<label><span>Link :</span><label id="pointLink"><a href="'+url+'">'+link_name+'</a></label></label>';
-				}
-				inf+='</div></p></span></div></div>';
-				//failist lugemine ei tööta internet exploreris seega jätame stringis
+			var link = point.link;	
+		    var location = geocode(point.location);
+		    var inf = '<div class="marker-desc"><div class="marker-desc-win"><span><h1 id="pointName">'
+				+ name+'</h1><p><div class="marker-desc-edit"><label><span>Description :</span><label id="pointDescription">'
+				+ description+'</label></label><label><span>Address :</span><label id="pointLocation">'+location+'</label></label>';
+			var urlRegEx = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+			if(urlRegEx.test(link)){
+				var url = link;
+				var link_name = name;
+				inf+='<label><span>Link :</span><label id="pointLink"><a href="'+url+'">'+link_name+'</a></label></label>';
+			}
+			inf+='</div></p></span></div></div>';
+				// failist lugemine ei tööta internet exploreris seega jätame
+				// stringis
 				// var content = $().load("html/desc.html");
-				//infowindow layout tuleb korda teha
-				var infowindow = new google.maps.InfoWindow();
-				infowindow.setContent(inf);
-				infowindow.open(map, marker); 
-			});
+				// infowindow layout tuleb korda teha
+			var infowindow = new google.maps.InfoWindow();
+			infowindow.setContent(inf);
+			infowindow.open(map, marker); 
 		});
+	});
+}
+
+function geocode(pointlocation){
+	var latlngstr = point.location.split(",",2);
+	var lat = parseFloat(latlngstr[0]);
+    var lng = parseFloat(latlngstr[1]);
+    var latlng = new google.maps.LatLng(lat, lng);
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'latLng': pointlocation}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			if (results[1]) {
+	        	var location = results[1].formatted_address;
+	        }else{
+	        	var location = pointlocation;
+	        }
+		}
+		return location;
 	});
 }
 
