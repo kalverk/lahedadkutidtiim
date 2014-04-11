@@ -24,9 +24,6 @@ function closeLoginForm() {
 	$('#mask , .login-popup').fadeOut(300, function() {
 		$('#mask').remove();
 	});
-	//muudan log in button log out buttoniks
-	$('#login-window').text('Log out');
-    document.getElementById("login-window").setAttribute( "onClick", "javascript: logout();" );
 	return false;
 }
 
@@ -35,6 +32,7 @@ function logout(){
 		//user is logged out
 	});
 	//logout ka teiste variantidega
-	$('#login-window').text('Log in');
-    document.getElementById("login-window").setAttribute( "onClick", "javascript: showLoginForm('a.login-window');" );
+	$('#login-windowid').text('Log in');
+    document.getElementById("login-windowid").setAttribute( "onClick", "javascript: showLoginForm('a.login-window');" );
+    $('#login-windowid').attr("href", "#login-box");
 }

@@ -52,6 +52,9 @@ public class KaartServlet extends HttpServlet {
 			// System.out.println("name " + name
 			// +" location "+toPoint(location)+ " desc " + desc + " link " +
 			// link + " cat " + toCategory(cat));
+			if(link.equalsIgnoreCase("")){
+				link = "puudub";
+			}
 			client.setLoc_name(name);
 			client.setLoc_location(toPoint(location));
 			client.setLoc_description(desc);

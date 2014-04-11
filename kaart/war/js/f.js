@@ -920,6 +920,7 @@ function initialize() {
 	}
 	forceToAddLocation = false;
 	showLegend()
+	enableLegend();
 }
 function showLegend() {
 	var e = document.getElementById("legend");

@@ -1,7 +1,8 @@
 init = false;
 window.fbAsyncInit = function() {
 	FB.init({
-		appId : '274740106025651', //võiks mingi faili teha, kust sensitive infot võetakse?
+		appId : '274740106025651', // võiks mingi faili teha, kust sensitive
+									// infot võetakse?
 		status : true,
 		cookie : true,
 		xfbml : true
@@ -19,7 +20,9 @@ function login(e) {
 				closeLoginForm();
 				enableLegend();
 				$('#login-windowid').text('Log out');
-				document.getElementById("login-windowid").setAttribute( "onClick", "javascript: logout();" );
+				document.getElementById("login-windowid").setAttribute(
+						"onClick", "javascript: logout();");
+				$('#login-windowid').attr("href", "#");
 			});
 		}
 	}, {
