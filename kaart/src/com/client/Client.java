@@ -17,12 +17,12 @@ import com.entity.Point;
 import com.google.gson.Gson;
 
 public class Client {
-//	private static org.apache.log4j.Logger info = Logger
-//			.getLogger(Client.class);
+	// private static org.apache.log4j.Logger info = Logger
+	// .getLogger(Client.class);
 	private final static int PORT = 27910;
-	private static String ip = "90.191.164.96";
-//	private static String ip = "localhost";
-	
+	// private static String ip = "90.191.164.96";
+	private static String ip = "localhost";
+
 	private String loc_name = "NA";
 	private String loc_location = "NA";
 	private String loc_description = "NA";
@@ -39,29 +39,29 @@ public class Client {
 	public Client() {
 		setUpConnection();
 	}
-	
-	private void setUpConnection(){
-		try{
+
+	private void setUpConnection() {
+		try {
 			connectToServer();
 			setUpStreams();
 		} catch (EOFException eofException) {
-//			info.info("Client terminated connection");
+			// info.info("Client terminated connection");
 		} catch (IOException e) {
-//			info.info(e);
+			// info.info(e);
 		}
-//		tuleb siis kutsuda kui klient suletakse täielikult
-//			finally {
-//			try{
-//			close();
-//			}catch(Exception e){}
-//		}
+		// tuleb siis kutsuda kui klient suletakse täielikult
+		// finally {
+		// try{
+		// close();
+		// }catch(Exception e){}
+		// }
 	}
 
 	public void startRunning() {
 		try {
 			whileWaiting();
-		}catch (IOException e) {
-//			info.info(e);
+		} catch (IOException e) {
+			// info.info(e);
 		}
 	}
 
@@ -78,11 +78,15 @@ public class Client {
 						result = "OK";
 					}else{
 						//result to json ja javascriptis peaks parsima
-//						System.out.println("Inpustring " + message);
+						System.out.println("Inpustring " + message);
+						if(message.matches("^^[0-9]+$")){
+							result = message;
+						}else{
 						ArrayList<Point> allPoints = Translation.translate(message);
 						Gson gson = new Gson();
 						for (Point p : allPoints) {
 							result+=gson.toJson(p)+"|";
+						}
 						}
 					}
 					gotInfo = true;
@@ -95,10 +99,10 @@ public class Client {
 	}
 
 	private void connectToServer() throws IOException {
-//		info.info("Attempting to connect to server");
-		socket = new Socket(InetAddress.getByName(ip), PORT);
-//		socket = new Socket(ip, PORT);
-//		info.info("Connected");
+		// info.info("Attempting to connect to server");
+		// socket = new Socket(InetAddress.getByName(ip), PORT);
+		socket = new Socket(ip, PORT);
+		// info.info("Connected");
 		try {
 			Thread.sleep(3000);
 		} catch (Exception e) {
@@ -109,26 +113,29 @@ public class Client {
 		output = new PrintWriter(socket.getOutputStream(), true);
 		input = new BufferedReader(new InputStreamReader(
 				socket.getInputStream()));
-//		info.info("Streams are up.");
+		// info.info("Streams are up.");
 	}
 
 	private void sendQuery(String outputLine) {
 		try {
 			output.println(outputLine);
 		} catch (Exception e) {
-//			info.error("ERROR while writing output", e);
+			// info.error("ERROR while writing output", e);
 		}
 	}
 
 	private String getOutputLine() {
 		String result = "";
 		if (insert) {
-			result = loc_name.trim() + ";" + loc_location.trim() + ";" + loc_description.trim() + ";" + loc_link.toLowerCase().trim() + ";";
-			for(int i=0; i<categoryTags.size();i++){
-				result +=categoryTags.get(i).toLowerCase().trim() + ";";
+			result = loc_name.trim() + ";" + loc_location.trim() + ";"
+					+ loc_description.trim() + ";"
+					+ loc_link.toLowerCase().trim() + ";";
+			for (int i = 0; i < categoryTags.size(); i++) {
+				result += categoryTags.get(i).toLowerCase().trim() + ";";
 			}
 		} else {
-			result = String.format("%s;%s", loc_name.toLowerCase().trim(), String.valueOf(id));
+			result = String.format("%s;%s", loc_name.toLowerCase().trim(),
+					String.valueOf(id));
 		}
 		insert = false;
 		return result;
@@ -140,12 +147,12 @@ public class Client {
 			input.close();
 			socket.close();
 		} catch (IOException e) {
-//			info.error("IOException at closing", e);
+			// info.error("IOException at closing", e);
 		}
 	}
-	
-	public String getResult(){
-//		System.out.println(result);
+
+	public String getResult() {
+		// System.out.println(result);
 		return result;
 	}
 
@@ -172,12 +179,12 @@ public class Client {
 	public void setLoc_link(String loc_link) {
 		this.loc_link = loc_link;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public void clean(){
+
+	public void clean() {
 		this.loc_name = "NA";
 		this.loc_description = "NA";
 		this.loc_link = "NA";
@@ -187,4 +194,3 @@ public class Client {
 		this.id = -1;
 	}
 }
-

@@ -46,7 +46,8 @@ function initialize() {
 function showLegend(){
 	var legend = document.getElementById('legend');
 	var div = document.createElement('div');
-	div.innerHTML = '<label class="legend-label">Add locations</label><input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="checkLoginStatus()"></input>';
+	div.innerHTML = '<label class="legend-label">Add locations</label><input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="checkLoginStatus()"></input>'
+		+ '<label id ="count" class="legend-label">Points on map: 0</label>';
 	legend.appendChild(div);
 	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document
 			.getElementById('legend'));
@@ -85,6 +86,7 @@ function toMap(responseText, categoryName) {
 		markersArray = [];
 	}
 	addToMap(responseText);
+	getCount(categoryName);
 	doPoll(categoryName);
 }
 
@@ -120,13 +122,13 @@ function getCount(categoryName){
 }
 
 function toCount(responseText){
-	alert("resp" + responseText);
+	document.getElementById("count").innerHTML = 'Points on map: ' + responseText; 
 }
 
 
 function doPoll(category){
 	if(markersArray){
-		var lastMarker = markersArray[markersArray.length];
+		var lastMarker = markersArray[markersArray.length-1];
 		var id = marker.get("id");
 	}
 	interval = setInterval(function(){

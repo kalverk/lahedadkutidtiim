@@ -90,7 +90,7 @@ public class PointDAO extends GenericDAO {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
 		Query pointsCount = em
-				.createQuery("SELECT Count(c) FROM Category c WHERE CATEGORY = :category");
+				.createQuery("SELECT Count(c) FROM Category c WHERE CATEGORY = :category GROUP BY Category");
 		pointsCount.setParameter("category", category.trim());		
 		int s =  ((Long)pointsCount.getSingleResult()).intValue();
 		int count = s;
