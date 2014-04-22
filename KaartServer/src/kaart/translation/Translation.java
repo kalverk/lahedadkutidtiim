@@ -14,6 +14,7 @@ public class Translation {
 	private static String b; // location or id
 	private static String c; // description
 	private static String d; // link
+
 	private static List<String> categories = new ArrayList<String>(); //category tags
 
 	public static int translate(String input) {
@@ -60,6 +61,7 @@ public class Translation {
 		return d;
 	}
 	
+
 	public static List<String> getCategoryTagList(){
 		return categories;
 	}

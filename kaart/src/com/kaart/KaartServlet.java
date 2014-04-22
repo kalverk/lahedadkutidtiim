@@ -68,7 +68,14 @@ public class KaartServlet extends HttpServlet {
 			client.setId(Long.parseLong(last_id));
 			client.setLoc_name(category);
 			client.startRunning();
-		} else if (method.equalsIgnoreCase("infoNOJS")) {
+		} else if (method.equalsIgnoreCase("getCategoryCount")) {
+			// leiab kategooria count-i
+			String category = request.getParameter("category").trim()
+					.toLowerCase();
+			client.setLoc_name(category);
+			client.setId(-11);
+			client.startRunning();
+		}else if (method.equalsIgnoreCase("infoNOJS")) {
 			String category = null;
 			category = request.getParameter("category").trim().toLowerCase();
 			client.setLoc_name(category);

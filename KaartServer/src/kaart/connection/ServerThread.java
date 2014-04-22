@@ -62,7 +62,7 @@ public class ServerThread extends Thread {
 				int t = Translation.translate(inputString);
 				outputString = getResult(t);
 				output.println(outputString);
-//				System.out.println("Outputstring " + outputString);
+				// System.out.println("Outputstring " + outputString);
 			}
 			output.close();
 			input.close();
@@ -86,27 +86,42 @@ public class ServerThread extends Thread {
 		String b = Translation.getB();
 
 		if (t == 120) {
-			if(a.equalsIgnoreCase("na")&&isNumeric(b)){
-				//küsitakse punkti kirjeldust
-				try{
+			if (a.equalsIgnoreCase("na") && isNumeric(b)) {
+				// küsitakse punkti kirjeldust
+
+				try {
 					List<Point> point = pointDao.getDetailedPointDescription(b);
 					result = pointDao.convertListToString(point);
-				}catch(Exception e){
+				} catch (Exception e) {
 					logger.error("Could not get detailed point description", e);
 				}
-			}else if(!a.equalsIgnoreCase("na")&&isNumeric(b)){
-				//küsitakse uuendusi
-				try{
-					List<Category> newPoints = pointDao.getNewPoints(a, b);
-					result = pointDao.convertCategoryListToString(newPoints);
-				}catch(Exception e){
-					logger.error("Could not get upgraded info", e);
+
+			} else if (!a.equalsIgnoreCase("na") && isNumeric(b)) {
+				// küsitakse uuendusi
+				if (Long.parseLong(b.trim()) == -11) {
+					try {
+						int count = pointDao.getPointsCount(a);
+						return String.valueOf(count);
+					} catch (Exception e) {
+						logger.error(
+								"Could not get count of points!", e);
+					}
+
+				} else {
+					try {
+						List<Category> newPoints = pointDao.getNewPoints(a, b);
+						result = pointDao
+								.convertCategoryListToString(newPoints);
+					} catch (Exception e) {
+						logger.error("Could not get upgraded info", e);
+					}
 				}
-			}else {
+			} else {
 				// list points by category Kuidas seda teha, et võtab minu
 				// asukoha ümbrusest?
 				try {
-					List<Category> allPoints = pointDao.getAllPointsByCategory(a);
+					List<Category> allPoints = pointDao
+							.getAllPointsByCategory(a);
 					result = pointDao.convertCategoryListToString(allPoints);
 				} catch (Exception e) {
 					logger.error("ERROR at listing object by category.", e);
@@ -117,11 +132,12 @@ public class ServerThread extends Thread {
 				String c = Translation.getC();
 				String d = Translation.getD();
 				Point p = new Point(a, b, c, d);
-				System.out.println("name" + a + "loca" + b + "desc" + c + "link" + d);
+				System.out.println("name" + a + "loca" + b + "desc" + c
+						+ "link" + d);
 				pointDao.persistPoint(p);
 				List<String> categoryTags = Translation.getCategoryTagList();
-				for(int i=0;i<categoryTags.size();i++){
-					Category category = new Category(categoryTags.get(i),p);
+				for (int i = 0; i < categoryTags.size(); i++) {
+					Category category = new Category(categoryTags.get(i), p);
 					System.out.println(categoryTags.get(i));
 					pointDao.persistCategory(category);
 				}
@@ -134,11 +150,11 @@ public class ServerThread extends Thread {
 		}
 		return result;
 	}
-	
-	private boolean isNumeric(String num){
-		try{
+
+	private boolean isNumeric(String num) {
+		try {
 			Long.parseLong(num.trim());
-		}catch(Exception e){
+		} catch (Exception e) {
 			return false;
 		}
 		return true;

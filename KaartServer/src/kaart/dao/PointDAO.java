@@ -1,5 +1,6 @@
 package kaart.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,7 +18,10 @@ import kaart.entities.Point;
  * 
  */
 
+
+
 public class PointDAO extends GenericDAO {
+	
 
 	public void persistPoint(Point point) {
 		EntityManager em = createEntityManager();
@@ -51,10 +55,11 @@ public class PointDAO extends GenericDAO {
 	public List<Category> getAllPointsByCategory(String category) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
+		List<Category> allPoints = new ArrayList<Category>();		
 		Query allPointsQuery = em
 				.createQuery("Select c from Category c WHERE CATEGORY = :category");
 		allPointsQuery.setParameter("category", category.trim());
-		List<Category> allPoints = allPointsQuery.getResultList();
+		allPoints.addAll(allPointsQuery.getResultList());			
 		em.getTransaction().commit();
 		em.close();
 		closeEntityManager();
@@ -69,11 +74,30 @@ public class PointDAO extends GenericDAO {
 				.createQuery("Select c from Category c WHERE CATEGORY = :category AND POINT_ID > :id");
 		allPointsQuery.setParameter("category", category.trim());
 		allPointsQuery.setParameter("id", Long.parseLong(id.trim()));
+//		Query pointsCount = em
+//				.createQuery("SELECT COUNT(*) FROM CATEGORY WHERE CATEGORY = :category GROUP BY CATEGORY;");
+//		pointsCount.setParameter("category", category.trim());
+		//List<Integer> s =  pointsCount.getResultList();
+		//int count = s.get(0);
 		List<Category> allPoints = allPointsQuery.getResultList();
 		em.getTransaction().commit();
 		em.close();
 		closeEntityManager();
 		return allPoints;
+	}
+	
+	public int getPointsCount(String category) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		Query pointsCount = em
+				.createQuery("SELECT Count(c) FROM Category c WHERE CATEGORY = :category");
+		pointsCount.setParameter("category", category.trim());		
+		int s =  ((Long)pointsCount.getSingleResult()).intValue();
+		int count = s;
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return count;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -97,6 +121,8 @@ public class PointDAO extends GenericDAO {
 			Long id = c.getPoint().getId();
 			result += String.valueOf(id) + ";" + location + "!";
 		}
+		//String count = String.valueOf(getPointsCount(cat));
+		//result += count + ";1.0,1.0!";
 		return result;
 	}
 
@@ -111,6 +137,11 @@ public class PointDAO extends GenericDAO {
 			result += id + ";" + name + ";" + location + ";" + desc + ";"
 					+ link + "!";
 		}
+		
 		return result;
+	}
+	
+	public String convertCountToString(int c){
+		return String.valueOf(c) + ";1.0,1.0!";
 	}
 }

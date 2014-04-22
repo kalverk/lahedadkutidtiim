@@ -45,6 +45,7 @@ public class Point implements Serializable {
 		this.description = description;
 		this.link = link;
 	}
+	
 
 	public Long getId() {
 		return this.id;

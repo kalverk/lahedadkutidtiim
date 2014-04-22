@@ -90,6 +90,7 @@ function toMap(responseText, categoryName) {
 
 function addToMap(responseText){
 	var array = responseText.split("|");
+
 	for (var i = 0; i < array.length; i++) {
 		// muidu viskab viimane element JSON.parse errori ja ei saa pollingut
 		// teha
@@ -109,9 +110,23 @@ function addToMap(responseText){
 	}
 }
 
+function getCount(categoryName){
+	$.get('KaartServlet', {
+		method : "getCategoryCount",
+		category : categoryName
+	}, function(responseText) {
+		toCount(responseText);	
+	});
+}
+
+function toCount(responseText){
+	alert("resp" + responseText);
+}
+
+
 function doPoll(category){
 	if(markersArray){
-		var lastMarker = markersArray[markersArray.length-1];
+		var lastMarker = markersArray[markersArray.length];
 		var id = marker.get("id");
 	}
 	interval = setInterval(function(){
