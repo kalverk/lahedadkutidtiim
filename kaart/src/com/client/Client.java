@@ -79,7 +79,7 @@ public class Client {
 					}else{
 						//result to json ja javascriptis peaks parsima
 						System.out.println("Inpustring " + message);
-						if(message.matches("^^[0-9]+$")){
+						if(message.matches("^[0-9]+$")){
 							result = message;
 						}else{
 						ArrayList<Point> allPoints = Translation.translate(message);
