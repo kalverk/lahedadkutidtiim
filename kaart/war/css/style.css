@@ -4,7 +4,7 @@ body{font:14px Georgia, serif;background:#FDF3E7}
 #header{background:#FDF3E7}
 #main-content{left:0;background:#eee;overflow:auto;border:1px solid #999}
 #secondary-two{background:#eee;border:1px solid #999}
-#login{height:90px;float:right;width:12%}
+#login{height:90px;float:right;width:77px}
 #toolbar{height:90px;width:88%;float:left}
 #nojs{color:#7d1935}
 .js ul#navigation{width:100%;left:0;height:85px;display:block;list-style:none outside none;white-space:nowrap;overflow:auto;margin:0}
@@ -17,7 +17,7 @@ body{font:14px Georgia, serif;background:#FDF3E7}
 .js .ImgButton{width:50px;height:65px}
 .login-window{-moz-box-shadow:inset 0 1px 0 0 #7d1935;-webkit-box-shadow:inset 0 1px 0 0 #7d1935;box-shadow:inset 0 1px 0 0 #7d1935;background:0;background-color:#7d1935;-webkit-border-top-left-radius:0;-moz-border-radius-topleft:0;border-top-left-radius:0;-webkit-border-top-right-radius:0;-moz-border-radius-topright:0;border-top-right-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;text-indent:0;border:1px solid #d02718;display:inline-block;color:#fff;font-family:Arial;font-size:16px;font-weight:700;font-style:normal;height:55px;margin-bottom:5px;margin-top:5px;width:75px;line-height:50px;text-decoration:none;text-align:center;text-shadow:1px 1px 0 #810e05}
 .loggedin_button{-moz-box-shadow:inset 0 1px 0 0 #7d1935;-webkit-box-shadow:inset 0 1px 0 0 #7d1935;box-shadow:inset 0 1px 0 0 #7d1935;background:0;background-color:#7d1935;-webkit-border-top-left-radius:0;-moz-border-radius-topleft:0;border-top-left-radius:0;-webkit-border-top-right-radius:0;-moz-border-radius-topright:0;border-top-right-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;text-indent:0;border:1px solid #d02718;display:none;color:#fff;font-family:Arial;font-size:16px;font-weight:700;font-style:normal;height:55px;width:100px}
-.js #legend{margin-right:5px;background-color:#fff;border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:2px;border-bottom-left-radius:2px;-webkit-box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;width:94px;height:59px}
+.js #legend{margin-right:5px;background-color:#fff;border-top-left-radius:2px;border-top-right-radius:2px;border-bottom-right-radius:2px;border-bottom-left-radius:2px;-webkit-box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;box-shadow:rgba(0,0,0,0.298039) 0 1px 4px -1px;width:94px;height:90px}
 .legend-label{display:block;width:68px;padding-left:12px;padding-right:12px;font-family:Roboto, Arial, sans-serif;font-size:11px}
 .marker{display:block;margin:5px 37px}
 .marker-edit label input{height:25px}
@@ -36,7 +36,7 @@ form.signin .textbox input{background:#FFF;border-bottom:1px solid #333;border-l
 .no-js #main-content,.js #nojs,.js #nojs2,.no-js ul#navigation,.no-js ul#navigation2,.no-js .ImgButton{display:none}
 .login-window:hover,.button:hover{background:0;background-color:#c62d1f}
 .login-window:active,.button:active{position:relative;top:1px}
-.marker-info-win,.marker-desc{max-width:300px;max-height:300px;margin-right:-20px;overflow:auto}
+.marker-info-win,.marker-desc{max-width:300px;max-height:300px;margin-right:-20px;background:#FDF3E7;overflow:auto}
 .marker-info-win p,.marker-desc-win p{margin:10px}
 .marker-inner-win,.marker-desc-win{padding:5px}
 .marker-edit label,.marker-desc label{display:block;margin-bottom:5px}
