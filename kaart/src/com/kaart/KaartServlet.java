@@ -125,7 +125,31 @@ public class KaartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String method = request.getParameter("method");
+		if (method.equalsIgnoreCase("insertnewpoint")) {
+			String name = request.getParameter("name").trim();
+			String desc = request.getParameter("desc").trim();
+			String link = request.getParameter("link").trim();
+			String location = request.getParameter("location");
+			String cat = request.getParameter("categories").trim();
+			// System.out.println("name " + name
+			// +" location "+toPoint(location)+ " desc " + desc + " link " +
+			// link + " cat " + toCategory(cat));
+			if(link.equalsIgnoreCase("")){
+				link = "puudub";
+			}
+			client.setLoc_name(name);
+			client.setLoc_location(toPoint(location));
+			client.setLoc_description(desc);
+			client.setLoc_link(link);
+			client.setCategoryTags(toCategory(cat));
+			client.setInsert(true);
+			client.startRunning();
+		}
+		client.clean();
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(client.getResult());
 	}
 
 	private List<String> toCategory(String expression) {

@@ -40,7 +40,7 @@ function initialize() {
 	forceToAddLocation = false;
 	showLegend();
 	// for testing
-	// enableLegend();
+	//enableLegend();
 }
 
 function showLegend(){
@@ -207,7 +207,7 @@ function listenMarker(marker){
 function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 	var MapTitle = "Add new location";
 	var EditForm = '<p><div class="marker-edit">'
-			+ '<form action="" method="POST" name="SaveMarker" id="SaveMarker">'
+			+ '<form name="SaveMarker" id="SaveMarker">'
 			+ '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter title" maxlength="40" /></label>'
 			+ '<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter description" maxlength="250"></textarea></label>'
 			+ '<label for="pLink"><span>Website :</span><input type="text" name="pLink" class="save-link" placeholder="Enter website" maxlength="40" /></label>'
@@ -320,7 +320,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ ' </span>'
 				+ '</div>'
 				+ '</div>');
-		$.get('KaartServlet', {
+		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
 			desc : desc,
