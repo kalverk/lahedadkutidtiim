@@ -9,7 +9,7 @@
 
 <title>Spordikaart</title>
 
-<link rel='stylesheet' type='text/css' href='css/style.css' />
+<link rel='stylesheet' type='text/css' href='css/styleR.css' />
 <link id="size-stylesheet" rel='stylesheet' type='text/css'
 	href='css/small.css' />
 
