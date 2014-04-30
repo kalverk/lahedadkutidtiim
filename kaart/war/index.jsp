@@ -9,7 +9,7 @@
 
 <title>Spordikaart</title>
 
-<link rel='stylesheet' type='text/css' href='css/style.css' />
+<link rel='stylesheet' type='text/css' href='css/styleR.css' />
 <link id="size-stylesheet" rel='stylesheet' type='text/css'
 	href='css/small.css' />
 
@@ -73,7 +73,6 @@
 						src="images/iconsB/running.png" class="ImgButton"></input></li>
 					<li><input type="image" id="gym" src="images/iconsB/gym.png"
 						class="ImgButton"></input></li>
-					<!-- kõige viimast pole miskipärast võimalik vajutada prob scrollbari viga -->
 				</ul>
 			</div>
 			<div id="login">
@@ -131,6 +130,9 @@
 		<div id="main-content">Map</div>
 
 		<div id="secondary-two">Comment</div>
+		
+		<a href="#login-box" id="login-windowid2" class="login-window2"
+      					onclick="showLoginForm('a.login-window')">Log in</a>
 
 		<div id="login-box" class="login-popup">
 			<a href="#" class="close" onclick="closeLoginForm()"><img

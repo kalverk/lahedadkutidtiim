@@ -15,11 +15,9 @@ body {
 	width: 83%;
 }
 
-#main-content {
-	margin-right: 5px;
-}
-
 #secondary-two {
-	height: 250px;
-	display: none;
+	float: left;
+	overflow: auto;
+	margin-right: 5px;
+	display: inline-block;
 }

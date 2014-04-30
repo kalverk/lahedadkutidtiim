@@ -7,20 +7,15 @@ body {
 	position: relative;
 }
 
-#main-content {
-	float: left;
-	margin-right: 5px;
-}
-
 #header {
 	height: 90px;
 	width: 100%;
 }
 
 #secondary-two {
+	float: right;
 	overflow: hidden;
-	height: 600px;
-	display: none;
+	display: inline-block;
 }
 
 
