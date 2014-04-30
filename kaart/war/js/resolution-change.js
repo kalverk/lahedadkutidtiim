@@ -20,6 +20,7 @@ function adjustStyle(width) {
 
 $(function() {
 	adjustStyle($(this).width());
+	$(window).trigger('resize');
 	$(window).resize(function() {
 		adjustStyle($(this).width());
 	});
@@ -35,15 +36,14 @@ $(document).ready(function() {
 $(window).resize(
 		function() {
 			//seda tuleks vastavalt point onclickile muuta.
-			var isPointDescription = true;
 			var height = $(this).height() - $("#header").height()-30;
 			var width = $(this).width()-20;
 			$('#main-content').height(height);
-			if(isPointDescription&&isLargeLayout){
+			if(isLargeLayout){
 				$('#main-content').width(width-200);
 				$('#secondary-two').height(height);
 				$('#secondary-two').width(width-$('#main-content').width()-22);
-			}else if(isPointDescription&&isSmallLayout){
+			}else if(isSmallLayout){
 				$('#main-content').width(width);
 				$('#secondary-two').height(height/2);
 				$('#secondary-two').width(width);
