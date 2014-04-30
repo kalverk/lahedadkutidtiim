@@ -122,6 +122,9 @@ function getCount(categoryName){
 }
 
 function toCount(responseText){
+	if(responseText == ''){
+		responseText = '0';
+	}
 	document.getElementById("count").innerHTML = 'Points on map: ' + responseText; 
 }
 
