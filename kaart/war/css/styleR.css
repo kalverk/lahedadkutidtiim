@@ -277,10 +277,8 @@ color:white;
 }
 
 .marker-desc{
-	max-width: 300px;
     max-height: 300px;
 	margin-right: -20px;
-	background: #FDF3E7;	
 	overflow: auto;
 }
 

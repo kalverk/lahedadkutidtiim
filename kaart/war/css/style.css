@@ -36,7 +36,7 @@ form.signin .textbox input{background:#FFF;border-bottom:1px solid #333;border-l
 .no-js #main-content,.js #nojs,.js #nojs2,.no-js ul#navigation,.no-js ul#navigation2,.no-js .ImgButton{display:none}
 .login-window:hover,.button:hover{background:0;background-color:#c62d1f}
 .login-window:active,.button:active{position:relative;top:1px}
-.marker-info-win,.marker-desc{max-width:300px;max-height:300px;margin-right:-20px;background:#FDF3E7;overflow:auto}
+.marker-info-win,.marker-desc{max-height:300px;margin-right:-20px;overflow:auto}
 .marker-info-win p,.marker-desc-win p{margin:10px}
 .marker-inner-win,.marker-desc-win{padding:5px}
 .marker-edit label,.marker-desc label{display:block;margin-bottom:5px}

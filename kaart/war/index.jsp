@@ -168,14 +168,14 @@
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
 <script type="text/javascript"
 	src="http://connect.facebook.net/en_US/all.js"></script>
-<script type="text/javascript" src="js/f.js"></script> 
-<!--  <script type="text/javascript" src="js/map_canvas_initialize.js"></script>
+<!--<script type="text/javascript" src="js/f.js"></script>-->
+<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
 <script type='text/javascript' src='js/resolution-change.js'></script>
 <script type="text/javascript" src="js/loginbutton.js"></script>
 <script type="text/javascript" src="js/facebook.js"></script>
 <script type="text/javascript" src="js/toolbarDOM.js"></script>
 <script type="text/javascript" src="js/swfaddress.js"></script>
-<script type="text/javascript" src="js/ajaxlinking.js"></script>-->
+<script type="text/javascript" src="js/ajaxlinking.js"></script>
 </body>
 	
 
