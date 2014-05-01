@@ -17,24 +17,24 @@ body {
 }
 
 #main-content {
-	float:left;
+	float: left;
 	background: #eee;
 	overflow: auto;
-	margin-right:5px;
+	margin-right: 5px;
 	border: 1px solid #999;
 }
 
 .no-js #main-content {
-	display:none;
+	display: none;
 }
 
 #secondary-two {
-	background: #eee;
-	border: 1px solid #999;
+	background: #FFF0AA;
+    padding:5px;
 }
 
 #login-windowid2 {
-	display:none;
+	display: none;
 }
 
 #toolbar {
@@ -43,17 +43,18 @@ body {
 	float: left;
 }
 
-.js #nojs{
-	display:none;	
+.js #nojs {
+	display: none;
 }
 
-.js #nojs2{
-	display:none;	
+.js #nojs2 {
+	display: none;
 }
 
-#nojs{
-	color:#B0E57C;
+#nojs {
+	color: #B0E57C;
 }
+
 .js ul#navigation {
 	width: 100%;
 	margin: 0px;
@@ -74,23 +75,22 @@ body {
 }
 
 .no-js table {
-	margin-top:15px;	
+	margin-top: 15px;
 }
 
-.no-js table, td, th
-{
-border:1px solid #B0E57C;
-border-collapse:collapse;
+.no-js table,td,th {
+	border: 1px solid #B0E57C;
+	border-collapse: collapse;
 }
-.no-js th
-{
-background-color:#B0E57C;
-color:white;
+
+.no-js th {
+	background-color: #B0E57C;
+	color: white;
 }
 
 .js ul#navigation li {
 	margin-left: 1px;
-	margin-right:1px;
+	margin-right: 1px;
 	margin-top: 10px;
 	display: inline;
 	overflow: auto;
@@ -103,7 +103,7 @@ color:white;
 	display: inline;
 	overflow: auto;
 	overflow-y: hidden;
-	float:right;
+	float: right;
 }
 
 .js ul#navigation li:hover {
@@ -203,9 +203,9 @@ color:white;
 	font-style: normal;
 	height: 55px;
 	width: 100px;
-	}
+}
 
-.js #legend{
+.js #legend {
 	margin-right: 5px;
 	background-color: rgb(255, 255, 255);
 	border-top-left-radius: 2px;
@@ -218,8 +218,8 @@ color:white;
 	height: 90px;
 }
 
-.legend-label{
-	display:block;
+.legend-label {
+	display: block;
 	width: 68px;
 	padding-left: 12px;
 	padding-right: 12px;
@@ -227,76 +227,76 @@ color:white;
 	font-size: 11px;
 }
 
-.marker{
-	display:block;
+.marker {
+	display: block;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 37px;
 	margin-right: 37px;
 }
 
-.marker-info-win{
+.marker-info-win {
 	max-width: 300px;
-    max-height: 300px;
+	max-height: 300px;
 	margin-right: -20px;
-	background: #FFF0AA;	
-    overflow: auto;
+	background: #FFF0AA;
+	overflow: auto;
 }
 
-.marker-info-win p{
+.marker-info-win p {
 	margin: 10px;
 }
 
-.marker-inner-win{
+.marker-inner-win {
 	padding: 5px;
 }
 
-.marker-edit label{
-	display:block;
+.marker-edit label {
+	display: block;
 	margin-bottom: 5px;
 }
 
-.marker-edit label span{
+.marker-edit label span {
 	width: 100px;
 	float: left;
 }
 
-.marker-edit label input{
+.marker-edit label input {
 	height: 25px;
 }
 
-.marker-edit label textarea{
-	height:60px;
-    max-width:153px;
+.marker-edit label textarea {
+	height: 60px;
+	max-width: 153px;
 }
 
-.marker-edit label ul li{
+.marker-edit label ul li {
 	float: left;
 	width: 25%;
 }
 
-.marker-desc{
-    max-height: 300px;
+.marker-desc {
+	max-height: 300px;
 	margin-right: -20px;
 	overflow: auto;
 	backround: #FFEC94;
 }
 
-.marker-desc-win p{
+.marker-desc-win p {
 	margin: 10px;
 }
 
-.marker-desc-win{
+.marker-desc-win {
 	padding: 5px;
 	backround: #FFEC94;
 }
 
-.marker-desc label{
-	display:block;
+.marker-desc label {
+	display: block;
 	margin-bottom: 5px;
 }
 
-.marker-desc label span{
+.marker-desc label span {
 	width: 100px;
 	float: left;
 }
@@ -432,16 +432,127 @@ form.signin .textbox input {
 	top: 1px;
 }
 
-.circle{
-    width:20px;
-    height:20px;
-    border-radius:20px;
-    background:#FFF0AA;
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 2px;
+.circle {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	background: #FFF0AA;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 2px;
 }
 
-#rating_bar ul{
-    list-style-type: none;   
+#rating_bar ul {
+	list-style-type: none;
+}
+
+#commentBox {
+	resize: none;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 4px;
+	border: 1px solid #333;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.comment-button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #B4D8E7;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #B4D8E7;
+	box-shadow: inset 0px 1px 0px 0px #B4D8E7;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #B4D8E7
+		), color-stop(1, #B4D8E7));
+	background: -moz-linear-gradient(center top, #B4D8E7 5%, #B4D8E7 100%);
+	background-color: #B4D8E7;
+	-webkit-border-top-left-radius: 0px;
+	-moz-border-radius-topleft: 0px;
+	border-top-left-radius: 0px;
+	-webkit-border-top-right-radius: 0px;
+	-moz-border-radius-topright: 0px;
+	border-top-right-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+	text-indent: 0px;
+	color: #ffffff;
+	display: block;
+	width: 100%;
+	margin: 0;
+	margin-top: 1px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	height: 55px;
+	line-height: 50px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #2C6700;
+}
+
+.comment-button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #56BAEC
+		), color-stop(1, #56BAEC));
+	background-color: #56BAEC;
+}
+
+.comment-button:active {
+	position: relative;
+	top: 1px;
+}
+
+.comment-text {
+	position: relative;
+	margin: 0;
+	height: 100%;
+	padding: 4px;
+	border: 5px solid #B0E57C;
+	margin-bottom: 5px;
+	color: #333;
+	background: #fff;
+	word-wrap: break-word;
+}
+
+.comment-text:before {
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	left: 40px;
+	border-width: 20px 20px 0;
+	border-style: solid;
+	border-color: #B0E57C transparent;
+	display: block;
+	width: 0;
+}
+
+.comment-text:after {
+	content: "";
+	position: absolute;
+	bottom: -13px;
+	left: 47px;
+	border-width: 13px 13px 0;
+	border-style: solid;
+	border-color: #fff transparent;
+	display: block;
+	width: 0;
+}
+
+.comment-info {
+	margin: 5px;
+}
+
+#comment-list{
+	list-style:none;
+}
+
+#comments{
+	overflow:auto;
+	height: 79%
 }

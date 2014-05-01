@@ -18,3 +18,25 @@ function getInfo(categoryName){
 		toMap(responseText, categoryName);	
 	});
 }
+
+//Comment bari osa
+
+$('#comment-buttonid').attr('disabled','disabled');
+
+$('#commentBox').keyup(function(){
+    var text = $('#commentBox').val();
+    if(text.length<1){
+        $('#comment-buttonid').attr('disabled','disabled');
+    }else{
+        $('#comment-buttonid').removeAttr('disabled');
+    }
+}); 
+
+$('#comment-buttonid').click(function(){
+    if ( $('#comment-buttonid').attr('disabled') == "disabled" ) {
+       return false;
+      }
+    else {
+       alert("clicked");
+   }
+});

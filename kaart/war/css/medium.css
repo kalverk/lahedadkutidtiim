@@ -13,7 +13,5 @@
 
 #secondary-two {
 	float: left;
-	overflow: auto;
 	margin-right: 5px;
-	display: inline-block;
 }

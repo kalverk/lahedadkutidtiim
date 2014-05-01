@@ -40,17 +40,15 @@ $(window).resize(
 			var width = $(this).width()-20;
 			$('#main-content').height(height);
 			if(isLargeLayout){
-				$('#main-content').width(width-200);
+				$('#main-content').width(width-250);
 				$('#secondary-two').height(height);
 				$('#secondary-two').width(width-$('#main-content').width()-22);
 			}else if(isSmallLayout){
 				$('#main-content').width(width);
-				$('#secondary-two').height(height/2);
 				$('#secondary-two').width(width);
 			}
 			else{
 				$('#main-content').width(width);
-				$('#secondary-two').height(height/2);
 				$('#secondary-two').width(width);
 			}
 		});

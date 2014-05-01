@@ -17,16 +17,18 @@
 </head>
 
 <body class="no-js">
-	<script type="text/javascript"> document.body.className = document.body.className.replace("no-js","js");
+	<script type="text/javascript">
+		document.body.className = document.body.className
+				.replace("no-js", "js");
 	</script>
 	<div id="fb-root"></div>
 	<div id="page-wrap">
 		<div id="header">
 			<div id="toolbar">
-			
+
 				<h1 id="nojs">Spordikaart</h1>
 				<ul id="navigation">
-				
+
 					<li><input type="image" id="football"
 						src="images/iconsB/football.png" class="ImgButton"></input></li>
 					<li><input type="image" id="basketball"
@@ -77,62 +79,104 @@
 			</div>
 			<div id="login">
 				<ul id="navigation2">
-					<li><a href="#login-box" id="login-windowid" class="login-window"
-      					onclick="showLoginForm('a.login-window')">Log in</a></li>
+					<li><a href="#login-box" id="login-windowid"
+						class="login-window" onclick="showLoginForm('a.login-window')">Log
+							in</a></li>
 				</ul>
 			</div>
 		</div>
-		
+
 		<div id="nojs2">
 			<form action="KaartServlet" method="get">
 				<select name="category">
-				  <option value="football">Football</option>
-				  <option value="basketball">Basketball</option>
-				  <option value="volleyball">Volleyball</option>
-				  <option value="tennis">Tennis</option>
-				  <option value="tabletennis">Tabletennis</option>
-				  <option value="pool">Pool</option>
-				  <option value="bowling">Bowling</option>
-				  <option value="golf">Golf</option>
-				  <option value="hockey">Hockey</option>
-				  <option value="baseball">Baseball</option>
-				  <option value="crosscountry">Crosscountry</option>
-				  <option value="iceskating">Iceskating</option>
-				  <option value="snowboard">Snowboard</option>
-				  <option value="skatepark">Skatepark</option>
-				  <option value="archery">Archery</option>
-				  <option value="bicycle">Bicycle</option>
-				  <option value="diving">Diving</option>
-				  <option value="rowing">Rowing</option>
-				  <option value="skating">Skating</option>
-				  <option value="running">Running</option>
-				  <option value="gym">Gym</option>
-				</select>
-				<input type="hidden" name="method" value="infoNOJS" />
-       			<input type="submit" value="Get locations" />        			
-    		</form>
-    		<table>
-	    		<tr>
-	    			<th>Name</th>
-	    			<th>Description</th>
-	    			<th>Link</th>
-	    			<th>Location</th>
-    			</tr>
-    			<% if(request.getAttribute("id") != null){ %>
-    			<%= (String)request.getAttribute("id") %>
-    			<% }else{%>
-    			<%=""%>
-    			<%} %>
-    		</table>
-			
+					<option value="football">Football</option>
+					<option value="basketball">Basketball</option>
+					<option value="volleyball">Volleyball</option>
+					<option value="tennis">Tennis</option>
+					<option value="tabletennis">Tabletennis</option>
+					<option value="pool">Pool</option>
+					<option value="bowling">Bowling</option>
+					<option value="golf">Golf</option>
+					<option value="hockey">Hockey</option>
+					<option value="baseball">Baseball</option>
+					<option value="crosscountry">Crosscountry</option>
+					<option value="iceskating">Iceskating</option>
+					<option value="snowboard">Snowboard</option>
+					<option value="skatepark">Skatepark</option>
+					<option value="archery">Archery</option>
+					<option value="bicycle">Bicycle</option>
+					<option value="diving">Diving</option>
+					<option value="rowing">Rowing</option>
+					<option value="skating">Skating</option>
+					<option value="running">Running</option>
+					<option value="gym">Gym</option>
+				</select> <input type="hidden" name="method" value="infoNOJS" /> <input
+					type="submit" value="Get locations" />
+			</form>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Link</th>
+					<th>Location</th>
+				</tr>
+				<%
+					if (request.getAttribute("id") != null) {
+				%>
+				<%=(String) request.getAttribute("id")%>
+				<%
+					} else {
+				%>
+				<%=""%>
+				<%
+					}
+				%>
+			</table>
+
 		</div>
 
 		<div id="main-content">Map</div>
 
-		<div id="secondary-two">Comment</div>
-		
+		<div id="secondary-two">
+			<div id="comments">
+				<ul id="comment-list">
+					<li id="c1">
+						<div class="comment">
+							<div class="comment-text">
+								<p>Koloraado mardikatel on "jooksuaeg" nende maipühade aegu. See tsükkel kestab neil 1.-9. maini, sel ajal on putukad kõige aktiivsemad.
+Nii juhtub kui õigeaegselt kahjuritõrjet ei tee.
+Mul endal läks kartulipõld hukka eelmisel aastal..</p>
+							</div>
+							<p class="comment-info">Margus</p>
+						</div>
+					</li>
+					<li id="c1">
+						<div class="comment">
+							<div class="comment-text">
+								<p>Kui NATO ja Venemaa peaksid ka tegelikkuses omavahel sõdimist alustama, siis ei oskaks mina öelda, kumb jääb peale.
+Aga mida hakkaks tegema NATO Venemaaga kui kaalukauss peaks nende kasuks kalduma. Pole ta ju kusagil, kus demokraatiat käinud kehtestamas, kohalikega midagi peale osanud hakata.
+Seda, mida teeb Venemaa võidu korral, ma umbes aiman ja ma ei taha sellele isagi mõelda.
+Ühte tean ma kindlasti, meie rahvas kaotab selles sõjas ükskõik, kumba hõlma alla me poeksime.</p>
+							</div>
+							<p class="comment-info">Leelotaja</p>
+						</div>
+					</li>
+					<li id="c1">
+						<div class="comment">
+							<div class="comment-text">
+								<p>Eks see olegi jänkide eesmärk, et tuua see sõjatanner sinna, kus mingid vasallaborigeenid. See võiks meid huvitada, aga mis teha, kui valitsejatel mõistust ei ole.</p>
+							</div>
+							<p class="comment-info">Maidan</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<textarea id="commentBox" rows="5" placeholder="Add comment"></textarea>
+			<a id="comment-buttonid" class="comment-button">Comment</a>
+		</div>
+
 		<a href="#login-box" id="login-windowid2" class="login-window"
-      					onclick="showLoginForm('a.login-window')">Log in</a>
+			onclick="showLoginForm('a.login-window')">Log in</a>
 
 		<div id="login-box" class="login-popup">
 			<a href="#" class="close" onclick="closeLoginForm()"><img
@@ -163,21 +207,21 @@
 	<div id="legend"></div>
 
 
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-<script type='text/javascript'
-	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-<script type="text/javascript"
-	src="http://connect.facebook.net/en_US/all.js"></script>
-<!--<script type="text/javascript" src="js/f.js"></script>-->
-<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
-<script type='text/javascript' src='js/resolution-change.js'></script>
-<script type="text/javascript" src="js/loginbutton.js"></script>
-<script type="text/javascript" src="js/facebook.js"></script>
-<script type="text/javascript" src="js/toolbarDOM.js"></script>
-<script type="text/javascript" src="js/swfaddress.js"></script>
-<script type="text/javascript" src="js/ajaxlinking.js"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script type='text/javascript'
+		src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+	<script type="text/javascript"
+		src="http://connect.facebook.net/en_US/all.js"></script>
+	<!--<script type="text/javascript" src="js/f.js"></script>-->
+	<script type="text/javascript" src="js/map_canvas_initialize.js"></script>
+	<script type='text/javascript' src='js/resolution-change.js'></script>
+	<script type="text/javascript" src="js/loginbutton.js"></script>
+	<script type="text/javascript" src="js/facebook.js"></script>
+	<script type="text/javascript" src="js/toolbarDOM.js"></script>
+	<script type="text/javascript" src="js/swfaddress.js"></script>
+	<script type="text/javascript" src="js/ajaxlinking.js"></script>
 </body>
-	
+
 
 </html>
