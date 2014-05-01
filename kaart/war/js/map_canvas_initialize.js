@@ -4,6 +4,7 @@ var liivi = new google.maps.LatLng(58.37824850000001, 26.71467329999996);
 var map;
 var markersArray = [];
 var forceToAddLocation;
+var forceRating;
 var interval;
 
 function initialize() {
@@ -38,29 +39,30 @@ function initialize() {
 		map.setCenter(initialLocation);
 	}
 	forceToAddLocation = false;
+	forceRating = false;
 	showLegend();
 	// for testing
-	//enableLegend();
+	// enableLegend();
 }
 
-function showLegend(){
+function showLegend() {
 	var legend = document.getElementById('legend');
 	var div = document.createElement('div');
 	div.innerHTML = '<label class="legend-label">Add locations</label><input type="image" id="marker" src="images/iconsB/marker.png" class="marker" onclick="checkLoginStatus()"></input>'
-		+ '<label id ="count" class="legend-label">Points on map: 0</label>';
+			+ '<label id ="count" class="legend-label">Points on map: 0</label>';
 	legend.appendChild(div);
 	map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document
 			.getElementById('legend'));
 }
 
-function checkLoginStatus(){
+function checkLoginStatus() {
 	// teiste logimistega tuleb midagi sarnast teha
-	FB.getLoginStatus(function(response){
+	FB.getLoginStatus(function(response) {
 		// kui ta lehele tulles on juba sisselogitud ja klikib legendil
-		if(response.status=='connected'){
+		if (response.status == 'connected') {
 			addPlaces(map.getCenter(), true, true, true);
-		// kui ta lehele tulles ei ole sisselogitud ja klikib legendil
-		}else{
+			// kui ta lehele tulles ei ole sisselogitud ja klikib legendil
+		} else {
 			showLoginForm("a.login-window");
 			// getter oleks mõistlikum aga osad brauserid vist ei toeta seda
 			forceToAddLocation = true;
@@ -69,10 +71,15 @@ function checkLoginStatus(){
 }
 
 function enableLegend() {
-	if(forceToAddLocation){
+	if (forceToAddLocation) {
 		addPlaces(map.getCenter(), true, true, true);
 	}
-    document.getElementById("marker").setAttribute( "onClick", "javascript: addPlaces(map.getCenter(), true, true, true);" );
+	if(forceRating){
+		//addrating
+		//addUserRating(str, userID);
+	}
+	document.getElementById("marker").setAttribute("onClick",
+			"javascript: addPlaces(map.getCenter(), true, true, true);");
 	google.maps.event.addListener(map, 'rightclick', function(event) {
 		addPlaces(event.latLng, true, true, true);
 	});
@@ -90,16 +97,15 @@ function toMap(responseText, categoryName) {
 	doPoll(categoryName);
 }
 
-function addToMap(responseText){
+function addToMap(responseText) {
 	var array = responseText.split("|");
 
 	for (var i = 0; i < array.length; i++) {
 		// muidu viskab viimane element JSON.parse errori ja ei saa pollingut
 		// teha
-		if(!array[i]||array[i]==""){
+		if (!array[i] || array[i] == "") {
 			break;
-		}
-		else{
+		} else {
 			var point = JSON.parse(array[i]);
 			// parsing coords
 			var location = point.location;
@@ -112,40 +118,40 @@ function addToMap(responseText){
 	}
 }
 
-function getCount(categoryName){
+function getCount(categoryName) {
 	$.get('KaartServlet', {
 		method : "getCategoryCount",
 		category : categoryName
 	}, function(responseText) {
-		toCount(responseText);	
+		toCount(responseText);
 	});
 }
 
-function toCount(responseText){
-	if(responseText == ''){
+function toCount(responseText) {
+	if (responseText == '') {
 		responseText = '0';
 	}
-	document.getElementById("count").innerHTML = 'Points on map: ' + responseText; 
+	document.getElementById("count").innerHTML = 'Points on map: '
+			+ responseText;
 }
 
-
-function doPoll(category){
-	if(markersArray){
-		var lastMarker = markersArray[markersArray.length-1];
+function doPoll(category) {
+	if (markersArray) {
+		var lastMarker = markersArray[markersArray.length - 1];
 		var id = marker.get("id");
 	}
-	interval = setInterval(function(){
+	interval = setInterval(function() {
 		$.get('KaartServlet', {
 			method : "findUpdates",
 			category : category,
 			lastid : id
 		}, function(responseText) {
-			addToMap(responseText);	
+			addToMap(responseText);
 		});
 	}, 60000);
 }
 
-function breakInterval(){
+function breakInterval() {
 	clearInterval(interval);
 }
 
@@ -160,51 +166,126 @@ function markerToMap(id, lat, lng) {
 	markersArray.push(marker);
 }
 
-function listenMarker(marker){
-	google.maps.event.addListener(marker, "click", function(event) {
-		$.get('KaartServlet', {
-			method : "getPointDescription",
-			id : this.get("id")
-		}, function(responseText) {
-			var array = responseText.split("|");
-			var point = JSON.parse(array[0]);
-			var id = point.id;
-			var name = point.name;
-			var description = point.description;
-			var link = point.link;
+function listenMarker(marker) {
+	google.maps.event
+			.addListener(
+					marker,
+					"click",
+					function(event) {
+						$
+								.get(
+										'KaartServlet',
+										{
+											method : "getPointDescription",
+											id : this.get("id")
+										},
+										function(responseText) {
+											var array = responseText.split("|");
+											var point = JSON.parse(array[0]);
+											var id = point.id;
+											var name = point.name;
+											var description = point.description;
+											var link = point.link;
 
-			///Latlng to address
-			var latlngstr = point.location.split(",",2);
-			var lat = parseFloat(latlngstr[0]);
-		    var lng = parseFloat(latlngstr[1]);
-		    var latlng = new google.maps.LatLng(lat, lng);
+											// /Latlng to address
+											var latlngstr = point.location
+													.split(",", 2);
+											var lat = parseFloat(latlngstr[0]);
+											var lng = parseFloat(latlngstr[1]);
+											var latlng = new google.maps.LatLng(
+													lat, lng);
 
-			var geocoder = new google.maps.Geocoder();
-			geocoder.geocode({'latLng': latlng}, function(results, status) {
-				var inf = '<div class="marker-desc"><div class="marker-desc-win"><span><h1 id="pointName">'
-					+ name+'</h1><p><div class="marker-desc-edit"><label><span>Description :</span><label id="pointDescription">'
-					+ description+'</label></label>';
-				if (status == google.maps.GeocoderStatus.OK) {
-					if (results[1]) {
-			        	var location = results[1].formatted_address;
-			        }else{
-			        	var location = point.location;
-			        }
-					inf+='<label><span>Address :</span><label id="pointLocation">'+location+'</label></label>';
-				}
-				var urlRegEx = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-				if(urlRegEx.test(link)){
-					var url = link;
-					var link_name = name;
-					inf+='<label><span>Link :</span><label id="pointLink"><a href="'+url+'">'+link_name+'</a></label></label>';
-				}
-				inf+='</div></p></span></div></div>';
-				//infowindow layout tuleb korda teha
-				var infowindow = new google.maps.InfoWindow({content:inf, minWidth:300});
-				infowindow.open(map, marker); 
-			});
-		});
-	});
+											var geocoder = new google.maps.Geocoder();
+											geocoder
+													.geocode(
+															{
+																'latLng' : latlng
+															},
+															function(results,
+																	status) {
+																var inf = '<div class="marker-desc"><div class="marker-desc-win"><span><h1 id="pointName">'
+																		+ name
+																		+ '</h1><p><div class="marker-desc-edit"><label><span>Description :</span><label id="pointDescription">'
+																		+ description
+																		+ '</label></label>';
+																if (status == google.maps.GeocoderStatus.OK) {
+																	if (results[1]) {
+																		var location = results[1].formatted_address;
+																	} else {
+																		var location = point.location;
+																	}
+																	inf += '<label><span>Address :</span><label id="pointLocation">'
+																			+ location
+																			+ '</label></label>';
+																}
+																var urlRegEx = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+																if (urlRegEx
+																		.test(link)) {
+																	var url = link;
+																	var link_name = name;
+																	inf += '<label><span>Link :</span><label id="pointLink"><a href="'
+																			+ url
+																			+ '">'
+																			+ link_name
+																			+ '</a></label></label>';
+																}
+
+																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div></div></p></span></div></div>';
+																// infowindow
+																// layout tuleb
+																// korda teha
+																var content = $(inf);
+																var infowindow = new google.maps.InfoWindow(
+																		{
+																			content : content[0],
+																			minWidth : 300
+																		});
+																infowindow
+																		.open(
+																				map,
+																				marker);
+																var removebtn = content.find('#rating_bar')[0];
+																google.maps.event.addDomListenerOnce(removebtn, "mouseover", function(event) {
+																	var click = false;
+																	$("#rating_bar ul li").mouseenter(function() {
+																		if (!click) {
+																			var str = $(this).index();
+																			for (var i = 0; i <= str; i++) {
+																				$('#rating_bar ul li').eq(i).css('background', '#B0E57C');
+																			}
+																		}
+																	}).mouseleave(function() {
+																		if (!click) {
+																			var str = $(this).index();
+																			for (var i = 0; i <= str; i++) {
+																				$('#rating_bar ul li').eq(i).css('background', '#FFF0AA');
+																			}
+																		}
+																	}).click(function() {
+																		var str = $(this).index();
+																		for (var i = 0; i < 6; i++) {
+																			$('#rating_bar ul li').eq(i).css('background', '#FFF0AA');
+																		}
+																		for (var i = 0; i <= str; i++) {
+																			$('#rating_bar ul li').eq(i).css('background', '#B0E57C');
+																		}
+																		click = true;
+																		FB.getLoginStatus(function(response) {
+																			// kui ta lehele tulles on juba sisselogitud ja klikib legendil
+																			if (response.status == 'connected') {
+																				//seo hinne kasutajaga ja saada ära
+																				var userID = (FB.getAuthResponse() || {}).userID
+																				//addUserRating(str, userID);
+																			} else {
+																				showLoginForm("a.login-window");
+																				forceRating = true;
+																			}
+																		});
+																	});
+																});
+															});
+										});
+					});
 }
 
 function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
@@ -269,7 +350,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 		animation : google.maps.Animation.DROP,
 		title : MapTitle
 	});
-	
+
 	markersArray.push(marker);
 
 	var content = $('<div class="marker-info-win">'
@@ -291,15 +372,14 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 
 	google.maps.event.addDomListener(savebtn, "click", function(event) {
 		var allCheckedValues = $('input:checked').map(function() {
-									return this.value;
-								}).get().join();
+			return this.value;
+		}).get().join();
 		var name = $('input[name="pName"]').val();
 		var desc = $('textarea[name="pDesc"]').val();
 		var link = $('input[name="pLink"]').val();
 		var location = marker.getPosition().toString();
 		var content = $('<div class="marker-desc">'
-				+ '<div class="marker-desc-win"><span>'
-				+ '<h1 id="pointName">'
+				+ '<div class="marker-desc-win"><span>' + '<h1 id="pointName">'
 				+ name
 				+ '</h1><p>'
 				+ '<div class="marker-desc-edit">'
@@ -318,11 +398,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ link
 				+ '</label>'
 				+ '</label>'
-				+ '</div>'
-				+ ' </p>'
-				+ ' </span>'
-				+ '</div>'
-				+ '</div>');
+				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
