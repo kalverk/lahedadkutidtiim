@@ -27,7 +27,9 @@ $('#commentBox').keyup(function(){
     var text = $('#commentBox').val();
     if(text.length<1){
         $('#comment-buttonid').attr('disabled','disabled');
+        $('.comment-button').css('background', '#B4D8E7');
     }else{
+    	$('.comment-button').css('background', '#56BAEC');
         $('#comment-buttonid').removeAttr('disabled');
     }
 }); 
