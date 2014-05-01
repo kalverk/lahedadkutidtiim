@@ -20,9 +20,12 @@ function login(e) {
 				closeLoginForm();
 				enableLegend();
 				$('#login-windowid').text('Log out');
-				document.getElementById("login-windowid").setAttribute(
-						"onClick", "javascript: logout();");
-				$('#login-windowid').attr("href", "#");
+				$('#login-windowid2').text('Log out');
+
+			    document.getElementById("login-windowid").setAttribute( "onClick", "javascript: logout();" );
+			    document.getElementById("login-windowid2").setAttribute( "onClick", "javascript: logout();" );
+
+
 			});
 		}
 	}, {

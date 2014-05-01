@@ -1,6 +1,6 @@
 body {
 	font: 14px Georgia, serif;
-	background: #FDF3E7;
+	background: #FFF0AA;
 }
 
 #page-wrap {
@@ -13,14 +13,14 @@ body {
 }
 
 #header {
-	background: #FDF3E7;
+	background: #FFF0AA;
 }
 
 #main-content {
-	float: left;
+	float:left;
 	background: #eee;
 	overflow: auto;
-	margin-right: 5px;
+	margin-right:5px;
 	border: 1px solid #999;
 }
 
@@ -52,7 +52,7 @@ body {
 }
 
 #nojs{
-	color:#7d1935;
+	color:#B0E57C;
 }
 .js ul#navigation {
 	width: 100%;
@@ -79,12 +79,12 @@ body {
 
 .no-js table, td, th
 {
-border:1px solid #7d1935;
+border:1px solid #B0E57C;
 border-collapse:collapse;
 }
 .no-js th
 {
-background-color:#7d1935;
+background-color:#B0E57C;
 color:white;
 }
 
@@ -124,13 +124,13 @@ color:white;
 }
 
 .login-window {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	box-shadow: inset 0px 1px 0px 0px #7d1935;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
-		), color-stop(1, #c62d1f));
-	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
-	background-color: #7d1935;
+	-moz-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #B0E57C
+		), color-stop(1, #92CD00));
+	background: -moz-linear-gradient(center top, #B0E57C 5%, #92CD00 100%);
+	background-color: #B0E57C;
 	-webkit-border-top-left-radius: 0px;
 	-moz-border-radius-topleft: 0px;
 	border-top-left-radius: 0px;
@@ -144,7 +144,7 @@ color:white;
 	-moz-border-radius-bottomleft: 0px;
 	border-bottom-left-radius: 0px;
 	text-indent: 0px;
-	border: 1px solid #d02718;
+	border: 1px solid #2C6700;
 	display: inline-block;
 	color: #ffffff;
 	font-family: Arial;
@@ -158,14 +158,14 @@ color:white;
 	line-height: 50px;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 0px #810e05;
+	text-shadow: 1px 1px 0px #2C6700;
 }
 
 .login-window:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
-		), color-stop(1, #7d1935));
-	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
-	background-color: #c62d1f;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #92CD00
+		), color-stop(1, #B0E57C));
+	background: -moz-linear-gradient(center top, #92CD00 5%, #B0E57C 100%);
+	background-color: #92CD00;
 }
 
 .login-window:active {
@@ -174,13 +174,13 @@ color:white;
 }
 
 .loggedin_button {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	box-shadow: inset 0px 1px 0px 0px #7d1935;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
-		), color-stop(1, #c62d1f));
-	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
-	background-color: #7d1935;
+	-moz-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #B0E57C
+		), color-stop(1, #92CD00));
+	background: -moz-linear-gradient(center top, #B0E57C 5%, #92CD00 100%);
+	background-color: #B0E57C;
 	-webkit-border-top-left-radius: 0px;
 	-moz-border-radius-topleft: 0px;
 	border-top-left-radius: 0px;
@@ -194,7 +194,7 @@ color:white;
 	-moz-border-radius-bottomleft: 0px;
 	border-bottom-left-radius: 0px;
 	text-indent: 0px;
-	border: 1px solid #d02718;
+	border: 1px solid #2C6700;
 	display: none;
 	color: #ffffff;
 	font-family: Arial;
@@ -239,7 +239,7 @@ color:white;
 	max-width: 300px;
     max-height: 300px;
 	margin-right: -20px;
-	background: #FDF3E7;	
+	background: #FFF0AA;	
     overflow: auto;
 }
 
@@ -279,6 +279,7 @@ color:white;
     max-height: 300px;
 	margin-right: -20px;
 	overflow: auto;
+	backround: #FFEC94;
 }
 
 .marker-desc-win p{
@@ -287,6 +288,7 @@ color:white;
 
 .marker-desc-win{
 	padding: 5px;
+	backround: #FFEC94;
 }
 
 .marker-desc label{
@@ -315,7 +317,7 @@ color:white;
 
 .login-popup {
 	display: none;
-	background: #FDF3E7;
+	background: #FFF0AA;
 	padding: 10px;
 	float: left;
 	position: fixed;
@@ -380,13 +382,13 @@ form.signin .textbox input {
 }
 
 .button {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	box-shadow: inset 0px 1px 0px 0px #7d1935;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
-		), color-stop(1, #c62d1f));
-	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
-	background-color: #7d1935;
+	-moz-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	box-shadow: inset 0px 1px 0px 0px #B0E57C;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #B0E57C
+		), color-stop(1, #92CD00));
+	background: -moz-linear-gradient(center top, #B0E57C 5%, #92CD00 100%);
+	background-color: #B0E57C;
 	-webkit-border-top-left-radius: 0px;
 	-moz-border-radius-topleft: 0px;
 	border-top-left-radius: 0px;
@@ -400,7 +402,7 @@ form.signin .textbox input {
 	-moz-border-radius-bottomleft: 0px;
 	border-bottom-left-radius: 0px;
 	text-indent: 0px;
-	border: 1px solid #d02718;
+	border: 1px solid #2C6700;
 	display: inline-block;
 	color: #ffffff;
 	font-family: Arial;
@@ -415,14 +417,14 @@ form.signin .textbox input {
 	margin-right: 2px;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 0px #810e05;
+	text-shadow: 1px 1px 0px #2C6700;
 }
 
 .button:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
-		), color-stop(1, #7d1935));
-	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
-	background-color: #c62d1f;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #92CD00
+		), color-stop(1, #B0E57C));
+	background: -moz-linear-gradient(center top, #92CD00 5%, #B0E57C 100%);
+	background-color: #92CD00;
 }
 
 .button:active {

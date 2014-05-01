@@ -131,7 +131,7 @@
 
 		<div id="secondary-two">Comment</div>
 		
-		<a href="#login-box" id="login-windowid2" class="login-window2"
+		<a href="#login-box" id="login-windowid2" class="login-window"
       					onclick="showLoginForm('a.login-window')">Log in</a>
 
 		<div id="login-box" class="login-popup">
