@@ -161,7 +161,6 @@
 		</div>
 	</div>
 	<div id="legend"></div>
-	
 
 
 <script type="text/javascript"
