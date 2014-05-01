@@ -7,7 +7,17 @@ function handleChange(evt) {
 			"running", "gym" ];
 
 	if (evt.pathNames[0] == 'login-box') {
-		showLoginForm('a.login-window');
+		if(	$('#login-windowid').text() == 'Log out'){
+			FB.logout(function(response){
+//				alert('user is logged out'); //disable legend?
+			});
+			//logout ka teiste variantidega
+			$('#login-windowid').text('Log in');
+			$('#login-windowid2').text('Log in');
+
+		}else{
+			showLoginForm('a.login-window');
+		}
 	} else if ($.inArray(evt.pathNames[0], categories) >= 0) {
 		getInfo(evt.pathNames[0]);
 		closeLoginForm();

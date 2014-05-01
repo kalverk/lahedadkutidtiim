@@ -1,7 +1,3 @@
-body {
-	background: #FDF3E7;
-}
-
 #page-wrap {
 	width: 100%;
 }
@@ -23,7 +19,6 @@ body {
 
 .login-popup {
 	display: none;
-	background: #FDF3E7;
 	padding: 10px;
 	position: fixed;
 	width: 250px;
@@ -41,55 +36,6 @@ body {
 	overflow: auto;
 	display: block;
 	width: 100%;
-}
-
-.login-window2 {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7d1935;
-	box-shadow: inset 0px 1px 0px 0px #7d1935;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7d1935
-		), color-stop(1, #c62d1f));
-	background: -moz-linear-gradient(center top, #7d1935 5%, #c62d1f 100%);
-	background-color: #7d1935;
-	-webkit-border-top-left-radius: 0px;
-	-moz-border-radius-topleft: 0px;
-	border-top-left-radius: 0px;
-	-webkit-border-top-right-radius: 0px;
-	-moz-border-radius-topright: 0px;
-	border-top-right-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
-	-moz-border-radius-bottomright: 0px;
-	border-bottom-right-radius: 0px;
-	-webkit-border-bottom-left-radius: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	border-bottom-left-radius: 0px;
-	text-indent: 0px;
-	border: 1px solid #d02718;
-	display: inline-block;
-	color: #ffffff;
-	font-family: Arial;
-	font-size: 16px;
-	font-weight: bold;
-	font-style: normal;
-	margin-right: 5px;
-	margin-bottom: 5px;
-	line-height: 50px;
-	text-decoration: none;
-	text-align: center;
-	text-shadow: 1px 1px 0px #810e05;
-	height: 55px;
-}
-
-.login-window2:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f
-		), color-stop(1, #7d1935));
-	background: -moz-linear-gradient(center top, #c62d1f 5%, #7d1935 100%);
-	background-color: #c62d1f;
-}
-
-.login-window2:active {
-	position: relative;
-	top: 1px;
 }
 
 .signin{
