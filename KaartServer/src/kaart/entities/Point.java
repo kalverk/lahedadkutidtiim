@@ -21,6 +21,9 @@ public class Point implements Serializable {
 
 	@OneToMany(mappedBy = "point")
 	private List<Category> pointsByCategory;
+	
+	@OneToMany(mappedBy = "point")
+	private List<Ratings> pointRatings;
 
 	@Column(name = "NAME")
 	private String name;

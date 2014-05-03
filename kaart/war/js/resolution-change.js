@@ -42,7 +42,7 @@ $(window).resize(
 			if(isLargeLayout){
 				$('#main-content').width(width-250);
 				$('#secondary-two').height(height);
-				$('#secondary-two').width(width-$('#main-content').width()-22);
+				$('#secondary-two').width(width-$('#main-content').width()-30);
 			}else if(isSmallLayout){
 				$('#main-content').width(width);
 				$('#secondary-two').width(width);

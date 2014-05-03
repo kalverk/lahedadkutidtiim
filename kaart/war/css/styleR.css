@@ -442,8 +442,13 @@ form.signin .textbox input {
 	margin-right: 2px;
 }
 
+#rating_bar{
+	margin: 2px;
+}
+
 #rating_bar ul {
 	list-style-type: none;
+	margin: 0 auto;
 }
 
 #commentBox {

@@ -20,11 +20,26 @@ public class Translation {
 	public static int translate(String input) {
 		try {
 			String[] inputParameters = input.split(";");
-			if (inputParameters.length == 2) {
+			if(inputParameters[0].equalsIgnoreCase("user_point_rating")){
+				a = inputParameters[1]; // pointID
+				b = inputParameters[2];	// userFBID
+				c = inputParameters[3]; // rating
+				d = inputParameters[4]; // userName
+				return 100;
+			}else if(inputParameters[0].equalsIgnoreCase("user_point_comment")){
+				a = inputParameters[1]; // pointID
+				b = inputParameters[2];	// userFBID
+				c = inputParameters[3]; // comment
+				d = inputParameters[4]; // userName
+				return 110;
+			}else if(inputParameters[0].equalsIgnoreCase("get_point_comments")){
+				a = inputParameters[1]; // pointID
+				return 130;
+			}else if (inputParameters.length == 2) {
 				a = inputParameters[0];
 				b = inputParameters[1];
 				return 120;
-			} else if (inputParameters.length >= 4) {
+			}else if (inputParameters.length >= 4) {
 				a = inputParameters[0];
 				b = inputParameters[1];
 				c = inputParameters[2];

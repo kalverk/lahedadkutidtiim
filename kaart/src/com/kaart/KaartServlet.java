@@ -75,6 +75,11 @@ public class KaartServlet extends HttpServlet {
 			client.setLoc_name(category);
 			client.setId(-11);
 			client.startRunning();
+		}else if(method.equalsIgnoreCase("getPointComments")){
+			String pointID = request.getParameter("pointID").trim();
+			client.setLoc_name(pointID);
+			client.setgetComments(true);
+			client.startRunning();
 		}else if (method.equalsIgnoreCase("infoNOJS")) {
 			String category = null;
 			category = request.getParameter("category").trim().toLowerCase();
@@ -145,6 +150,33 @@ public class KaartServlet extends HttpServlet {
 			client.setCategoryTags(toCategory(cat));
 			client.setInsert(true);
 			client.startRunning();
+		}else if(method.equalsIgnoreCase("adduserrating")){
+			String rating = request.getParameter("rating").trim();
+			String pointID = request.getParameter("pointID").trim();
+			String userID = request.getParameter("userID").trim();
+			String userName = request.getParameter("userName").trim();
+			System.out.println("User " + userID + " rated point " + pointID + " with " + rating);
+			client.setRating(true);
+			client.setLoc_name(pointID);
+			client.setLoc_description(userID);
+			client.setLoc_link(rating);
+			client.setLoc_location(userName);
+			client.startRunning();
+		}else if(method.equalsIgnoreCase("addusercomment")){
+			String comment = request.getParameter("comment").trim();
+			String pointID = request.getParameter("pointID").trim();
+			String userID = request.getParameter("userID").trim();
+			String userName = request.getParameter("userName").trim();
+			System.out.println("User " + userID + " rated point " + pointID + " with " + comment);
+			client.setComment(true);
+			client.setLoc_name(pointID);
+			client.setLoc_description(userID);
+			client.setLoc_link(comment);
+			client.setLoc_location(userName);
+			client.startRunning();
+		}
+		else {
+			throw new IllegalStateException("Serveril puudub selline meetod.");
 		}
 		client.clean();
 		response.setContentType("text/plain");

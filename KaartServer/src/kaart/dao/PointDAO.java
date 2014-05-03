@@ -11,14 +11,15 @@ import org.apache.log4j.Logger;
 
 import kaart.connection.Server;
 import kaart.entities.Category;
+import kaart.entities.Comments;
 import kaart.entities.Point;
+import kaart.entities.Ratings;
+import kaart.entities.User;
 
 /**
- * Access to Point table
+ * Access to Tables
  * 
  */
-
-
 
 public class PointDAO extends GenericDAO {
 	
@@ -35,6 +36,39 @@ public class PointDAO extends GenericDAO {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
 		em.persist(category);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void persistUserRating(Ratings rating) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		em.persist(rating);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void persistUser(User user) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		em.persist(user);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void persistComment(Comments comment) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		em.persist(comment);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void renewUserRating(Ratings rating) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		em.merge(rating);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -113,6 +147,65 @@ public class PointDAO extends GenericDAO {
 		closeEntityManager();
 		return allPoints;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<User> getUserByFBId(String fbID) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		Query allPointsQuery = em
+				.createQuery("Select u from User u WHERE fbUserID = :id");
+		allPointsQuery.setParameter("id", fbID.trim());
+		List<User> user = allPointsQuery.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return user;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Ratings> getUserRatingsOnPoint(Long userid, Long pointid) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		Query allPointsQuery = em
+				.createQuery("Select r from Ratings r WHERE USER_ID = :user AND POINT_ID = :point");
+		allPointsQuery.setParameter("user", userid);
+		allPointsQuery.setParameter("point", pointid);
+		List<Ratings> ratings = allPointsQuery.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return ratings;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Number getPointRaiting(Long id) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		//siit edasi ei jõua? aga peaks...
+		//http://docs.oracle.com/cd/E13189_01/kodo/docs40/full/html/ejb3_overview_query.html
+		Query allPointsQuery = em
+				.createQuery("Select AVG(r.RATING) from Ratings r WHERE r.POINT_ID = :point");
+		allPointsQuery.setParameter("point", id);
+		Number rating = (Number) allPointsQuery.getSingleResult();
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return rating;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Comments> getPointComments(Long pointid) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		Query allPointsQuery = em
+				.createQuery("Select c from Comments c WHERE POINT_ID = :point");
+		allPointsQuery.setParameter("point", pointid);
+		List<Comments> comments = allPointsQuery.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		closeEntityManager();
+		return comments;
+	}
 
 	public String convertCategoryListToString(List<Category> category) {
 		String result = "";
@@ -136,12 +229,21 @@ public class PointDAO extends GenericDAO {
 			String link = p.getLink();
 			result += id + ";" + name + ";" + location + ";" + desc + ";"
 					+ link + "!";
-		}
-		
+		}	
 		return result;
 	}
 	
 	public String convertCountToString(int c){
 		return String.valueOf(c) + ";1.0,1.0!";
+	}
+	
+	public String convertCommentsToString(List<Comments> comments){
+		String result = "point_comments!";
+		for(Comments c : comments){
+			String name = c.getUser().getName();
+			String comment = c.getComment();
+			result += name + ";" + comment + "!";
+		}
+		return result;
 	}
 }

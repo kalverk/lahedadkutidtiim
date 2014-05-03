@@ -20,8 +20,8 @@ public class Client {
 	// private static org.apache.log4j.Logger info = Logger
 	// .getLogger(Client.class);
 	private final static int PORT = 27910;
-	private static String ip = "90.191.164.96";
-//	private static String ip = "localhost";
+//	private static String ip = "90.191.164.96";
+	private static String ip = "localhost";
 
 	private String loc_name = "NA";
 	private String loc_location = "NA";
@@ -30,6 +30,9 @@ public class Client {
 	private long id = -1;
 	private List<String> categoryTags;
 	private boolean insert = false;
+	private boolean rating = false;
+	private boolean comment = false;
+	private boolean getComments = false;
 	private String result;
 
 	private Socket socket = null;
@@ -78,8 +81,12 @@ public class Client {
 						result = "OK";
 					}else{
 						//result to json ja javascriptis peaks parsima
+						String[] str = message.split("!");
 						System.out.println("Inpustring " + message);
-							if(message.matches("^[0-9]+$")){
+							if(str[0].equalsIgnoreCase("point_comments")){
+								//parse kommentaare
+								result = message;
+							}else if(message.matches("^[0-9]+$")){
 								result = message;
 							}else{
 								ArrayList<Point> allPoints = Translation.translate(message);
@@ -100,8 +107,8 @@ public class Client {
 
 	private void connectToServer() throws IOException {
 		// info.info("Attempting to connect to server");
-		socket = new Socket(InetAddress.getByName(ip), PORT);
-//		socket = new Socket(ip, PORT);
+//		socket = new Socket(InetAddress.getByName(ip), PORT);
+		socket = new Socket(ip, PORT);
 		// info.info("Connected");
 		try {
 			Thread.sleep(3000);
@@ -133,11 +140,17 @@ public class Client {
 			for (int i = 0; i < categoryTags.size(); i++) {
 				result += categoryTags.get(i).toLowerCase().trim() + ";";
 			}
-		} else {
+		}else if(rating){
+			result = String.format("%s;%s;%s;%s;%s", "user_point_rating", loc_name.trim(), loc_description.trim(), loc_link.trim(), loc_location.trim());
+		}else if(comment){
+			result = String.format("%s;%s;%s;%s;%s", "user_point_comment", loc_name.trim(), loc_description.trim(), loc_link.trim(), loc_location.trim());
+		}else if(getComments){
+			result = String.format("%s;%s", "get_point_comments", loc_name.trim());
+		}
+		else {
 			result = String.format("%s;%s", loc_name.toLowerCase().trim(),
 					String.valueOf(id));
 		}
-		insert = false;
 		return result;
 	}
 
@@ -167,6 +180,10 @@ public class Client {
 	public void setInsert(boolean insert) {
 		this.insert = insert;
 	}
+	
+	public void setRating(boolean rating) {
+		this.rating = rating;
+	}
 
 	public void setLoc_location(String loc_location) {
 		this.loc_location = loc_location;
@@ -183,6 +200,14 @@ public class Client {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public void setComment(boolean b) {
+		this.comment = b;
+	}
+	
+	public void setgetComments(boolean b){
+		this.getComments = b;
+	}
 
 	public void clean() {
 		this.loc_name = "NA";
@@ -190,6 +215,9 @@ public class Client {
 		this.loc_link = "NA";
 		this.loc_location = "NA";
 		this.insert = false;
+		this.rating = false;
+		this.comment = false;
+		this.getComments = false;
 		this.categoryTags = null;
 		this.id = -1;
 	}

@@ -4,7 +4,7 @@ var liivi = new google.maps.LatLng(58.37824850000001, 26.71467329999996);
 var map;
 var markersArray = [];
 var forceToAddLocation;
-var forceRating;
+var markerID = -1;
 var interval;
 
 function initialize() {
@@ -73,10 +73,6 @@ function checkLoginStatus() {
 function enableLegend() {
 	if (forceToAddLocation) {
 		addPlaces(map.getCenter(), true, true, true);
-	}
-	if(forceRating){
-		//addrating
-		//addUserRating(str, userID);
 	}
 	document.getElementById("marker").setAttribute("onClick",
 			"javascript: addPlaces(map.getCenter(), true, true, true);");
@@ -186,7 +182,6 @@ function listenMarker(marker) {
 											var name = point.name;
 											var description = point.description;
 											var link = point.link;
-
 											// /Latlng to address
 											var latlngstr = point.location
 													.split(",", 2);
@@ -194,6 +189,8 @@ function listenMarker(marker) {
 											var lng = parseFloat(latlngstr[1]);
 											var latlng = new google.maps.LatLng(
 													lat, lng);
+											markerID = id;
+											initializeCommentBar();
 
 											var geocoder = new google.maps.Geocoder();
 											geocoder
@@ -229,7 +226,10 @@ function listenMarker(marker) {
 																			+ link_name
 																			+ '</a></label></label>';
 																}
-
+																var rating = 0.0;
+																inf += '<label><span>Rating :</span><label id="pointLocation">'
+																	+ rating
+																	+ '</label></label>';
 																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div></div></p></span></div></div>';
 																// infowindow
 																// layout tuleb
@@ -244,6 +244,9 @@ function listenMarker(marker) {
 																		.open(
 																				map,
 																				marker);
+																google.maps.event.addListener(infowindow,'closeclick',function(){
+																		markerID = -1;
+																});
 																var removebtn = content.find('#rating_bar')[0];
 																google.maps.event.addDomListenerOnce(removebtn, "mouseover", function(event) {
 																	var click = false;
@@ -270,22 +273,103 @@ function listenMarker(marker) {
 																			$('#rating_bar ul li').eq(i).css('background', '#B0E57C');
 																		}
 																		click = true;
-																		FB.getLoginStatus(function(response) {
-																			// kui ta lehele tulles on juba sisselogitud ja klikib legendil
+																		addUserRating((str+1), marker.get("id"), "4", "Madis");
+																		/*FB.getLoginStatus(function(response) {
+																			// kui ta lehele tulles on juba sisselogitud ja klikib hindamisel
 																			if (response.status == 'connected') {
 																				//seo hinne kasutajaga ja saada ära
+																				var userName = response.name; //pole kindel kas see töötab!
 																				var userID = (FB.getAuthResponse() || {}).userID
-																				//addUserRating(str, userID);
+																				//addUserRating(str, marker.get("id"), userID, userName);
 																			} else {
 																				showLoginForm("a.login-window");
-																				forceRating = true;
 																			}
-																		});
+																		});*/
 																	});
 																});
 															});
 										});
 					});
+}
+
+function addUserRating(rating, pointID, userID, userName){
+	$.post('KaartServlet', {
+		method : "addUserRating",
+		userID : userID,
+		pointID : pointID,
+		rating : rating,
+		userName : userName
+	}, function(responseText) {
+		alert("Rating is posted");
+	});
+}
+
+//Comment bar listeneride osa
+$('#comment-buttonid').attr('disabled','disabled');
+
+$('#commentBox').keyup(function(){
+    var text = $('#commentBox').val();
+    if(text.length<1){
+        $('#comment-buttonid').attr('disabled','disabled');
+        $('.comment-button').css('background', '#B4D8E7');
+    }else{
+    	$('.comment-button').css('background', '#56BAEC');
+        $('#comment-buttonid').removeAttr('disabled');
+    }
+}); 
+
+$('#comment-buttonid').click(function(){
+    if ( $('#comment-buttonid').attr('disabled') == "disabled" || markerID < 0) {
+       return false;
+    }
+    else {
+    	var text = $('#commentBox').val();
+    	/*FB.getLoginStatus(function(response) {
+    		// kui ta lehele tulles on juba sisselogitud ja klikib kommenteerimisel
+    		if (response.status == 'connected') {
+				//seo kommentaar kasutajaga ja saada ära
+    			var userName = response.name; //pole kindel kas see töötab!
+				var userID = (FB.getAuthResponse() || {}).userID
+				//addUserComment(userID, text, userName);
+			} else {
+				showLoginForm("a.login-window");
+			}
+    	});*/
+    	addUserComment("698", text, "Onu");
+   }
+});
+
+function initializeCommentBar(){
+	$.get('KaartServlet', {
+		method : "getPointComments",
+		pointID : markerID
+	}, function(responseText) {
+		var array = responseText.split("!");
+		var addComment = function(comment, name){
+			$('#comment-list').append('<li id="c1"><div class="comment"><div class="comment-text"><p>'+comment+'</p></div><p class="comment-info">'+name+'</p></div>');
+		}
+		for (var i = 1; i < array.length; i++) {
+			var parts = array[i].split(";");
+			var name = parts[0];
+			var comment = parts[1];
+			if(comment!=""&&name!=""){
+				addComment(comment, name);
+			}
+		}		
+	});
+}
+
+function addUserComment(userID, text, userName){
+	$.post('KaartServlet', {
+		method : "addUserComment",
+		userID : userID,
+		pointID : markerID,
+		comment : text,
+		userName : userName
+	}, function(responseText) {
+		$('#comment-list').empty();
+		initializeCommentBar()
+	});
 }
 
 function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {

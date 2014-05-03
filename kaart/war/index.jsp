@@ -140,35 +140,6 @@
 		<div id="secondary-two">
 			<div id="comments">
 				<ul id="comment-list">
-					<li id="c1">
-						<div class="comment">
-							<div class="comment-text">
-								<p>Koloraado mardikatel on "jooksuaeg" nende maipühade aegu. See tsükkel kestab neil 1.-9. maini, sel ajal on putukad kõige aktiivsemad.
-Nii juhtub kui õigeaegselt kahjuritõrjet ei tee.
-Mul endal läks kartulipõld hukka eelmisel aastal..</p>
-							</div>
-							<p class="comment-info">Margus</p>
-						</div>
-					</li>
-					<li id="c1">
-						<div class="comment">
-							<div class="comment-text">
-								<p>Kui NATO ja Venemaa peaksid ka tegelikkuses omavahel sõdimist alustama, siis ei oskaks mina öelda, kumb jääb peale.
-Aga mida hakkaks tegema NATO Venemaaga kui kaalukauss peaks nende kasuks kalduma. Pole ta ju kusagil, kus demokraatiat käinud kehtestamas, kohalikega midagi peale osanud hakata.
-Seda, mida teeb Venemaa võidu korral, ma umbes aiman ja ma ei taha sellele isagi mõelda.
-Ühte tean ma kindlasti, meie rahvas kaotab selles sõjas ükskõik, kumba hõlma alla me poeksime.</p>
-							</div>
-							<p class="comment-info">Leelotaja</p>
-						</div>
-					</li>
-					<li id="c1">
-						<div class="comment">
-							<div class="comment-text">
-								<p>Eks see olegi jänkide eesmärk, et tuua see sõjatanner sinna, kus mingid vasallaborigeenid. See võiks meid huvitada, aga mis teha, kui valitsejatel mõistust ei ole.</p>
-							</div>
-							<p class="comment-info">Maidan</p>
-						</div>
-					</li>
 				</ul>
 			</div>
 			<textarea id="commentBox" rows="5" placeholder="Add comment"></textarea>
