@@ -181,20 +181,14 @@ public class PointDAO extends GenericDAO {
 	public String getPointRaiting(Long id) {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
-		//siit edasi ei jõua? aga peaks...
-		//http://docs.oracle.com/cd/E13189_01/kodo/docs40/full/html/ejb3_overview_query.html
-		System.out.println("ENNE");
 		Query allPointsQuery = em
-				.createQuery("Select r.rating from Ratings r WHERE POINT_ID = :point");
+				.createQuery("Select AVG(r.rating) from Ratings r WHERE r.point.id = :point");
 		allPointsQuery.setParameter("point", id);
-		List<Object> rating = allPointsQuery.getResultList();
-		System.out.println("SIIN");
-		String avg = calculateAverage(rating);
-		System.out.println(avg);
+		Object rating = allPointsQuery.getSingleResult();
 		em.getTransaction().commit();
 		em.close();
 		closeEntityManager();
-		return avg;
+		return String.valueOf(rating);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -218,8 +212,6 @@ public class PointDAO extends GenericDAO {
 			Long id = c.getPoint().getId();
 			result += String.valueOf(id) + ";" + location + "!";
 		}
-		//String count = String.valueOf(getPointsCount(cat));
-		//result += count + ";1.0,1.0!";
 		return result;
 	}
 
@@ -250,16 +242,4 @@ public class PointDAO extends GenericDAO {
 		}
 		return result;
 	}
-	
-	private String calculateAverage(List<Object> marks) {
-		  Integer sum = 0;
-		  if(!marks.isEmpty()) {
-		    for (Object mark : marks) {
-		    	int m = Integer.parseInt(String.valueOf(mark));
-		        sum += m;
-		    }
-		    return String.valueOf(sum.doubleValue() / marks.size());
-		  }
-		  return String.valueOf(sum);
-		}
 }
