@@ -16,6 +16,7 @@ public class Translation {
 		String location;
 		String description;
 		String link;
+		String rating;
 		Long id;
 		
 		try {
@@ -28,14 +29,16 @@ public class Translation {
 					location = objectParts[1].trim();
 					description = "";
 					link = "";
+					rating = "";
 				}else{
 					id = Long.parseLong(objectParts[0].trim());
 					name = objectParts[1].trim();
 					location = objectParts[2].trim();
 					description = objectParts[3].trim();
 					link = objectParts[4].trim();
+					rating = objectParts[5].trim();
 				}
-				Point p = new Point(id, name, location, description, link);
+				Point p = new Point(id, name, location, description, link, rating);
 				allPoints.add(p);
 			}
 		}catch(Exception e){

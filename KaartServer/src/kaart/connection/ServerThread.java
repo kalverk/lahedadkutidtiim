@@ -94,8 +94,8 @@ public class ServerThread extends Thread {
 
 				try {
 					List<Point> point = pointDao.getDetailedPointDescription(b);
-					//Number rating = pointDao.getPointRaiting(point.get(0).getId());
-					result = pointDao.convertListToString(point);
+					String rating = pointDao.getPointRaiting(point.get(0).getId());
+					result = pointDao.convertListToString(point) + rating + "!";
 				} catch (Exception e) {
 					logger.error("Could not get detailed point description", e);
 				}

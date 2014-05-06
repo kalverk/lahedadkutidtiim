@@ -42,7 +42,7 @@ function initialize() {
 	forceRating = false;
 	showLegend();
 	// for testing
-	// enableLegend();
+	enableLegend();
 }
 
 function showLegend() {
@@ -182,6 +182,7 @@ function listenMarker(marker) {
 											var name = point.name;
 											var description = point.description;
 											var link = point.link;
+											var rating = point.rating;
 											// /Latlng to address
 											var latlngstr = point.location
 													.split(",", 2);
@@ -190,6 +191,7 @@ function listenMarker(marker) {
 											var latlng = new google.maps.LatLng(
 													lat, lng);
 											markerID = id;
+											clearComments();
 											initializeCommentBar();
 
 											var geocoder = new google.maps.Geocoder();
@@ -226,9 +228,8 @@ function listenMarker(marker) {
 																			+ link_name
 																			+ '</a></label></label>';
 																}
-																var rating = 0.0;
 																inf += '<label><span>Rating :</span><label id="pointLocation">'
-																	+ rating
+																	+ point.rating
 																	+ '</label></label>';
 																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div></div></p></span></div></div>';
 																// infowindow
@@ -246,6 +247,7 @@ function listenMarker(marker) {
 																				marker);
 																google.maps.event.addListener(infowindow,'closeclick',function(){
 																		markerID = -1;
+																		clearComments();
 																});
 																var removebtn = content.find('#rating_bar')[0];
 																google.maps.event.addDomListenerOnce(removebtn, "mouseover", function(event) {
@@ -273,7 +275,7 @@ function listenMarker(marker) {
 																			$('#rating_bar ul li').eq(i).css('background', '#B0E57C');
 																		}
 																		click = true;
-																		addUserRating((str+1), marker.get("id"), "4", "Madis");
+																		addUserRating((str+1), marker.get("id"), "698", "Onu");
 																		/*FB.getLoginStatus(function(response) {
 																			// kui ta lehele tulles on juba sisselogitud ja klikib hindamisel
 																			if (response.status == 'connected') {
@@ -339,6 +341,10 @@ $('#comment-buttonid').click(function(){
    }
 });
 
+function clearComments(){
+	$('#comment-list').empty();
+}
+
 function initializeCommentBar(){
 	$.get('KaartServlet', {
 		method : "getPointComments",
@@ -348,14 +354,18 @@ function initializeCommentBar(){
 		var addComment = function(comment, name){
 			$('#comment-list').append('<li id="c1"><div class="comment"><div class="comment-text"><p>'+comment+'</p></div><p class="comment-info">'+name+'</p></div>');
 		}
-		for (var i = 1; i < array.length; i++) {
-			var parts = array[i].split(";");
-			var name = parts[0];
-			var comment = parts[1];
-			if(comment!=""&&name!=""){
-				addComment(comment, name);
+		if(array.length<3){
+			addComment("Be the first to share you experience with this location!", "Tinn the adminn");
+		}else{
+			for (var i = 1; i < array.length; i++) {
+				var parts = array[i].split(";");
+				var name = parts[0];
+				var comment = parts[1];
+				if(comment!=""&&name!=""){
+					addComment(comment, name);
+				}
 			}
-		}		
+		}
 	});
 }
 
@@ -367,7 +377,6 @@ function addUserComment(userID, text, userName){
 		comment : text,
 		userName : userName
 	}, function(responseText) {
-		$('#comment-list').empty();
 		initializeCommentBar()
 	});
 }
@@ -483,13 +492,18 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ '</label>'
 				+ '</label>'
 				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
+		//var userID = (FB.getAuthResponse() || {}).userID
+		var userID = 10;
+		var userName = "Mati";
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
 			desc : desc,
 			link : link,
 			categories : allCheckedValues,
-			location : location
+			location : location,
+			userID : userID,
+			userName : userName
 		}, function(responseText) {
 			infowindow.setContent(content[0]);
 		});

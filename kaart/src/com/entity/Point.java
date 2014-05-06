@@ -7,13 +7,15 @@ public class Point {
 	private String description;
 	private String link;
 	private Long id;
+	private String rating;
 
-	public Point(Long id, String name, String location, String description, String link) {
+	public Point(Long id, String name, String location, String description, String link, String rating) {
 		this.id = id;
 		this.name = name;
 		this.location = location;
 		this.description = description;
 		this.link = link;
+		this.rating = rating;
 	}
 
 	public Long getId() {
@@ -54,6 +56,14 @@ public class Point {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	public String getRating() {
+		return this.rating;
+	}
+
+	public void setRating(String rating){
+		this.rating = rating;
 	}
 
 	@Override

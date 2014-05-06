@@ -49,6 +49,7 @@ public class KaartServlet extends HttpServlet {
 			String link = request.getParameter("link").trim();
 			String location = request.getParameter("location");
 			String cat = request.getParameter("categories").trim();
+			String userID = request.getParameter("userID").trim();
 			// System.out.println("name " + name
 			// +" location "+toPoint(location)+ " desc " + desc + " link " +
 			// link + " cat " + toCategory(cat));
