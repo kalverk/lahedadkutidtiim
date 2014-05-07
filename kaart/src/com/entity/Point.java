@@ -8,14 +8,24 @@ public class Point {
 	private String link;
 	private Long id;
 	private String rating;
+	private String userFbId;
 
-	public Point(Long id, String name, String location, String description, String link, String rating) {
+	public Point(Long id, String name, String location, String description, String link, String rating, String userFbId) {
 		this.id = id;
 		this.name = name;
 		this.location = location;
 		this.description = description;
 		this.link = link;
 		this.rating = rating;
+		this.userFbId = userFbId;
+	}
+
+	public String getUserFbId() {
+		return userFbId;
+	}
+
+	public void setUserFbId(String userFbId) {
+		this.userFbId = userFbId;
 	}
 
 	public Long getId() {

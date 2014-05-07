@@ -14,6 +14,7 @@ public class Translation {
 	private static String b; // location or id
 	private static String c; // description
 	private static String d; // link
+	private static String e;
 
 	private static List<String> categories = new ArrayList<String>(); //category tags
 
@@ -35,6 +36,10 @@ public class Translation {
 			}else if(inputParameters[0].equalsIgnoreCase("get_point_comments")){
 				a = inputParameters[1]; // pointID
 				return 130;
+			}else if(inputParameters[0].equalsIgnoreCase("user_registration")){
+				a = inputParameters[1]; // userFBID
+				b = inputParameters[2];	// userName
+				return 150;
 			}else if (inputParameters.length == 2) {
 				a = inputParameters[0];
 				b = inputParameters[1];
@@ -44,6 +49,7 @@ public class Translation {
 				b = inputParameters[1];
 				c = inputParameters[2];
 				d = inputParameters[3];
+				e = inputParameters[inputParameters.length-1];
 				for(int i=4;i<inputParameters.length;i++){
 					if(inputParameters[i].equalsIgnoreCase("")||inputParameters[i].equalsIgnoreCase(" ")){}
 					else{
@@ -76,6 +82,9 @@ public class Translation {
 		return d;
 	}
 	
+	public static String getE() {
+		return e;
+	}
 
 	public static List<String> getCategoryTagList(){
 		return categories;

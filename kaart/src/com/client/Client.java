@@ -27,6 +27,7 @@ public class Client {
 	private String loc_location = "NA";
 	private String loc_description = "NA";
 	private String loc_link = "NA";
+	private String loc_userID = "NA";
 	private long id = -1;
 	private List<String> categoryTags;
 	private boolean insert = false;
@@ -140,6 +141,9 @@ public class Client {
 			for (int i = 0; i < categoryTags.size(); i++) {
 				result += categoryTags.get(i).toLowerCase().trim() + ";";
 			}
+			result += loc_userID;
+		}else if(rating&&comment){
+			result = String.format("%s;%s;%s", "user_registration", loc_name.trim(), loc_description.trim());
 		}else if(rating){
 			result = String.format("%s;%s;%s;%s;%s", "user_point_rating", loc_name.trim(), loc_description.trim(), loc_link.trim(), loc_location.trim());
 		}else if(comment){
@@ -205,6 +209,11 @@ public class Client {
 		this.comment = b;
 	}
 	
+	public void setUserID(String id) {
+		this.loc_userID = id;
+	}
+	
+	
 	public void setgetComments(boolean b){
 		this.getComments = b;
 	}
@@ -214,6 +223,7 @@ public class Client {
 		this.loc_description = "NA";
 		this.loc_link = "NA";
 		this.loc_location = "NA";
+		this.loc_userID = "NA";
 		this.insert = false;
 		this.rating = false;
 		this.comment = false;

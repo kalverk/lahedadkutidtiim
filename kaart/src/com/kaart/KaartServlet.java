@@ -138,6 +138,7 @@ public class KaartServlet extends HttpServlet {
 			String link = request.getParameter("link").trim();
 			String location = request.getParameter("location");
 			String cat = request.getParameter("categories").trim();
+			String userID = request.getParameter("userID").trim();
 			// System.out.println("name " + name
 			// +" location "+toPoint(location)+ " desc " + desc + " link " +
 			// link + " cat " + toCategory(cat));
@@ -149,6 +150,7 @@ public class KaartServlet extends HttpServlet {
 			client.setLoc_description(desc);
 			client.setLoc_link(link);
 			client.setCategoryTags(toCategory(cat));
+			client.setUserID(userID);
 			client.setInsert(true);
 			client.startRunning();
 		}else if(method.equalsIgnoreCase("adduserrating")){
@@ -156,7 +158,7 @@ public class KaartServlet extends HttpServlet {
 			String pointID = request.getParameter("pointID").trim();
 			String userID = request.getParameter("userID").trim();
 			String userName = request.getParameter("userName").trim();
-			System.out.println("User " + userID + " rated point " + pointID + " with " + rating);
+			//System.out.println("User " + userID + " rated point " + pointID + " with " + rating);
 			client.setRating(true);
 			client.setLoc_name(pointID);
 			client.setLoc_description(userID);
@@ -168,13 +170,25 @@ public class KaartServlet extends HttpServlet {
 			String pointID = request.getParameter("pointID").trim();
 			String userID = request.getParameter("userID").trim();
 			String userName = request.getParameter("userName").trim();
-			System.out.println("User " + userID + " rated point " + pointID + " with " + comment);
+			//System.out.println("User " + userID + " rated point " + pointID + " with " + comment);
 			client.setComment(true);
 			client.setLoc_name(pointID);
 			client.setLoc_description(userID);
 			client.setLoc_link(comment);
 			client.setLoc_location(userName);
 			client.startRunning();
+		}else if(method.equalsIgnoreCase("adduser")){
+			String userID = request.getParameter("userID").trim();
+			String userName = request.getParameter("userName").trim();
+			client.setComment(true);
+			client.setRating(true);
+			//System.out.println("User " + userID + " username " + userName);
+			client.setLoc_name(userID);
+			client.setLoc_description(userName);
+			client.startRunning();
+		}else if(method.equalsIgnoreCase("deleteuserpoint")){
+			String pointID = request.getParameter("pointID").trim();
+			System.out.println("Deleting point " + pointID);
 		}
 		else {
 			throw new IllegalStateException("Serveril puudub selline meetod.");

@@ -11,13 +11,31 @@ window.fbAsyncInit = function() {
 };
 
 function login(e) {
-	if (!init) {
+	var userName = "Madis";
+	var userID = 112;
+	$.post('KaartServlet', {
+		method : "addUser",
+		userID : userID,
+		userName : userName
+	}, function(responseText) {
+		alert("user saved");
+	});
+	/*if (!init) {
 		window.fbAsyncInit()
 	}
 	FB.login(function(e) {
 		if (e.authResponse) {
 			FB.api("/me", function(e) {
 				closeLoginForm();
+				var userName = e.name;
+				var userID = e.userID
+				//servletisse tegemata, kas nii saab need ikka kätte?
+				$.post('KaartServlet', {
+					method : "addUser",
+					userID : userID,
+					userName : userName
+				}, function(responseText) {
+				});
 				enableLegend();
 				$('#login-windowid').text('Log out');
 				$('#login-windowid2').text('Log out');
@@ -30,7 +48,7 @@ function login(e) {
 		}
 	}, {
 		perms : ""
-	});
+	});*/
 }
 
 // Load the SDK Asynchronously

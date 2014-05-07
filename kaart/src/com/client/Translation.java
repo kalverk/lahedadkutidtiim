@@ -16,6 +16,7 @@ public class Translation {
 		String location;
 		String description;
 		String link;
+		String userFbId;
 		String rating;
 		Long id;
 		
@@ -30,15 +31,17 @@ public class Translation {
 					description = "";
 					link = "";
 					rating = "";
+					userFbId = "";
 				}else{
 					id = Long.parseLong(objectParts[0].trim());
 					name = objectParts[1].trim();
 					location = objectParts[2].trim();
 					description = objectParts[3].trim();
 					link = objectParts[4].trim();
-					rating = objectParts[5].trim();
+					userFbId = objectParts[5].trim();
+					rating = objectParts[6].trim();
 				}
-				Point p = new Point(id, name, location, description, link, rating);
+				Point p = new Point(id, name, location, description, link, rating, userFbId);
 				allPoints.add(p);
 			}
 		}catch(Exception e){

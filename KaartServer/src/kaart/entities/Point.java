@@ -24,6 +24,9 @@ public class Point implements Serializable {
 	
 	@OneToMany(mappedBy = "point")
 	private List<Ratings> pointRatings;
+	
+	@ManyToOne
+	private User user;
 
 	@Column(name = "NAME")
 	private String name;
@@ -42,11 +45,12 @@ public class Point implements Serializable {
 		super();
 	}
 
-	public Point(String name, String location, String description, String link) {
+	public Point(String name, String location, String description, String link, User user) {
 		this.name = name;
 		this.location = location;
 		this.description = description;
 		this.link = link;
+		this.user = user;
 	}
 	
 
@@ -88,6 +92,10 @@ public class Point implements Serializable {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 
 	@Override

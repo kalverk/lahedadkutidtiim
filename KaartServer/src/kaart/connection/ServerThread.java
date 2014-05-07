@@ -135,12 +135,13 @@ public class ServerThread extends Thread {
 			try {
 				String c = Translation.getC();
 				String d = Translation.getD();
-				Point p = new Point(a, b, c, d);
+				String e = Translation.getE();
+				List<User> users = pointDao.getUserByFBId(e);
+				Point p = new Point(a, b, c, d, users.get(0));
 				pointDao.persistPoint(p);
 				List<String> categoryTags = Translation.getCategoryTagList();
-				for (int i = 0; i < categoryTags.size(); i++) {
+				for (int i = 0; i < categoryTags.size()-1; i++) {
 					Category category = new Category(categoryTags.get(i), p);
-					System.out.println(categoryTags.get(i));
 					pointDao.persistCategory(category);
 				}
 				result = "OK";
@@ -189,7 +190,7 @@ public class ServerThread extends Thread {
 				user = users.get(0);
 				
 			}else{
-				user = new User(name, b.trim());
+				user = new User(name, b);
 				pointDao.persistUser(user);
 			}
 			Comments comment = new Comments(point, user, text);
@@ -198,6 +199,15 @@ public class ServerThread extends Thread {
 		}else if(t==130){
 			List<Comments> comments = pointDao.getPointComments(Long.valueOf(a));
 			result = pointDao.convertCommentsToString(comments);
+		}else if(t==150){
+			User user;
+			List<User> users = pointDao.getUserByFBId(a);
+			if(users.size()>0){
+			}else{
+				user = new User(b, a);
+				pointDao.persistUser(user);
+			}
+			result = "OK";
 		}else {
 			logger.info("Invalid request");
 		}

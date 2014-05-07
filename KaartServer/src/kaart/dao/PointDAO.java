@@ -223,8 +223,9 @@ public class PointDAO extends GenericDAO {
 			String location = p.getLocation();
 			String desc = p.getDescription();
 			String link = p.getLink();
+			String userFBID = p.getUser().getFbUserID();
 			result += id + ";" + name + ";" + location + ";" + desc + ";"
-					+ link + ";";
+					+ link + ";" + userFBID + ";";
 		}	
 		return result;
 	}

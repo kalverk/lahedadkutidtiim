@@ -183,6 +183,7 @@ function listenMarker(marker) {
 											var description = point.description;
 											var link = point.link;
 											var rating = point.rating;
+											var userFbId = point.userFbId;
 											// /Latlng to address
 											var latlngstr = point.location
 													.split(",", 2);
@@ -231,11 +232,24 @@ function listenMarker(marker) {
 																inf += '<label><span>Rating :</span><label id="pointLocation">'
 																	+ point.rating
 																	+ '</label></label>';
-																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div></div></p></span></div></div>';
+																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div>';
+																//var userID = (FB.getAuthResponse() || {}).userID
+																var userID = 1098;
+																if(userID==userFbId){
+																	//add deletion button
+																	inf+='<button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></p></span></div></div>';
+																	var content = $(inf);
+																	var removebtn = content.find('button.remove-marker')[0];
+																	google.maps.event.addDomListener(removebtn, "click", function(event) {
+																		removeMarker(marker);
+																	});
+																}else{
+																	inf +='</div></p></span></div></div>';
+																	var content = $(inf);
+																}
 																// infowindow
 																// layout tuleb
 																// korda teha
-																var content = $(inf);
 																var infowindow = new google.maps.InfoWindow(
 																		{
 																			content : content[0],
@@ -249,8 +263,8 @@ function listenMarker(marker) {
 																		markerID = -1;
 																		clearComments();
 																});
-																var removebtn = content.find('#rating_bar')[0];
-																google.maps.event.addDomListenerOnce(removebtn, "mouseover", function(event) {
+																var ratingbar = content.find('#rating_bar')[0];
+																google.maps.event.addDomListenerOnce(ratingbar, "mouseover", function(event) {
 																	var click = false;
 																	$("#rating_bar ul li").mouseenter(function() {
 																		if (!click) {
@@ -281,7 +295,7 @@ function listenMarker(marker) {
 																			if (response.status == 'connected') {
 																				//seo hinne kasutajaga ja saada ära
 																				var userName = response.name; //pole kindel kas see töötab!
-																				var userID = (FB.getAuthResponse() || {}).userID
+																				userID = (FB.getAuthResponse() || {}).userID
 																				//addUserRating(str, marker.get("id"), userID, userName);
 																			} else {
 																				showLoginForm("a.login-window");
@@ -493,8 +507,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ '</label>'
 				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
 		//var userID = (FB.getAuthResponse() || {}).userID
-		var userID = 10;
-		var userName = "Mati";
+		var userID = 112;
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
@@ -503,7 +516,6 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 			categories : allCheckedValues,
 			location : location,
 			userID : userID,
-			userName : userName
 		}, function(responseText) {
 			infowindow.setContent(content[0]);
 		});
@@ -519,8 +531,15 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 function removeMarker(marker) {
 	if (marker.getDraggable()) {
 		marker.setMap(null);
+	}else{
+		pointID = marker.get("id")
+		$.post('KaartServlet', {
+			method : "deleteUserPoint",
+			pointID : pointID
+		}, function(responseText) {
+			alert("point deleted");
+		});
 	}
-	// else remove from DB?
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
