@@ -39,6 +39,9 @@ public class Point implements Serializable {
 
 	@Column(name = "LINK")
 	private String link;
+	
+	@Column(name = "ISACTIVE")
+	private boolean ISACTIVE = true;
 	private static final long serialVersionUID = 1L;
 
 	public Point() {
@@ -96,6 +99,14 @@ public class Point implements Serializable {
 	
 	public User getUser() {
 		return user;
+	}
+	
+	public boolean isActive() {
+		return ISACTIVE;
+	}
+
+	public void setActive(boolean isActive) {
+		this.ISACTIVE = isActive;
 	}
 
 	@Override

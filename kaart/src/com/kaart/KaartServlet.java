@@ -189,6 +189,9 @@ public class KaartServlet extends HttpServlet {
 		}else if(method.equalsIgnoreCase("deleteuserpoint")){
 			String pointID = request.getParameter("pointID").trim();
 			System.out.println("Deleting point " + pointID);
+			client.setLoc_name("deleteuserpoint");
+			client.setId(Long.valueOf(pointID));
+			client.startRunning();
 		}
 		else {
 			throw new IllegalStateException("Serveril puudub selline meetod.");

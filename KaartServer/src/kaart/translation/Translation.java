@@ -16,7 +16,7 @@ public class Translation {
 	private static String d; // link
 	private static String e;
 
-	private static List<String> categories = new ArrayList<String>(); //category tags
+	private static List<String> categories; //category tags
 
 	public static int translate(String input) {
 		try {
@@ -40,6 +40,9 @@ public class Translation {
 				a = inputParameters[1]; // userFBID
 				b = inputParameters[2];	// userName
 				return 150;
+			}else if(inputParameters[0].equalsIgnoreCase("deleteuserpoint")){
+				a = inputParameters[1]; //pointID
+				return 160;
 			}else if (inputParameters.length == 2) {
 				a = inputParameters[0];
 				b = inputParameters[1];
@@ -50,7 +53,8 @@ public class Translation {
 				c = inputParameters[2];
 				d = inputParameters[3];
 				e = inputParameters[inputParameters.length-1];
-				for(int i=4;i<inputParameters.length;i++){
+				categories = new ArrayList<String>();
+				for(int i=4;i<inputParameters.length-1;i++){
 					if(inputParameters[i].equalsIgnoreCase("")||inputParameters[i].equalsIgnoreCase(" ")){}
 					else{
 						categories.add(inputParameters[i]);

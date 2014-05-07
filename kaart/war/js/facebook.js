@@ -11,8 +11,8 @@ window.fbAsyncInit = function() {
 };
 
 function login(e) {
-	var userName = "Madis";
-	var userID = 112;
+	var userName = "Johanna";
+	var userID = 123;
 	$.post('KaartServlet', {
 		method : "addUser",
 		userID : userID,

@@ -72,6 +72,15 @@ public class PointDAO extends GenericDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void renewPoint(Point point) {
+		EntityManager em = createEntityManager();
+		em.getTransaction().begin();
+		em.merge(point);
+		em.getTransaction().commit();
+		em.close();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Category> getAllPoints() {
@@ -105,14 +114,9 @@ public class PointDAO extends GenericDAO {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
 		Query allPointsQuery = em
-				.createQuery("Select c from Category c WHERE CATEGORY = :category AND POINT_ID > :id");
+				.createQuery("Select c from Category c WHERE CATEGORY = :category AND POINT_ID > :id AND c.point.ISACTIVE = true");
 		allPointsQuery.setParameter("category", category.trim());
 		allPointsQuery.setParameter("id", Long.parseLong(id.trim()));
-//		Query pointsCount = em
-//				.createQuery("SELECT COUNT(*) FROM CATEGORY WHERE CATEGORY = :category GROUP BY CATEGORY;");
-//		pointsCount.setParameter("category", category.trim());
-		//List<Integer> s =  pointsCount.getResultList();
-		//int count = s.get(0);
 		List<Category> allPoints = allPointsQuery.getResultList();
 		em.getTransaction().commit();
 		em.close();
@@ -124,8 +128,8 @@ public class PointDAO extends GenericDAO {
 		EntityManager em = createEntityManager();
 		em.getTransaction().begin();
 		Query pointsCount = em
-				.createQuery("SELECT Count(c) FROM Category c WHERE CATEGORY = :category GROUP BY Category");
-		pointsCount.setParameter("category", category.trim());		
+				.createQuery("SELECT Count(c) FROM Category c WHERE c.point.ISACTIVE = true AND c.Category = :category GROUP BY Category");
+		pointsCount.setParameter("category", category.trim());
 		int s =  ((Long)pointsCount.getSingleResult()).intValue();
 		int count = s;
 		em.getTransaction().commit();

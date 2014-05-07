@@ -120,7 +120,7 @@ public class ServerThread extends Thread {
 						logger.error("Could not get upgraded info", e);
 					}
 				}
-			} else {
+			}else { //vist ei kasutata kunagi getnew peaks ära katma selle.
 				// list points by category Kuidas seda teha, et võtab minu
 				// asukoha ümbrusest?
 				try {
@@ -136,11 +136,14 @@ public class ServerThread extends Thread {
 				String c = Translation.getC();
 				String d = Translation.getD();
 				String e = Translation.getE();
+				System.out.println("A " + a  + " B " + b + " C " + c  + " D " + d + " E " + e);
 				List<User> users = pointDao.getUserByFBId(e);
 				Point p = new Point(a, b, c, d, users.get(0));
 				pointDao.persistPoint(p);
+				System.out.println("UUS PUNKT " + p.toString());
 				List<String> categoryTags = Translation.getCategoryTagList();
-				for (int i = 0; i < categoryTags.size()-1; i++) {
+				for (int i = 0; i < categoryTags.size(); i++) {
+					System.out.println(categoryTags.get(i));
 					Category category = new Category(categoryTags.get(i), p);
 					pointDao.persistCategory(category);
 				}
@@ -207,6 +210,11 @@ public class ServerThread extends Thread {
 				user = new User(b, a);
 				pointDao.persistUser(user);
 			}
+			result = "OK";
+		}else if(t==160){
+			Point point = pointDao.getDetailedPointDescription(a).get(0);
+			point.setActive(false);
+			pointDao.renewPoint(point);
 			result = "OK";
 		}else {
 			logger.info("Invalid request");

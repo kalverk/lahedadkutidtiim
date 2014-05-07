@@ -234,7 +234,7 @@ function listenMarker(marker) {
 																	+ '</label></label>';
 																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div>';
 																//var userID = (FB.getAuthResponse() || {}).userID
-																var userID = 1098;
+																var userID = 123;
 																if(userID==userFbId){
 																	//add deletion button
 																	inf+='<button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></p></span></div></div>';
@@ -391,6 +391,7 @@ function addUserComment(userID, text, userName){
 		comment : text,
 		userName : userName
 	}, function(responseText) {
+		$('#commentBox').val('');
 		initializeCommentBar()
 	});
 }
@@ -507,7 +508,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ '</label>'
 				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
 		//var userID = (FB.getAuthResponse() || {}).userID
-		var userID = 112;
+		var userID = 123;
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
