@@ -142,9 +142,10 @@
 		<div id="secondary-two">
 			<div id="comments">
 				<ul id="comment-list">
+					<li></li>
 				</ul>
 			</div>
-			<textarea id="commentBox" rows="5" placeholder="Add comment"></textarea>
+			<textarea id="commentBox" rows="5" cols="1"></textarea>
 			<a id="comment-buttonid" class="comment-button">Comment</a>
 		</div>
 

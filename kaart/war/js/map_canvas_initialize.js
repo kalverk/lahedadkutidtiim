@@ -88,8 +88,8 @@ function toMap(responseText, categoryName) {
 		}
 		markersArray = [];
 	}
-	addToMap(responseText);
 	getCount(categoryName);
+	addToMap(responseText);
 	doPoll(categoryName);
 }
 
@@ -295,7 +295,6 @@ function listenMarker(marker) {
 																				//seo hinne kasutajaga ja saada ära
 																				var userName = ""; //pole kindel kas see töötab!
 																				u = response.authResponse.userID;
-																				alert(u + " " + userName);
 																				addUserRating(str + 1, marker.get("id"), u, userName);
 																			} else {
 																				showLoginForm("a.login-window");
@@ -346,7 +345,6 @@ $('#comment-buttonid').click(function(){
 				//seo kommentaar kasutajaga ja saada ära
     			var userName = ""; //pole kindel kas see töötab!
 				var u = response.authResponse.userID;;
-				alert(u+" "+userName);
 				addUserComment(u, text, userName);
 			} else {
 				showLoginForm("a.login-window");
@@ -394,6 +392,7 @@ function addUserComment(userID, text, userName){
 	}, function(responseText) {
 		$('#commentBox').val('');
 		initializeCommentBar()
+		alert("Comment sent");
 	});
 }
 
@@ -519,6 +518,8 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 			userID : userID,
 		}, function(responseText) {
 			infowindow.setContent(content[0]);
+			alert("Point saved");
+
 		});
 	});
 

@@ -29,10 +29,11 @@
 	display:none;
 }
 
-#login-windowid2 {
+.js #login-windowid2 {
 	float: left;
 	overflow: auto;
 	display: block;
+	height: 85px;
 	width: 100%;
 }
 

@@ -252,7 +252,6 @@ body {
 	max-width: 300px;
 	max-height: 300px;
 	margin-right: -20px;
-	background: #FFF0AA;
 	overflow: auto;
 }
 
@@ -292,7 +291,6 @@ body {
 	max-height: 300px;
 	margin-right: -20px;
 	overflow: auto;
-	backround: #FFEC94;
 }
 
 .marker-desc-win p {
@@ -301,7 +299,6 @@ body {
 
 .marker-desc-win {
 	padding: 5px;
-	backround: #FFEC94;
 }
 
 .marker-desc label {

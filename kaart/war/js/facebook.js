@@ -23,14 +23,12 @@ function login(e) {
 				closeLoginForm();
 				var userName = e.name;
 				userID = e.id;
-				alert(userID + " " + userName);
 				//servletisse tegemata, kas nii saab need ikka kätte?
 				$.post('KaartServlet', {
 					method : "addUser",
 					userID : userID,
 					userName : userName
 				}, function(responseText) {
-					alert("user saved");
 				});
 				enableLegend();
 				$('#login-windowid').text('Log out');
