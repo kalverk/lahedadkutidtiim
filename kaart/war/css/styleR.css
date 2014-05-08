@@ -33,7 +33,11 @@ body {
     padding:5px;
 }
 
-#login-windowid2 {
+.js #login-windowid2 {
+	display: none;
+}
+
+.no-js #login-windowid2 {
 	display: none;
 }
 
@@ -71,6 +75,10 @@ body {
 }
 
 .no-js ul#navigation2 {
+	display: none;
+}
+
+.no-js #secondary-two {
 	display: none;
 }
 
@@ -121,6 +129,11 @@ body {
 
 .no-js .ImgButton {
 	display: none;
+}
+
+.no-js .nojsButton {
+	background-color:#B0E57C;
+	color:white;
 }
 
 .login-window {
@@ -463,7 +476,7 @@ form.signin .textbox input {
 	overflow-x: hidden;
 }
 
-.comment-button {
+.js .comment-button {
 	-moz-box-shadow: inset 0px 1px 0px 0px #B4D8E7;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #B4D8E7;
 	box-shadow: inset 0px 1px 0px 0px #B4D8E7;

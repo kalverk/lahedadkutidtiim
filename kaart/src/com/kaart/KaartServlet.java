@@ -106,7 +106,8 @@ public class KaartServlet extends HttpServlet {
 					table += "<tr><td>" + son.get("name") + "</td><td>"
 							+ son.get("description") + "</td><td>"
 							+ son.get("link") + "</td><td>"
-							+ son.get("location") + "</td></tr>";
+							+ son.get("location") + "</td></tr>"
+							+ son.get("rating") + "</td><td>";
 
 				} catch (NumberFormatException e) {
 				}

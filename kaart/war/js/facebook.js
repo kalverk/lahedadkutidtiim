@@ -11,16 +11,9 @@ window.fbAsyncInit = function() {
 };
 
 function login(e) {
-	var userName = "Johanna";
-	var userID = 123;
-	$.post('KaartServlet', {
-		method : "addUser",
-		userID : userID,
-		userName : userName
-	}, function(responseText) {
-		alert("user saved");
-	});
-	/*if (!init) {
+	//var userName = "Johanna";
+	//var userID = 123;
+	if (!init) {
 		window.fbAsyncInit()
 	}
 	FB.login(function(e) {
@@ -35,6 +28,7 @@ function login(e) {
 					userID : userID,
 					userName : userName
 				}, function(responseText) {
+					alert("user saved");
 				});
 				enableLegend();
 				$('#login-windowid').text('Log out');
@@ -48,7 +42,7 @@ function login(e) {
 		}
 	}, {
 		perms : ""
-	});*/
+	});
 }
 
 // Load the SDK Asynchronously

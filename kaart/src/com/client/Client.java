@@ -20,8 +20,8 @@ public class Client {
 	// private static org.apache.log4j.Logger info = Logger
 	// .getLogger(Client.class);
 	private final static int PORT = 27910;
-//	private static String ip = "90.191.164.96";
-	private static String ip = "localhost";
+	private static String ip = "90.191.164.96";
+//	private static String ip = "localhost";
 
 	private String loc_name = "NA";
 	private String loc_location = "NA";
@@ -108,8 +108,8 @@ public class Client {
 
 	private void connectToServer() throws IOException {
 		// info.info("Attempting to connect to server");
-//		socket = new Socket(InetAddress.getByName(ip), PORT);
-		socket = new Socket(ip, PORT);
+		socket = new Socket(InetAddress.getByName(ip), PORT);
+//		socket = new Socket(ip, PORT);
 		// info.info("Connected");
 		try {
 			Thread.sleep(3000);

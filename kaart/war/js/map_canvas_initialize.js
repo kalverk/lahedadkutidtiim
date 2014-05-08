@@ -14,35 +14,35 @@ function initialize() {
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(map_canvas, mapOptions);
-	if (navigator.geolocation) {
-		browserSupportFlag = true;
-		navigator.geolocation.getCurrentPosition(function(position) {
-			initialLocation = new google.maps.LatLng(position.coords.latitude,
-					position.coords.longitude);
-			map.setCenter(initialLocation);
-		}, function() {
-			handleNoGeolocation(browserSupportFlag);
-		});
-	} else {
-		browserSupportFlag = false;
-		handleNoGeolocation(browserSupportFlag);
-	}
-
-	function handleNoGeolocation(errorFlag) {
-		if (errorFlag === true) {
-			alert("Geolocation service failed");
+//	if (navigator.geolocation) {
+//		browserSupportFlag = true;
+//		navigator.geolocation.getCurrentPosition(function(position) {
+//			initialLocation = new google.maps.LatLng(position.coords.latitude,
+//					position.coords.longitude);
+//			map.setCenter(initialLocation);
+//		}, function() {
+//			handleNoGeolocation(browserSupportFlag);
+//		});
+//	} else {
+//		browserSupportFlag = false;
+//		handleNoGeolocation(browserSupportFlag);
+//	}
+//
+//	function handleNoGeolocation(errorFlag) {
+//		if (errorFlag === true) {
+//			alert("Geolocation service failed");
+//			initialLocation = liivi;
+//		} else {
+//			alert("Browser does not support geolocation.");
 			initialLocation = liivi;
-		} else {
-			alert("Browser does not support geolocation.");
-			initialLocation = liivi;
-		}
+//		}
 		map.setCenter(initialLocation);
-	}
+//	}
 	forceToAddLocation = false;
 	forceRating = false;
 	showLegend();
 	// for testing
-	enableLegend();
+	//enableLegend();
 }
 
 function showLegend() {
@@ -155,7 +155,8 @@ function markerToMap(id, lat, lng) {
 	var point = new google.maps.LatLng(lat, lng);
 	marker = new google.maps.Marker({
 		position : point,
-		map : map
+		map : map,
+		optimized : false //for testing with selenium!!!
 	});
 	marker.set("id", id);
 	listenMarker(marker);
@@ -233,8 +234,7 @@ function listenMarker(marker) {
 																	+ point.rating
 																	+ '</label></label>';
 																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div>';
-																//var userID = (FB.getAuthResponse() || {}).userID
-																var userID = 123;
+																var userID = (FB.getAuthResponse() || {}).userID
 																if(userID==userFbId){
 																	//add deletion button
 																	inf+='<button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></p></span></div></div>';
@@ -289,18 +289,17 @@ function listenMarker(marker) {
 																			$('#rating_bar ul li').eq(i).css('background', '#B0E57C');
 																		}
 																		click = true;
-																		addUserRating((str+1), marker.get("id"), "698", "Onu");
-																		/*FB.getLoginStatus(function(response) {
+																		FB.getLoginStatus(function(response) {
 																			// kui ta lehele tulles on juba sisselogitud ja klikib hindamisel
 																			if (response.status == 'connected') {
 																				//seo hinne kasutajaga ja saada ära
 																				var userName = response.name; //pole kindel kas see töötab!
 																				userID = (FB.getAuthResponse() || {}).userID
-																				//addUserRating(str, marker.get("id"), userID, userName);
+																				addUserRating(str + 1, marker.get("id"), userID, userName);
 																			} else {
 																				showLoginForm("a.login-window");
 																			}
-																		});*/
+																		});
 																	});
 																});
 															});
@@ -340,18 +339,17 @@ $('#comment-buttonid').click(function(){
     }
     else {
     	var text = $('#commentBox').val();
-    	/*FB.getLoginStatus(function(response) {
+    	FB.getLoginStatus(function(response) {
     		// kui ta lehele tulles on juba sisselogitud ja klikib kommenteerimisel
     		if (response.status == 'connected') {
 				//seo kommentaar kasutajaga ja saada ära
     			var userName = response.name; //pole kindel kas see töötab!
 				var userID = (FB.getAuthResponse() || {}).userID
-				//addUserComment(userID, text, userName);
+				addUserComment(userID, text, userName);
 			} else {
 				showLoginForm("a.login-window");
 			}
-    	});*/
-    	addUserComment("698", text, "Onu");
+    	});
    }
 });
 
@@ -360,6 +358,7 @@ function clearComments(){
 }
 
 function initializeCommentBar(){
+	clearComments();
 	$.get('KaartServlet', {
 		method : "getPointComments",
 		pointID : markerID
@@ -438,8 +437,8 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 			+ '<td><input type="checkbox" name="category" value="diving">Diving</td>'
 			+ '</tr>'
 			+ '<tr>'
-			+ '<td><input type="checkbox" name="category" value="rowing">Rowing</td>'
-			+ '<td><input type="checkbox" name="category" value="rollerskating">Rollerskating</td>'
+			+ '<td><input id=rowbox type="checkbox" name="category" value="rowing">Rowing</td>'
+			+ '<td><input type="checkbox" name="category" value="skating">Rollerskating</td>'
 			+ '</tr>'
 			+ '<tr>'
 			+ '<td><input type="checkbox" name="category" value="swimming">Swimming</td>'
@@ -507,8 +506,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ '</label>'
 				+ '</label>'
 				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
-		//var userID = (FB.getAuthResponse() || {}).userID
-		var userID = 123;
+		var userID = (FB.getAuthResponse() || {}).userID
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
@@ -538,7 +536,7 @@ function removeMarker(marker) {
 			method : "deleteUserPoint",
 			pointID : pointID
 		}, function(responseText) {
-			alert("point deleted");
+			marker.setMap(null)
 		});
 	}
 }

@@ -111,7 +111,7 @@
 					<option value="running">Running</option>
 					<option value="gym">Gym</option>
 				</select> <input type="hidden" name="method" value="infoNOJS" /> <input
-					type="submit" value="Get locations" />
+					class="nojsButton" type="submit" value="Get locations" />
 			</form>
 			<table>
 				<tr>
@@ -119,6 +119,8 @@
 					<th>Description</th>
 					<th>Link</th>
 					<th>Location</th>
+					<th>Rating</th>
+					
 				</tr>
 				<%
 					if (request.getAttribute("id") != null) {
