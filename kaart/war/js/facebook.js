@@ -1,4 +1,5 @@
 init = false;
+var userID = -1;
 window.fbAsyncInit = function() {
 	FB.init({
 		appId : '274740106025651', // võiks mingi faili teha, kust sensitive
@@ -21,7 +22,8 @@ function login(e) {
 			FB.api("/me", function(e) {
 				closeLoginForm();
 				var userName = e.name;
-				var userID = e.userID
+				userID = e.id;
+				alert(userID + " " + userName);
 				//servletisse tegemata, kas nii saab need ikka kätte?
 				$.post('KaartServlet', {
 					method : "addUser",
@@ -43,6 +45,10 @@ function login(e) {
 	}, {
 		perms : ""
 	});
+}
+
+function getUserID(){
+	return userID;
 }
 
 // Load the SDK Asynchronously

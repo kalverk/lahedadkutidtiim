@@ -234,8 +234,8 @@ function listenMarker(marker) {
 																	+ point.rating
 																	+ '</label></label>';
 																inf += '<div id="rating_bar"><ul><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li><li class="circle"></li></ul></div>';
-																var userID = (FB.getAuthResponse() || {}).userID
-																if(userID==userFbId){
+																var u = getUserID();
+																if(u==userFbId){
 																	//add deletion button
 																	inf+='<button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></p></span></div></div>';
 																	var content = $(inf);
@@ -293,9 +293,10 @@ function listenMarker(marker) {
 																			// kui ta lehele tulles on juba sisselogitud ja klikib hindamisel
 																			if (response.status == 'connected') {
 																				//seo hinne kasutajaga ja saada ära
-																				var userName = response.name; //pole kindel kas see töötab!
-																				userID = (FB.getAuthResponse() || {}).userID
-																				addUserRating(str + 1, marker.get("id"), userID, userName);
+																				var userName = ""; //pole kindel kas see töötab!
+																				u = response.authResponse.userID;
+																				alert(u + " " + userName);
+																				addUserRating(str + 1, marker.get("id"), u, userName);
 																			} else {
 																				showLoginForm("a.login-window");
 																			}
@@ -343,9 +344,10 @@ $('#comment-buttonid').click(function(){
     		// kui ta lehele tulles on juba sisselogitud ja klikib kommenteerimisel
     		if (response.status == 'connected') {
 				//seo kommentaar kasutajaga ja saada ära
-    			var userName = response.name; //pole kindel kas see töötab!
-				var userID = (FB.getAuthResponse() || {}).userID
-				addUserComment(userID, text, userName);
+    			var userName = ""; //pole kindel kas see töötab!
+				var u = response.authResponse.userID;;
+				alert(u+" "+userName);
+				addUserComment(u, text, userName);
 			} else {
 				showLoginForm("a.login-window");
 			}
@@ -506,7 +508,7 @@ function addPlaces(MapPos, InfoOpenDefault, Dragable, Removable) {
 				+ '</label>'
 				+ '</label>'
 				+ '</div>' + ' </p>' + ' </span>' + '</div>' + '</div>');
-		var userID = (FB.getAuthResponse() || {}).userID
+		var userID = getUserID();
 		$.post('KaartServlet', {
 			method : "insertNewPoint",
 			name : name,
