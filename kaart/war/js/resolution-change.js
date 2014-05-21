@@ -3,7 +3,9 @@ var isSmallLayout = false;
 
 function adjustStyle(width) {
 	width = parseInt(width);
-	if (width < 701) {
+	if(/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())){
+		$("#size-stylesheet").attr("href", "css/mobile.css");
+	}else if (width < 701) {
 		$("#size-stylesheet").attr("href", "css/small.css");
 		isLargeLayout = false;
 		isSmallLayout = true;
@@ -35,12 +37,24 @@ $(document).ready(function() {
 
 $(window).resize(
 		function() {
+			if(/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())){
+				var height = screen.height - $("#header").height()-30;
+				var width = screen.width-20;
+				$('#page-wrap').height(height);
+				$('#page-wrap').width(width);
+				$('#main-content').height(height-90);
+				$('#main-content').width(width);
+				$('#secondary-two').width(width);
+				$('#login-windowid2').width(width);
+				$('#toolbar').width(width-40);
+			}else{
 			//seda tuleks vastavalt point onclickile muuta.
 			var height = $(this).height() - $("#header").height()-30;
 			var width = $(this).width()-20;
 			$('#main-content').height(height);
 			if(isLargeLayout){
 				$('#main-content').width(width-250);
+				$('#comments').height(height-150);
 				$('#secondary-two').height(height);
 				$('#secondary-two').width(width-$('#main-content').width()-30);
 			}else if(isSmallLayout){
@@ -50,5 +64,5 @@ $(window).resize(
 			else{
 				$('#main-content').width(width);
 				$('#secondary-two').width(width);
-			}
+			}}
 		});

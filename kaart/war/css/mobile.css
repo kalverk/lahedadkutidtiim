@@ -1,0 +1,55 @@
+.js .ImgButton {
+	width: 85px;
+	height: 100px;
+}
+
+#toolbar {
+	height: 120px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.js ul#navigation {
+	margin: 0px;
+	left: 0px;
+	height: 115px;
+	display: block;
+	list-style: none outside none;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+#login-windowid {
+	display:none;
+}
+
+.js #login-windowid2 {
+	float: left;
+	overflow: auto;
+	display: block;
+	height: 85px;
+}
+
+.login-popup {
+	display: none;
+	padding: 10px;
+	position: fixed;
+	width: 250px;
+	top: 50%;
+	left: 50%;
+	z-index: 99999;
+}
+
+.signin{
+	border-left: none;
+	border-bottom: thick solid black;
+}
+
+#main-content {
+	margin-right: 5px;
+}
+
+#secondary-two {
+	float: left;
+	margin-right: 5px;
+}
