@@ -3,6 +3,9 @@
     	<persistence-unit name="KaartServer">
 		<class>kaart.entities.Point</class>
 		<class>kaart.entities.Category</class>
+		<class>kaart.entities.User</class>
+		<class>kaart.entities.Ratings</class>
+		<class>kaart.entities.Comments</class>
 		<properties>
             <property name="hibernate.archive.autodetecion" value="class, hbm" />
  

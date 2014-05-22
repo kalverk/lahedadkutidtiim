@@ -1,10 +1,10 @@
 .js .ImgButton {
-	width: 85px;
-	height: 100px;
+	width: 75px;
+	height: 90px;
 }
 
 #toolbar {
-	height: 120px;
+	height: 110px;
 	float: left;
 	margin-bottom: 10px;
 }
@@ -12,7 +12,7 @@
 .js ul#navigation {
 	margin: 0px;
 	left: 0px;
-	height: 115px;
+	height: 105px;
 	display: block;
 	list-style: none outside none;
 	white-space: nowrap;
@@ -20,7 +20,7 @@
 }
 
 #login-windowid {
-	display:none;
+	display: none;
 }
 
 .js #login-windowid2 {
@@ -40,7 +40,7 @@
 	z-index: 99999;
 }
 
-.signin{
+.signin {
 	border-left: none;
 	border-bottom: thick solid black;
 }

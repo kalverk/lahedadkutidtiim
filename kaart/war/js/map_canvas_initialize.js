@@ -64,7 +64,7 @@ function checkLoginStatus() {
 			// kui ta lehele tulles ei ole sisselogitud ja klikib legendil
 		} else {
 			showLoginForm("a.login-window");
-			// getter oleks mõistlikum aga osad brauserid vist ei toeta seda
+			// getter oleks mÃµistlikum aga osad brauserid vist ei toeta seda
 			forceToAddLocation = true;
 		}
 	});
@@ -89,6 +89,7 @@ function toMap(responseText, categoryName) {
 		markersArray = [];
 	}
 	getCount(categoryName);
+
 	addToMap(responseText);
 	doPoll(categoryName);
 }
@@ -292,8 +293,8 @@ function listenMarker(marker) {
 																		FB.getLoginStatus(function(response) {
 																			// kui ta lehele tulles on juba sisselogitud ja klikib hindamisel
 																			if (response.status == 'connected') {
-																				//seo hinne kasutajaga ja saada ära
-																				var userName = ""; //pole kindel kas see töötab!
+																				//seo hinne kasutajaga ja saada Ã¤ra
+																				var userName = ""; //pole kindel kas see tÃ¶Ã¶tab!
 																				u = response.authResponse.userID;
 																				addUserRating(str + 1, marker.get("id"), u, userName);
 																			} else {
@@ -342,8 +343,8 @@ $('#comment-buttonid').click(function(){
     	FB.getLoginStatus(function(response) {
     		// kui ta lehele tulles on juba sisselogitud ja klikib kommenteerimisel
     		if (response.status == 'connected') {
-				//seo kommentaar kasutajaga ja saada ära
-    			var userName = ""; //pole kindel kas see töötab!
+				//seo kommentaar kasutajaga ja saada Ã¤ra
+    			var userName = ""; //pole kindel kas see tÃ¶Ã¶tab!
 				var u = response.authResponse.userID;;
 				addUserComment(u, text, userName);
 			} else {

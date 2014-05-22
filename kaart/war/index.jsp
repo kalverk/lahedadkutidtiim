@@ -1,6 +1,6 @@
 <%@page import="com.google.appengine.api.search.GetResponse"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -116,6 +116,7 @@
 			<table>
 				<tr>
 					<th>Name</th>
+					<th>Category</th>
 					<th>Description</th>
 					<th>Link</th>
 					<th>Location</th>
@@ -142,7 +143,6 @@
 		<div id="secondary-two">
 			<div id="comments">
 				<ul id="comment-list">
-					<li></li>
 				</ul>
 			</div>
 			<textarea id="commentBox" rows="5" cols="1"></textarea>

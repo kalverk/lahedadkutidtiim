@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -53,7 +54,7 @@ public class Client {
 		} catch (IOException e) {
 			// info.info(e);
 		}
-		// tuleb siis kutsuda kui klient suletakse täielikult
+		// tuleb siis kutsuda kui klient suletakse tï¿½ielikult
 		// finally {
 		// try{
 		// close();
@@ -118,9 +119,10 @@ public class Client {
 	}
 
 	private void setUpStreams() throws IOException {
-		output = new PrintWriter(socket.getOutputStream(), true);
+		output = new PrintWriter(new OutputStreamWriter(
+				socket.getOutputStream(), "UTF-8"), true);
 		input = new BufferedReader(new InputStreamReader(
-				socket.getInputStream()));
+				socket.getInputStream(),"UTF-8"));
 		// info.info("Streams are up.");
 	}
 

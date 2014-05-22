@@ -32,6 +32,7 @@ public class KaartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String method = request.getParameter("method");
 		if (method.equalsIgnoreCase("findbycategory")) {
 			// küsib vastavalt kategooriale
@@ -92,24 +93,32 @@ public class KaartServlet extends HttpServlet {
 
 			for (int i = 0; i < array.length; i++) {
 				client.clean();
-				String[] info = array[i].split("[\\W]");
-				String id = info[info.length - 1];
-				try {
-					client.setId(Long.parseLong(id));
-					client.startRunning();
-					result = client.getResult();
-					String[] array2 = result.split("\\|");
-					Type mapType = new TypeToken<Map<String, String>>() {
-					}.getType();
-					Map<String, String> son = new Gson().fromJson(array2[0],
-							mapType);
-					table += "<tr><td>" + son.get("name") + "</td><td>"
-							+ son.get("description") + "</td><td>"
-							+ son.get("link") + "</td><td>"
-							+ son.get("location") + "</td></tr>"
-							+ son.get("rating") + "</td><td>";
 
-				} catch (NumberFormatException e) {
+				Type mapType = new TypeToken<Map<String, String>>() {
+				}.getType();
+				Map<String, String> son = new Gson().fromJson(array[i],
+						mapType);
+				if(son != null){
+					try {
+						String id = son.get("id");
+						client.setId(Long.parseLong(id));
+						client.startRunning();
+						result = client.getResult();
+						String[] array2 = result.split("\\|");
+						mapType = new TypeToken<Map<String, String>>() {
+						}.getType();
+						son = new Gson().fromJson(array2[0],
+								mapType);
+						System.out.println(son.get("rating"));
+						table += "<tr><td>" + son.get("name") + "</td><td>"
+								+ category + "</td><td>"
+								+ son.get("description") + "</td><td>"
+								+ son.get("link") + "</td><td>"
+								+ son.get("location") + "</td><td>"
+								+ son.get("rating") + "</td><tr>";
+	
+					} catch (NumberFormatException e) {
+					}
 				}
 			}
 			client.clean();
@@ -131,6 +140,7 @@ public class KaartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
 		String method = request.getParameter("method");
 		if (method.equalsIgnoreCase("insertnewpoint")) {

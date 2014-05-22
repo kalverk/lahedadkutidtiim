@@ -22,6 +22,7 @@ function handleChange(evt) {
 		getInfo(evt.pathNames[0]);
 		closeLoginForm();
 	} else {
+		closeLoginForm();
 	}
 }
 
